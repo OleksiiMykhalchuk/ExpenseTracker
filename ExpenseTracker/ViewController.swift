@@ -7,15 +7,9 @@
 
 import UIKit
 
-class Some {
-    
-}
+
 
 class ViewController: UIViewController {
-    
-    var some: Some!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
