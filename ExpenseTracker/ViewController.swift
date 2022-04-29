@@ -7,8 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class Some {
+    
+}
 
+class ViewController: UIViewController {
+    
+    var some: Some!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
