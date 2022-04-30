@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -17,14 +17,14 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="qcT-q6-lg6">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense Tracker" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eks-kz-VLc">
-                                <rect key="frame" x="16" y="273" width="343" height="121.5"/>
+                                <rect key="frame" x="36" y="387.33333333333331" width="342" height="121.33333333333331"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -34,8 +34,12 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="qcT-q6-lg6" secondAttribute="trailing" id="5Vg-5c-g7R"/>
                             <constraint firstItem="qcT-q6-lg6" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="BL7-If-tDp"/>
-                            <constraint firstItem="eks-kz-VLc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="COk-tK-D5R"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eks-kz-VLc" secondAttribute="trailing" constant="16" id="ECc-Op-N5B"/>
+                            <constraint firstItem="eks-kz-VLc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="COk-tK-D5R">
+                                <variation key="heightClass=regular-widthClass=compact" constant="36"/>
+                            </constraint>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eks-kz-VLc" secondAttribute="trailing" constant="16" id="ECc-Op-N5B">
+                                <variation key="heightClass=regular-widthClass=compact" constant="36"/>
+                            </constraint>
                             <constraint firstItem="eks-kz-VLc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Omx-Vs-yTI"/>
                             <constraint firstItem="eks-kz-VLc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aaZ-3w-Ws1"/>
                             <constraint firstItem="qcT-q6-lg6" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="egk-qs-o9b"/>
