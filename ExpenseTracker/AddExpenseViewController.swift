@@ -14,5 +14,9 @@ class AddExpenseViewController: UIViewController {
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        let backgroundView = BackgroundView(frame: CGRect.zero)
+        backgroundView.backgroundColor = .clear
+        backgroundView.frame = view.bounds
+        view.addSubview(backgroundView)
     }
 }
