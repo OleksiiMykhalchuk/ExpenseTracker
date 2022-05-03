@@ -117,8 +117,8 @@ class BackgroundView: UIView {
             colorsSpace: colorSpace,
             colors: colors as CFArray,
             locations: locations)
-        let startPoint = CGPoint(x: rect.origin.x + 60, y: rect.origin.y)
-        let endPoint = CGPoint(x: 170 + 170, y: rect.origin.y)
+        let startPoint = CGPoint(x: rect.origin.x + rect.size.height / 15, y: rect.origin.y)
+        let endPoint = CGPoint(x: rect.size.height / 2.6, y: rect.origin.y)
         context.saveGState()
         defer { context.restoreGState() }
         let path = CGMutablePath()
@@ -127,19 +127,19 @@ class BackgroundView: UIView {
             y: rect.origin.y),
                   transform: .identity)
         path.addEllipse(in: CGRect(
-            x: rect.origin.x + 70,
+            x: rect.origin.x + rect.size.height / 12.8,
             y: rect.origin.y,
-            width: 160,
-            height: 160),
+            width: rect.size.height / 5.6,
+            height: rect.size.height / 5.6),
                         transform: .identity)
         path.addEllipse(in: CGRect(
-            x: rect.origin.x + 150,
+            x: rect.origin.x + rect.size.height / 6,
             y: rect.origin.y - 50,
-            width: 130,
-            height: 130),
+            width: rect.size.height / 6.9,
+            height: rect.size.height / 6.9),
                         transform: .identity)
         path.closeSubpath()
-        context.setLineWidth(12)
+        context.setLineWidth(rect.size.height / 74.66)
         context.addPath(path)
         context.replacePathWithStrokedPath()
         context.clip()
