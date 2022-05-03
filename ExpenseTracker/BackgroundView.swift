@@ -10,6 +10,17 @@ import UIKit
 class BackgroundView: UIView {
     private let curveOffset: CGFloat = 50
     private let viewDevider: CGFloat = 3
+    private let colors: [Color] = [
+        Color(UIColor(white: 1.0, alpha: 0.1)),
+        Color(UIColor(white: 1.0, alpha: 0.0)),
+        Color(UIColor(red: 0.259, green: 0.587, blue: 0.564, alpha: 1)),
+        Color(UIColor(red: 0.167, green: 0.488, blue: 0.464, alpha: 1))]
+    private struct Color {
+        let color: UIColor?
+        init(_ color: UIColor) {
+            self.color = color
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
@@ -23,10 +34,11 @@ class BackgroundView: UIView {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         drawSquare(in: rect, in: context, with: colorSpace)
         drawCurve(in: rect, in: context, with: colorSpace)
+        drawCircle(in: rect, in: context, with: colorSpace)
     }
     private func drawGradient(in rect: CGRect, in context: CGContext, with colorSpace: CGColorSpace) {
-        let color1 = UIColor(red: 0.259, green: 0.587, blue: 0.564, alpha: 1)
-        let color2 = UIColor(red: 0.167, green: 0.488, blue: 0.464, alpha: 1)
+        let color1 = colors[2].color!
+        let color2 = colors[3].color!
         let colors = [color1.cgColor, color2.cgColor]
         let locations: [CGFloat] = [0, 1]
         let gradient = CGGradient(
@@ -61,8 +73,8 @@ class BackgroundView: UIView {
     private func drawCurve(in rect: CGRect, in context: CGContext, with colorSpace: CGColorSpace?) {
         context.saveGState()
         defer { context.restoreGState() }
-        let color1 = UIColor(red: 0.259, green: 0.587, blue: 0.564, alpha: 1)
-        let color2 = UIColor(red: 0.167, green: 0.488, blue: 0.464, alpha: 1)
+        let color1 = colors[2].color!
+        let color2 = colors[3].color!
         let colors = [color1.cgColor, color2.cgColor]
         let locations: [CGFloat] = [0, 1]
         let gradient = CGGradient.init(
@@ -94,6 +106,48 @@ class BackgroundView: UIView {
             end: endPoint,
             options: [])
         context.setStrokeColor(UIColor.black.cgColor)
+        context.strokePath()
+    }
+    private func drawCircle(in rect: CGRect, in context: CGContext, with colorSpace: CGColorSpace) {
+        let color1 = colors[0].color!
+        let color2 = colors[1].color!
+        let colors = [color1.cgColor, color2.cgColor]
+        let locations: [CGFloat] = [0, 1]
+        let gradient = CGGradient(
+            colorsSpace: colorSpace,
+            colors: colors as CFArray,
+            locations: locations)
+        let startPoint = CGPoint(x: rect.origin.x + 60, y: rect.origin.y)
+        let endPoint = CGPoint(x: 170 + 170, y: rect.origin.y)
+        context.saveGState()
+        defer { context.restoreGState() }
+        let path = CGMutablePath()
+        path.move(to: CGPoint(
+            x: rect.origin.x,
+            y: rect.origin.y),
+                  transform: .identity)
+        path.addEllipse(in: CGRect(
+            x: rect.origin.x + 70,
+            y: rect.origin.y,
+            width: 160,
+            height: 160),
+                        transform: .identity)
+        path.addEllipse(in: CGRect(
+            x: rect.origin.x + 150,
+            y: rect.origin.y - 50,
+            width: 130,
+            height: 130),
+                        transform: .identity)
+        path.closeSubpath()
+        context.setLineWidth(12)
+        context.addPath(path)
+        context.replacePathWithStrokedPath()
+        context.clip()
+        context.drawLinearGradient(
+            gradient!,
+            start: startPoint,
+            end: endPoint,
+            options: [])
         context.strokePath()
     }
 }

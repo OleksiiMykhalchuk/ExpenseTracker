@@ -12,6 +12,11 @@ class AddExpenseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let nav = self.navigationController?.navigationBar
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let backgroundView = BackgroundView(frame: CGRect.zero)
