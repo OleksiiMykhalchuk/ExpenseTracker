@@ -9,6 +9,7 @@ import UIKit
 
 class AddExpenseViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
+    var contentTableView: AddExpenseContentViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class AddExpenseViewController: UIViewController {
         contentView.layer.shadowRadius = 5.0
         contentView.layer.shadowOpacity = 0.5
         contentView.layer.cornerRadius = 20
+        showContent()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,5 +35,14 @@ class AddExpenseViewController: UIViewController {
         backgroundView.frame = view.bounds
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
+    }
+    func showContent() {
+        contentTableView = storyboard!.instantiateViewController(
+            withIdentifier: "ContentTable") as? AddExpenseContentViewController
+        if let controller = contentTableView {
+            controller.view.frame = contentView.frame
+            view.addSubview(controller.view)
+            addChild(controller)
+        }
     }
 }
