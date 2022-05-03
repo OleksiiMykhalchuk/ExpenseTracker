@@ -8,7 +8,7 @@
 import UIKit
 
 class AddExpenseViewController: UIViewController {
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentView: UITableView!
     var contentTableView: AddExpenseContentViewController?
 
     override func viewDidLoad() {
@@ -21,7 +21,11 @@ class AddExpenseViewController: UIViewController {
         contentView.layer.shadowRadius = 5.0
         contentView.layer.shadowOpacity = 0.5
         contentView.layer.cornerRadius = 20
-        showContent()
+        contentView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
+        self.contentView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        contentView.delegate = self
+        contentView.dataSource = self
+//        showContent()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,5 +48,18 @@ class AddExpenseViewController: UIViewController {
             view.addSubview(controller.view)
             addChild(controller)
         }
+    }
+}
+
+extension AddExpenseViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("numberOfRows")
+        return 3
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel!.text = "Label"
+        print("cellForRowAt")
+        return cell
     }
 }
