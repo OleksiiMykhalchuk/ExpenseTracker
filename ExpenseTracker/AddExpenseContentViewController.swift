@@ -11,5 +11,6 @@ class AddExpenseContentViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.layer.cornerRadius = 20
     }
 }
