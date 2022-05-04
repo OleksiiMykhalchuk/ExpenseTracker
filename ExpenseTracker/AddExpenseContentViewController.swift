@@ -15,8 +15,8 @@ class AddExpenseContentViewController: UITableViewController {
     @IBAction func buttonPressed() {
         textField.text = ""
         let alert = UIAlertController(
-            title: "Saved",
-            message: "Success!!!",
+            title: NSLocalizedString("Saved", comment: "AddExpense alert: title"),
+            message: NSLocalizedString("Success!!!\nAmount: ", comment: "AddExpense alert: message"),
             preferredStyle: .alert)
         let action = UIAlertAction(
             title: "OK",
