@@ -19,7 +19,7 @@ class AddExpenseViewController: UIViewController {
         contentView.layer.shadowColor = UIColor.lightGray.cgColor
         contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
         contentView.layer.shadowRadius = 15.0
-        contentView.layer.shadowOpacity = 1.5
+        contentView.layer.shadowOpacity = 1.0
         contentView.layer.cornerRadius = 20
     }
     override func viewWillAppear(_ animated: Bool) {
