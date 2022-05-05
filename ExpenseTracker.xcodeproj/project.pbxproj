@@ -37,6 +37,7 @@
 		883D9987281FD4180080DC7B /* AddExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883D9986281FD4180080DC7B /* AddExpenseViewController.swift */; };
 		883D99892821308B0080DC7B /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883D99882821308B0080DC7B /* BackgroundView.swift */; };
 		883D998B28217B940080DC7B /* AddExpenseContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883D998A28217B940080DC7B /* AddExpenseContentViewController.swift */; };
+		883D998D2823E6800080DC7B /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883D998C2823E67F0080DC7B /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		883D9986281FD4180080DC7B /* AddExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewController.swift; sourceTree = "<group>"; };
 		883D99882821308B0080DC7B /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		883D998A28217B940080DC7B /* AddExpenseContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseContentViewController.swift; sourceTree = "<group>"; };
+		883D998C2823E67F0080DC7B /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 				883D9986281FD4180080DC7B /* AddExpenseViewController.swift */,
 				883D99882821308B0080DC7B /* BackgroundView.swift */,
 				883D998A28217B940080DC7B /* AddExpenseContentViewController.swift */,
+				883D998C2823E67F0080DC7B /* CategoryViewController.swift */,
 			);
 			path = ExpenseTracker;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			files = (
 				883D9983281D8E690080DC7B /* Income+CoreDataProperties.swift in Sources */,
 				883D9984281D8E690080DC7B /* Expense+CoreDataClass.swift in Sources */,
+				883D998D2823E6800080DC7B /* CategoryViewController.swift in Sources */,
 				88356ABF281C28B300C40F39 /* ViewController.swift in Sources */,
 				883D9981281D8E690080DC7B /* Category+CoreDataProperties.swift in Sources */,
 				88356ABB281C28B300C40F39 /* AppDelegate.swift in Sources */,

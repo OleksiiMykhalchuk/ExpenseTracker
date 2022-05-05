@@ -13,7 +13,7 @@ class AddExpenseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = UIColor(named: "whiteDarkBackground")
         contentView.clipsToBounds = false
         contentView.layer.masksToBounds = false
         contentView.layer.shadowColor = UIColor.lightGray.cgColor
