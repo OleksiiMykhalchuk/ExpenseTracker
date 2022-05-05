@@ -104,14 +104,14 @@
                             <tableViewSection headerTitle="AMOUNT" id="9FB-Dl-IDh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExpenseCell" id="O2g-P4-hsF">
-                                        <rect key="frame" x="0.0" y="151" width="295" height="19"/>
+                                        <rect key="frame" x="0.0" y="151" width="295" height="19.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O2g-P4-hsF" id="8pm-Rg-oBL">
-                                            <rect key="frame" x="0.0" y="0.0" width="295" height="19"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="295" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$ 00.00" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4cH-8Z-QFl">
-                                                    <rect key="frame" x="12" y="0.0" width="271" height="19"/>
+                                                    <rect key="frame" x="12" y="0.0" width="271" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
@@ -129,14 +129,14 @@
                             <tableViewSection headerTitle="DATE" id="saZ-rq-2E9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExpenseCell" id="whg-I6-yBw">
-                                        <rect key="frame" x="0.0" y="237" width="295" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="237.5" width="295" height="31.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="whg-I6-yBw" id="Dqb-0N-wS7">
                                             <rect key="frame" x="0.0" y="0.0" width="295" height="31.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="spw-11-P97">
-                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="31"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="32"/>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -152,7 +152,7 @@
                             <tableViewSection id="74f-pJ-SuE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExpenseCell" id="Tgx-Uh-6MI">
-                                        <rect key="frame" x="0.0" y="335.5" width="295" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="336" width="295" height="34.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tgx-Uh-6MI" id="0Bl-Yb-TtX">
                                             <rect key="frame" x="0.0" y="0.0" width="295" height="34.5"/>
@@ -212,18 +212,18 @@
                                 <rect key="frame" x="0.0" y="44" width="295" height="356"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="qHL-JA-T0W">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="CategoryCell" id="qHL-JA-T0W">
                                         <rect key="frame" x="0.0" y="44.5" width="295" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qHL-JA-T0W" id="mm4-Fh-BnZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="295" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="242" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="het-7U-73R" id="fbX-gW-i1I"/>
-                                    <outlet property="delegate" destination="het-7U-73R" id="QAm-gi-aTa"/>
+                                    <outlet property="delegate" destination="het-7U-73R" id="vY1-2p-uBt"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -242,7 +242,7 @@
                                 <action selector="cancel" destination="het-7U-73R" id="9eW-NR-k2x"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hiQ-A4-3d5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hiQ-A4-3d5">
                             <connections>
                                 <action selector="done" destination="het-7U-73R" id="ABt-Wx-SAV"/>
                             </connections>
@@ -254,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0he-UE-TOS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3132" y="106.14692653673164"/>
+            <point key="canvasLocation" x="2966" y="106"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aAc-0I-Y4h">

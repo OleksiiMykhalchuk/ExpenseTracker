@@ -25,8 +25,10 @@ class AddExpenseContentViewController: UITableViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: {self.buttonPressed()})
     }
+    var categoryName: String = "No Category"
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameLabel.text = categoryName
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
@@ -47,5 +49,21 @@ class AddExpenseContentViewController: UITableViewController {
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 8
         cell.layer.borderColor = UIColor(named: "Green2")?.cgColor
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    // MARK: - Navigatetion
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Category" {
+             let controller = segue.destination as? CategoryViewController
+                controller!.delegate = self
+        }
+    }
+}
+extension AddExpenseContentViewController: categoryPickerViewControllerDelegate {
+    func categoryPicker(_ picker: CategoryViewController, didPick categoryName: String) {
+        self.categoryName = categoryName
+        navigationController?.popViewController(animated: true)
     }
 }
