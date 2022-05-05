@@ -15,8 +15,9 @@ class CategoryViewController: UIViewController {
     var categoryArray: [String] = ["Groceries", "TV", "Clothes", "Health Care"]
     weak var delegate: categoryPickerViewControllerDelegate?
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBAction func cancel() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     @IBAction func done() {
         dismiss(animated: true)
@@ -30,6 +31,7 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell")
+        cell?.textLabel?.font = UIFont(name: "Inter", size: 14)
         cell?.textLabel!.text = categoryArray[indexPath.row]
         return cell!
     }

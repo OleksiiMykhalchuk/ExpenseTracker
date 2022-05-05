@@ -13,22 +13,48 @@ class AddExpenseContentViewController: UITableViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var addButton: UIButton!
     @IBAction func buttonPressed() {
-        textField.text = ""
+        let amount = textField.text ?? "Nothing"
+        let formatter = DateFormatter()
+        formatter.calendar = datePicker.calendar
+        formatter.dateStyle = .medium
+        let dateString = formatter.string(from: datePicker.date)
+        if amount == "" {
+            let alert = UIAlertController(
+                title: NSLocalizedString("Error", comment: "AddExpense alert: title"),
+                message: NSLocalizedString(
+                    "Amount field should not be empty",
+                    comment: "AddExpense alert Error: message"),
+                preferredStyle: .actionSheet)
+            let action = UIAlertAction(
+                title: "OK",
+                style: .destructive,
+                handler: { _ in self.textField.placeholder = "$ 00.00" })
+            textField.placeholder = "ERROR"
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            return
+        }
         let alert = UIAlertController(
             title: NSLocalizedString("Saved", comment: "AddExpense alert: title"),
-            message: NSLocalizedString("Success!!!\nAmount: ", comment: "AddExpense alert: message"),
+            message: NSLocalizedString(
+                "Success!!!\nAmount: \(amount)\nCategory: \(categoryName)\nDate: \(dateString)",
+                comment: "AddExpense alert: message"),
             preferredStyle: .alert)
         let action = UIAlertAction(
             title: "OK",
             style: .default,
             handler: nil)
         alert.addAction(action)
-        present(alert, animated: true, completion: {self.buttonPressed()})
+        present(alert, animated: true, completion: nil)
+        textField.text = ""
     }
     var categoryName: String = "No Category"
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = categoryName
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
@@ -65,5 +91,6 @@ extension AddExpenseContentViewController: categoryPickerViewControllerDelegate 
     func categoryPicker(_ picker: CategoryViewController, didPick categoryName: String) {
         self.categoryName = categoryName
         navigationController?.popViewController(animated: true)
+        nameLabel!.text = categoryName
     }
 }

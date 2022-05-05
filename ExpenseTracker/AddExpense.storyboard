@@ -96,7 +96,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="het-7U-73R" kind="show" identifier="Category" id="9yb-kd-XEY"/>
+                                            <segue destination="het-7U-73R" kind="show" identifier="Category" id="7UH-9a-yYL"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -249,12 +249,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="Krr-PM-hHb" id="Nqh-n5-keK"/>
                         <outlet property="tableView" destination="Yqk-3F-61H" id="KyL-Pt-6ZW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0he-UE-TOS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2966" y="106"/>
+            <point key="canvasLocation" x="2286" y="97"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aAc-0I-Y4h">
@@ -296,7 +297,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9yb-kd-XEY"/>
+        <segue reference="7UH-9a-yYL"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="Green2"/>
     <resources>
