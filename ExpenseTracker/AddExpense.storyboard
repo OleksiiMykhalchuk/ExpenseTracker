@@ -96,7 +96,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="xrb-Gv-Rlp" kind="show" identifier="Category" id="vFe-Kl-qCs"/>
+                                            <segue destination="het-7U-73R" kind="show" identifier="Category" id="9yb-kd-XEY"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -104,14 +104,14 @@
                             <tableViewSection headerTitle="AMOUNT" id="9FB-Dl-IDh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExpenseCell" id="O2g-P4-hsF">
-                                        <rect key="frame" x="0.0" y="151" width="295" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="151" width="295" height="19"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O2g-P4-hsF" id="8pm-Rg-oBL">
-                                            <rect key="frame" x="0.0" y="0.0" width="295" height="19.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="295" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$ 00.00" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4cH-8Z-QFl">
-                                                    <rect key="frame" x="12" y="0.0" width="271" height="19.5"/>
+                                                    <rect key="frame" x="12" y="0.0" width="271" height="19"/>
                                                     <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
@@ -129,14 +129,14 @@
                             <tableViewSection headerTitle="DATE" id="saZ-rq-2E9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExpenseCell" id="whg-I6-yBw">
-                                        <rect key="frame" x="0.0" y="237.5" width="295" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="237" width="295" height="31.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="whg-I6-yBw" id="Dqb-0N-wS7">
                                             <rect key="frame" x="0.0" y="0.0" width="295" height="31.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="spw-11-P97">
-                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="32"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="31"/>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -152,7 +152,7 @@
                             <tableViewSection id="74f-pJ-SuE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExpenseCell" id="Tgx-Uh-6MI">
-                                        <rect key="frame" x="0.0" y="336" width="295" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="335.5" width="295" height="34.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tgx-Uh-6MI" id="0Bl-Yb-TtX">
                                             <rect key="frame" x="0.0" y="0.0" width="295" height="34.5"/>
@@ -209,7 +209,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yqk-3F-61H">
-                                <rect key="frame" x="0.0" y="44" width="295" height="356"/>
+                                <rect key="frame" x="0.0" y="0.0" width="295" height="400"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="CategoryCell" id="qHL-JA-T0W">
@@ -282,7 +282,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="DLE-4X-sBj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nkf-JD-iCj">
-                        <rect key="frame" x="0.0" y="0.0" width="295" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -292,9 +292,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0S-w1-k7c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2320.8000000000002" y="106.14692653673164"/>
+            <point key="canvasLocation" x="2287" y="-559"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9yb-kd-XEY"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" name="Green2"/>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
