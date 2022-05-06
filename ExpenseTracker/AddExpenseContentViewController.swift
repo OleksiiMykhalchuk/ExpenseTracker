@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddExpenseContentViewController: UITableViewController {
   // MARK: - Outlets
@@ -15,38 +16,22 @@ class AddExpenseContentViewController: UITableViewController {
   @IBOutlet weak var addButton: UIButton!
   // MARK: - Actions
   @IBAction func buttonPressed() {
-    let amount = textField.text ?? "Nothing"
-    let formatter = DateFormatter()
-    formatter.calendar = datePicker.calendar
-    formatter.dateStyle = .medium
-    let dateString = formatter.string(from: datePicker.date)
-    guard amount != "" else {
-      let title = NSLocalizedString("Error", comment: "AddExpense alert: title")
-      let message = NSLocalizedString(
-        "Amount field should not be empty",
-        comment: "AddExpense alert Error: message")
-      showAlert(
-        controllerTitle: title,
-        message: message,
-        preferredStyle: .actionSheet,
-        actionStyle: .destructive) { _ in
-          self.textField.placeholder = "$ 00.00" }
-      textField.placeholder = "ERROR"
-      return
+    guard manageAlerts() else { return }
+    let expense = Expense(context: managedObjectContext)
+    expense.amount = Double(textField.text ?? "0.00") ?? 0.00
+    expense.date = datePicker.date
+    expense.category = categoryName
+    do {
+      try managedObjectContext.save()
+      print("*** Saved!!!")
+    } catch {
+      fatalError("Error \(error)")
     }
-    let title = NSLocalizedString("Saved", comment: "AddExpense alert: title")
-    let message = NSLocalizedString(
-      "Success!!!\nAmount: \(amount)\nCategory: \(categoryName)\nDate: \(dateString)",
-      comment: "AddExpense alert: message")
-    showAlert(
-      controllerTitle: title,
-      message: message,
-      preferredStyle: .alert,
-      actionStyle: .default)
     textField.text = ""
   }
   // MARK: - Variables
   var categoryName: String = "No Category"
+  var managedObjectContext: NSManagedObjectContext!
   // MARK: - viewDidLoad
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -80,9 +65,7 @@ class AddExpenseContentViewController: UITableViewController {
   // MARK: - Navigatetion
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "Category" {
-      guard let controller = segue.destination as? CategoryViewController else {
-        fatalError("Controller Error")
-      }
+      guard let controller = segue.destination as? CategoryViewController else { return }
       controller.delegate = self
     }
   }
@@ -103,6 +86,38 @@ class AddExpenseContentViewController: UITableViewController {
       handler: handler)
     alert.addAction(action)
     present(alert, animated: true, completion: nil)
+  }
+  private func manageAlerts() -> Bool {
+    let amount = textField.text ?? "Nothing"
+    let formatter = DateFormatter()
+    formatter.calendar = datePicker.calendar
+    formatter.dateStyle = .medium
+    let dateString = formatter.string(from: datePicker.date)
+    if amount != "" {
+      let title = NSLocalizedString("Saved", comment: "AddExpense alert: title")
+      let message = NSLocalizedString(
+        "Success!!!\nAmount: \(amount)\nCategory: \(categoryName)\nDate: \(dateString)",
+        comment: "AddExpense alert: message")
+      showAlert(
+        controllerTitle: title,
+        message: message,
+        preferredStyle: .alert,
+        actionStyle: .default)
+      return true
+    } else {
+      let title = NSLocalizedString("Error", comment: "AddExpense alert: title")
+      let message = NSLocalizedString(
+        "Amount field should not be empty",
+        comment: "AddExpense alert Error: message")
+      showAlert(
+        controllerTitle: title,
+        message: message,
+        preferredStyle: .actionSheet,
+        actionStyle: .destructive) { _ in
+          self.textField.placeholder = "$ 00.00" }
+      textField.placeholder = "ERROR"
+      return false
+    }
   }
 }
 // MARK: - CategoryPickerViewControllerDelegate

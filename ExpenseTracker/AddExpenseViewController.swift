@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import CoreData
 
 class AddExpenseViewController: UIViewController {
   @IBOutlet weak var contentView: UIView!
   var contentTableView: AddExpenseContentViewController?
+  var managedObjectContext: NSManagedObjectContext!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,5 +36,10 @@ class AddExpenseViewController: UIViewController {
     backgroundView.frame = view.bounds
     view.addSubview(backgroundView)
     view.sendSubviewToBack(backgroundView)
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let controller  = segue.destination as? AddExpenseContentViewController, segue.identifier == "EmbedSegue" {
+      controller.managedObjectContext = managedObjectContext
+    }
   }
 }

@@ -33,19 +33,17 @@ class CategoryViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension CategoryViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell") else {
-      fatalError("Error")
-    }
-    cell.textLabel?.font = UIFont(name: "Inter", size: 14)
-    cell.textLabel!.text = categoryArray[indexPath.row]
-    return cell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell")
+      cell!.textLabel?.font = UIFont(name: "Inter", size: 14)
+      cell!.textLabel!.text = categoryArray[indexPath.row]
+      return cell!
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return categoryArray.count
   }
 }
 // MARK: - UITableViewDelegate
-extension CategoryViewController: UITableViewDelegate  {
+extension CategoryViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let delegate = delegate {
       let categoryName = categoryArray[indexPath.row]
@@ -54,4 +52,3 @@ extension CategoryViewController: UITableViewDelegate  {
     tableView.deselectRow(at: indexPath, animated: true)
   }
 }
-
