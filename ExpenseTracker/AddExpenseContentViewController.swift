@@ -45,10 +45,13 @@ class AddExpenseContentViewController: UITableViewController {
       actionStyle: .default)
     textField.text = ""
   }
+  // MARK: - Variables
   var categoryName: String = "No Category"
+  // MARK: - viewDidLoad
   override func viewDidLoad() {
     super.viewDidLoad()
     nameLabel.text = categoryName
+    textField.becomeFirstResponder()
   }
   // MARK: - Table View Delegates
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
