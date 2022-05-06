@@ -32,11 +32,24 @@ class AddExpenseContentViewController: UITableViewController {
   // MARK: - Variables
   var categoryName: String = "No Category"
   var managedObjectContext: NSManagedObjectContext!
+  var expenses = [Expense]()
   // MARK: - viewDidLoad
   override func viewDidLoad() {
     super.viewDidLoad()
     nameLabel.text = categoryName
     textField.becomeFirstResponder()
+    
+    let fetchRequest = NSFetchRequest<Expense>()
+    let entity = Expense.entity()
+    fetchRequest.entity = entity
+    do {
+      expenses = try managedObjectContext.fetch(fetchRequest)
+    } catch {
+      fatalError("Error \(error)")
+    }
+    for index in 0..<expenses.count {
+      print("*** amount: \(expenses[index].date)")
+    }
   }
   // MARK: - Table View Delegates
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
