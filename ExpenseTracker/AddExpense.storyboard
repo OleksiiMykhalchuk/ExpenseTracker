@@ -136,7 +136,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="spw-11-P97">
-                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="31"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="31.5"/>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
