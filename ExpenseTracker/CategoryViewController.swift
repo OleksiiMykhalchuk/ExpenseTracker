@@ -13,6 +13,7 @@ protocol CategoryPickerViewControllerDelegate: AnyObject {
 
 class CategoryViewController: UIViewController {
   var categoryArray: [String] = ["Groceries", "TV", "Clothes", "Health Care"]
+  var categoryName: String?
   weak var delegate: CategoryPickerViewControllerDelegate?
   // MARK: - Outlets
   @IBOutlet weak var tableView: UITableView!
@@ -41,6 +42,18 @@ extension CategoryViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return categoryArray.count
   }
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "AddCategory" {
+      if let controller = segue.destination as? CategoryDetailViewController {
+      }
+    } else if segue.identifier == "EditCategory" {
+      if let controller = segue.destination as? CategoryDetailViewController {
+        controller.categoryName = categoryName
+      }
+    }
+  }
 }
 // MARK: - UITableViewDelegate
 extension CategoryViewController: UITableViewDelegate {
@@ -50,5 +63,6 @@ extension CategoryViewController: UITableViewDelegate {
       delegate.categoryPicker(self, didPick: categoryName)
     }
     tableView.deselectRow(at: indexPath, animated: true)
+    categoryName = categoryArray[indexPath.row]
   }
 }
