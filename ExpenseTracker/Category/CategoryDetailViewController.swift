@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol CategoryDetailViewControllerDelegate: AnyObject {
   func categoryDetailViewControllerDidCansel(_ controller: CategoryDetailViewController)
@@ -20,14 +21,20 @@ class CategoryDetailViewController: UITableViewController {
   // MARK: - Variables
   var categoryName: String?
   var barButton = UIBarButtonItem()
-  var categoryToEdit: String?
+  var categoryToEdit: Category? 
   var indexToEdit: Int?
+  var managedObjectContext: NSManagedObjectContext!
   weak var delegate: CategoryDetailViewControllerDelegate?
   // MARK: - Actions
   @IBAction func doneButton() {
-    if let categoryToEdit = categoryToEdit {
-      let newCategory = textField.text!
-      delegate?.categoryDetailViewController(self, didFinishEditing: newCategory, for: indexToEdit!)
+    var category: Category
+    if let temp = categoryToEdit {
+      category = temp
+      do {
+        try managedObjectContext.save()
+      } catch {
+        fatalError("Error \(error)")
+      }
     } else {
       let newCategory = textField.text!
       delegate?.categoryDetailViewController(self, didFinishAdding: newCategory)
@@ -42,7 +49,7 @@ class CategoryDetailViewController: UITableViewController {
       title = "Add Category"
       textFieldConfiguration()
       if let categoryToEdit = categoryToEdit {
-        textField.text = categoryToEdit
+        textField.text = categoryToEdit.name
       }
   }
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

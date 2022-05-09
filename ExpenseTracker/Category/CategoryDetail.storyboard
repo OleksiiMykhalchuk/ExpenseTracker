@@ -31,13 +31,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Category Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IdW-ej-QKf">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Category Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IdW-ej-QKf">
                                                     <rect key="frame" x="15" y="-6.5" width="345" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="J3n-XD-VpK"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="doneButton" destination="nlI-kd-rio" eventType="editingDidEndOnExit" id="OY1-yk-Wiv"/>
                                                     </connections>
@@ -66,7 +66,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Cnc-hE-LaZ">
                             <connections>
-                                <action selector="doneButton" destination="nlI-kd-rio" id="Zr9-m5-OOh"/>
+                                <action selector="doneButton" destination="nlI-kd-rio" id="Tke-yF-wzZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -76,7 +76,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="3952.8000000000002" y="96.7016491754123"/>
+            <point key="canvasLocation" x="4892" y="96.7016491754123"/>
         </scene>
     </scenes>
     <resources>

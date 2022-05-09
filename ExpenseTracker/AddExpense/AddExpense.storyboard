@@ -97,7 +97,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Hi3-CY-xHk" kind="show" identifier="Category" id="hQZ-J9-XkL"/>
+                                            <segue destination="Hi3-CY-xHk" kind="show" identifier="Category" id="Hhk-DM-9Md"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -209,7 +209,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2K-2A-dXO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2341" y="53"/>
+            <point key="canvasLocation" x="2189" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aAc-0I-Y4h">

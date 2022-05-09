@@ -79,6 +79,7 @@ class AddExpenseContentViewController: UITableViewController {
     if segue.identifier == "Category" {
       guard let controller = segue.destination as? CategoryViewController else { return }
       controller.delegate = self
+      controller.managedObjectContext = managedObjectContext
     }
   }
   // MARK: - Helper Methods
