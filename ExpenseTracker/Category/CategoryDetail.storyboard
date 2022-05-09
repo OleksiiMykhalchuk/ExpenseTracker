@@ -38,6 +38,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <action selector="doneButton" destination="nlI-kd-rio" eventType="editingDidEndOnExit" id="OY1-yk-Wiv"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -56,6 +59,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Catogory" id="sw6-4j-WOi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ugx-kt-wvK">
+                            <connections>
+                                <action selector="cancelButton" destination="nlI-kd-rio" id="crM-Od-90D"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Cnc-hE-LaZ">
                             <connections>
                                 <action selector="doneButton" destination="nlI-kd-rio" id="Zr9-m5-OOh"/>

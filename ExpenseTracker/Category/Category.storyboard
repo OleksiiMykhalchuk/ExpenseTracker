@@ -20,16 +20,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="CategoryCell" id="BDf-HL-QXJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="BDf-HL-QXJ">
                                         <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BDf-HL-QXJ" id="cBD-NW-S4B">
-                                            <rect key="frame" x="0.0" y="0.0" width="322" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="DMz-PL-NXE" kind="show" identifier="EditCategory" trigger="accessoryAction" id="y6y-Zo-Wto"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -63,6 +60,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="iDt-hb-3R1" id="GtM-gA-GmX"/>
                         <outlet property="tableView" destination="tcF-8w-dHP" id="PMw-lP-jff"/>
+                        <segue destination="DMz-PL-NXE" kind="show" identifier="EditCategory" id="uPq-cA-RLi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sz9-Pn-dPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -72,7 +70,7 @@
         <!--CategoryDetail-->
         <scene sceneID="egl-dL-jjf">
             <objects>
-                <viewControllerPlaceholder storyboardName="CategoryDetail" id="DMz-PL-NXE" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="detail" storyboardName="CategoryDetail" id="DMz-PL-NXE" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Add Category" id="wvf-pS-1BT"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXv-SV-FTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -81,7 +79,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="y6y-Zo-Wto"/>
+        <segue reference="uPq-cA-RLi"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

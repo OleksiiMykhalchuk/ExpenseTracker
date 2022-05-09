@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol CategoryDetailViewControllerDelegate: AnyObject {
+  func categoryDetailViewControllerDidCansel(_ controller: CategoryDetailViewController)
+  func categoryDetailViewController(_ controller: CategoryDetailViewController, didFinishAdding category: String)
+  func categoryDetailViewController(_ controller: CategoryDetailViewController, didFinishEditing category: String, for index: Int)
+}
+
 class CategoryDetailViewController: UITableViewController {
     // MARK: - Outlets
   @IBOutlet weak var textField: UITextField!
@@ -14,15 +20,30 @@ class CategoryDetailViewController: UITableViewController {
   // MARK: - Variables
   var categoryName: String?
   var barButton = UIBarButtonItem()
+  var categoryToEdit: String?
+  var indexToEdit: Int?
+  weak var delegate: CategoryDetailViewControllerDelegate?
   // MARK: - Actions
   @IBAction func doneButton() {
-    dismiss(animated: true)
+    if let categoryToEdit = categoryToEdit {
+      let newCategory = textField.text!
+      delegate?.categoryDetailViewController(self, didFinishEditing: newCategory, for: indexToEdit!)
+    } else {
+      let newCategory = textField.text!
+      delegate?.categoryDetailViewController(self, didFinishAdding: newCategory)
+    }
+  }
+  @IBAction func cancelButton() {
+    delegate?.categoryDetailViewControllerDidCansel(self)
   }
     override func viewDidLoad() {
         super.viewDidLoad()
       textField.becomeFirstResponder()
       title = "Add Category"
       textFieldConfiguration()
+      if let categoryToEdit = categoryToEdit {
+        textField.text = categoryToEdit
+      }
   }
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     guard let header = view as? UITableViewHeaderFooterView else { return }
@@ -33,7 +54,7 @@ class CategoryDetailViewController: UITableViewController {
   }
   // MARK: - Helper Methods
   private func textFieldConfiguration() {
-    textField.text = categoryName
+//    textField.text = categoryName
     navigationItem.setRightBarButton(barButton, animated: true)
     textField.layer.borderWidth = 1
     textField.layer.borderColor = UIColor(named: "Green2")?.cgColor
