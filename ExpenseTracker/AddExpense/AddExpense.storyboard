@@ -105,14 +105,14 @@
                             <tableViewSection headerTitle="AMOUNT" id="9FB-Dl-IDh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExpenseCell" id="O2g-P4-hsF">
-                                        <rect key="frame" x="0.0" y="151" width="295" height="19"/>
+                                        <rect key="frame" x="0.0" y="151" width="295" height="19.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O2g-P4-hsF" id="8pm-Rg-oBL">
-                                            <rect key="frame" x="0.0" y="0.0" width="295" height="19"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="295" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$ 00.00" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4cH-8Z-QFl">
-                                                    <rect key="frame" x="12" y="0.0" width="271" height="19"/>
+                                                    <rect key="frame" x="12" y="0.0" width="271" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
@@ -130,7 +130,7 @@
                             <tableViewSection headerTitle="DATE" id="saZ-rq-2E9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExpenseCell" id="whg-I6-yBw">
-                                        <rect key="frame" x="0.0" y="237" width="295" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="237.5" width="295" height="31.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="whg-I6-yBw" id="Dqb-0N-wS7">
                                             <rect key="frame" x="0.0" y="0.0" width="295" height="31.5"/>
@@ -153,7 +153,7 @@
                             <tableViewSection id="74f-pJ-SuE">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddExpenseCell" id="Tgx-Uh-6MI">
-                                        <rect key="frame" x="0.0" y="335.5" width="295" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="336" width="295" height="34.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tgx-Uh-6MI" id="0Bl-Yb-TtX">
                                             <rect key="frame" x="0.0" y="0.0" width="295" height="34.5"/>
@@ -210,22 +210,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2K-2A-dXO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2189" y="36"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="aAc-0I-Y4h">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="exZ-YY-rQy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="plus" catalog="system" id="YI1-eq-lJq"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Ih-k1-DoR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y5i-2F-xKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-148" y="98"/>
         </scene>
     </scenes>
     <color key="tintColor" name="Green2"/>
