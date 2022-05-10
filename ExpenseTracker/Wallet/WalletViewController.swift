@@ -8,12 +8,13 @@
 import UIKit
 
 class WalletViewController: UIViewController {
-
+  @IBOutlet weak var viewContent: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Wallet"
       showBackgroundView()
       configureTitleTextAttributes()
+      configureViewContent()
     }
   private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
@@ -25,5 +26,8 @@ class WalletViewController: UIViewController {
     backgroundView.frame = view.bounds
     view.addSubview(backgroundView)
     view.sendSubviewToBack(backgroundView)
+  }
+  private func configureViewContent() {
+    viewContent.layer.cornerRadius = 30
   }
 }
