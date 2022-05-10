@@ -29,10 +29,10 @@
             </objects>
             <point key="canvasLocation" x="-835" y="124"/>
         </scene>
-        <!--History-->
+        <!--Home-->
         <scene sceneID="gZd-TI-I1Q">
             <objects>
-                <viewControllerPlaceholder storyboardName="History" id="FMV-bF-8p2" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Home" id="FMV-bF-8p2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="jze-vX-Bw2"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DeX-EU-RyT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,18 +15,11 @@ class AddExpenseViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    contentView.backgroundColor = UIColor(named: "whiteDarkBackground")
-    contentView.clipsToBounds = false
-    contentView.layer.masksToBounds = false
-    contentView.layer.shadowColor = UIColor.lightGray.cgColor
-    contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
-    contentView.layer.shadowRadius = 15.0
-    contentView.layer.shadowOpacity = 1.0
-    contentView.layer.cornerRadius = 20
+    configureContentView()
+    configureTitleTextAttributes()
     showBackgroundView()
   }
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+  private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
     nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
   }
@@ -41,5 +34,16 @@ class AddExpenseViewController: UIViewController {
     if let controller  = segue.destination as? AddExpenseContentViewController, segue.identifier == "EmbedSegue" {
       controller.managedObjectContext = managedObjectContext
     }
+  }
+  // MARK: - Helper Methods
+  private func configureContentView() {
+    contentView.backgroundColor = UIColor(named: "whiteDarkBackground")
+    contentView.clipsToBounds = false
+    contentView.layer.masksToBounds = false
+    contentView.layer.shadowColor = UIColor.lightGray.cgColor
+    contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
+    contentView.layer.shadowRadius = 15.0
+    contentView.layer.shadowOpacity = 1.0
+    contentView.layer.cornerRadius = 20
   }
 }
