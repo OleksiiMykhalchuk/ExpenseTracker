@@ -26,9 +26,13 @@
             <point key="canvasLocation" x="-25" y="98"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="Green2"/>
     <resources>
         <image name="bar-chart 1" width="34" height="34"/>
         <image name="bar-selected" width="35" height="34"/>
+        <namedColor name="Green2">
+            <color red="0.2627450980392157" green="0.53333333333333333" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

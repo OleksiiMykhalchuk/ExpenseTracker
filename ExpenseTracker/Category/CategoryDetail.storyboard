@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nlI-kd-rio">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Add Catogory-->
+        <scene sceneID="WSK-lg-1lJ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xoY-WU-rE2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tableViewController id="nlI-kd-rio" customClass="CategoryDetailViewController" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8WU-JZ-GCf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="CATEGORY NAME" id="4L2-Sh-TX8">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lop-4x-Mq9">
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lop-4x-Mq9" id="v0I-b5-6mb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Category Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IdW-ej-QKf">
+                                                    <rect key="frame" x="15" y="-6.5" width="345" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="J3n-XD-VpK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="doneButton" destination="nlI-kd-rio" eventType="editingDidEndOnExit" id="OY1-yk-Wiv"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="IdW-ej-QKf" secondAttribute="trailing" constant="15" id="FiN-SS-woG"/>
+                                                <constraint firstAttribute="bottom" secondItem="IdW-ej-QKf" secondAttribute="bottom" id="Kzv-GZ-uQe"/>
+                                                <constraint firstItem="IdW-ej-QKf" firstAttribute="leading" secondItem="v0I-b5-6mb" secondAttribute="leading" constant="15" id="kIP-af-01V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="nlI-kd-rio" id="59V-tp-Wgj"/>
+                            <outlet property="delegate" destination="nlI-kd-rio" id="itw-KL-JfB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Catogory" id="sw6-4j-WOi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ugx-kt-wvK">
+                            <connections>
+                                <action selector="cancelButton" destination="nlI-kd-rio" id="crM-Od-90D"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Cnc-hE-LaZ">
+                            <connections>
+                                <action selector="doneButton" destination="nlI-kd-rio" id="Tke-yF-wzZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButtonItem" destination="Cnc-hE-LaZ" id="X2D-do-XRX"/>
+                        <outlet property="textField" destination="IdW-ej-QKf" id="Ixh-nh-JgU"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="4892" y="96.7016491754123"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

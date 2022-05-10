@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nwe-Q9-iFp">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Category-->
+        <scene sceneID="uh5-vk-fhR">
+            <objects>
+                <viewController title="Category" id="Nwe-Q9-iFp" customClass="CategoryViewController" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i0z-hA-SUU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tcF-8w-dHP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="BDf-HL-QXJ">
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BDf-HL-QXJ" id="cBD-NW-S4B">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Nwe-Q9-iFp" id="oBU-ow-eYg"/>
+                                    <outlet property="delegate" destination="Nwe-Q9-iFp" id="veB-4e-fth"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lq2-q0-fV2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tcF-8w-dHP" firstAttribute="leading" secondItem="Lq2-q0-fV2" secondAttribute="leading" id="1db-3T-fqC"/>
+                            <constraint firstItem="tcF-8w-dHP" firstAttribute="top" secondItem="Lq2-q0-fV2" secondAttribute="top" id="5eM-s9-C1x"/>
+                            <constraint firstItem="Lq2-q0-fV2" firstAttribute="bottom" secondItem="tcF-8w-dHP" secondAttribute="bottom" id="B9L-R9-aRW"/>
+                            <constraint firstItem="Lq2-q0-fV2" firstAttribute="trailing" secondItem="tcF-8w-dHP" secondAttribute="trailing" id="llt-eX-BAo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Category" id="fja-2X-jGu">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="iDt-hb-3R1">
+                            <connections>
+                                <action selector="cancel" destination="Nwe-Q9-iFp" id="VVK-13-JIs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tHp-LU-Cde">
+                            <connections>
+                                <action selector="done" destination="Nwe-Q9-iFp" id="eKX-Ez-nGM"/>
+                                <segue destination="DMz-PL-NXE" kind="show" identifier="AddCategory" id="Vbv-vu-89a"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="iDt-hb-3R1" id="GtM-gA-GmX"/>
+                        <outlet property="tableView" destination="tcF-8w-dHP" id="PMw-lP-jff"/>
+                        <segue destination="DMz-PL-NXE" kind="show" identifier="EditCategory" id="uPq-cA-RLi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sz9-Pn-dPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4164" y="96.7016491754123"/>
+        </scene>
+        <!--CategoryDetail-->
+        <scene sceneID="egl-dL-jjf">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="detail" storyboardName="CategoryDetail" id="DMz-PL-NXE" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Add Category" id="wvf-pS-1BT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXv-SV-FTw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4984.8000000000002" y="45.877061469265371"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="uPq-cA-RLi"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
