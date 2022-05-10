@@ -63,10 +63,9 @@ class CategoryDetailViewController: UITableViewController {
   }
   // MARK: - Helper Methods
   private func textFieldConfiguration() {
-//    textField.text = categoryName
     navigationItem.setRightBarButton(barButton, animated: true)
     textField.layer.borderWidth = 1
-    textField.layer.borderColor = UIColor(named: "Green2")?.cgColor
+      textField.layer.borderColor = R.color.green2()?.cgColor
     textField.layer.cornerRadius = 8
     textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
     textField.leftViewMode = .always
