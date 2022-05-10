@@ -17,7 +17,7 @@ class HomePageViewController: UIViewController {
     let fetchRequest = NSFetchRequest<Expense>()
     let entity = Expense.entity()
     fetchRequest.entity = entity
-    let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
     fetchRequest.sortDescriptors = [sortDescriptor]
     let fetchResultsController = NSFetchedResultsController(
       fetchRequest: fetchRequest,
@@ -34,9 +34,20 @@ class HomePageViewController: UIViewController {
       showBackgroundView()
       configureViewTotals()
       performFetch()
+      configureTitleTextAttributes()
     }
   deinit {
     fetchResultsController.delegate = nil
+  }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    print("viewWillAppear HomePage")
+    performFetch()
+    tableView.reloadData()
+  }
+  private func configureTitleTextAttributes() {
+    let nav = self.navigationController?.navigationBar
+    nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
   }
   private func showBackgroundView() {
     let backgroundView = BackgroundView(frame: CGRect.zero)
@@ -86,7 +97,9 @@ class HomePageViewController: UIViewController {
 }
 // MARK: - TableView Delegate
 extension HomePageViewController: UITableViewDelegate {
-
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
 }
 // MARK: - TableView DataSource
 extension HomePageViewController: UITableViewDataSource {
@@ -97,10 +110,12 @@ extension HomePageViewController: UITableViewDataSource {
     let date = object.date
     cell?.dateLabel.text = configureDate(date, dateFormat: "d MMM, YYYY")
     let number = NSNumber(value: object.amount)
-    cell?.amountLabel.text = configureNumberAsCurrancy(
+    cell?.amountLabel.textColor = .red
+    cell?.amountLabel.text = "- " + configureNumberAsCurrancy(
       number,
       numberStyle: NumberFormatter.Style.currency,
       currencyCode: "USD")
+    cell?.isUserInteractionEnabled = false
     return cell!
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
