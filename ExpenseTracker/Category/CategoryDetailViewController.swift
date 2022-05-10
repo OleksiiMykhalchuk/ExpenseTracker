@@ -11,7 +11,10 @@ import CoreData
 protocol CategoryDetailViewControllerDelegate: AnyObject {
   func categoryDetailViewControllerDidCansel(_ controller: CategoryDetailViewController)
   func categoryDetailViewController(_ controller: CategoryDetailViewController, didFinishAdding category: String)
-  func categoryDetailViewController(_ controller: CategoryDetailViewController, didFinishEditing category: String, for index: Int)
+  func categoryDetailViewController(
+    _ controller: CategoryDetailViewController,
+    didFinishEditing category: Category,
+    for index: IndexPath)
 }
 
 class CategoryDetailViewController: UITableViewController {
@@ -22,19 +25,15 @@ class CategoryDetailViewController: UITableViewController {
   var categoryName: String?
   var barButton = UIBarButtonItem()
   var categoryToEdit: Category? 
-  var indexToEdit: Int?
+  var indexToEdit: IndexPath?
   var managedObjectContext: NSManagedObjectContext!
   weak var delegate: CategoryDetailViewControllerDelegate?
   // MARK: - Actions
   @IBAction func doneButton() {
-    var category: Category
+
     if let temp = categoryToEdit {
-      category = temp
-      do {
-        try managedObjectContext.save()
-      } catch {
-        fatalError("Error \(error)")
-      }
+      temp.name = textField.text!
+      delegate?.categoryDetailViewController(self, didFinishEditing: temp, for: indexToEdit!)
     } else {
       let newCategory = textField.text!
       delegate?.categoryDetailViewController(self, didFinishAdding: newCategory)

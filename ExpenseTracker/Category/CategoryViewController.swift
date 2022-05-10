@@ -70,7 +70,7 @@ extension CategoryViewController: UITableViewDataSource {
             CategoryDetailViewController else { return }
     controller.delegate = self
     controller.categoryToEdit = fetchResultController.object(at: indexPath)
-    controller.indexToEdit = indexPath.row
+    controller.indexToEdit = indexPath
     controller.managedObjectContext = managedObjectContext
     navigationController?.pushViewController(controller, animated: true)
   }
@@ -130,9 +130,15 @@ extension CategoryViewController: CategoryDetailViewControllerDelegate {
     navigationController?.popViewController(animated: true)
   }
   func categoryDetailViewController(_ controller: CategoryDetailViewController,
-                                    didFinishEditing category: String,
-                                    for index: Int) {
-    tableView.reloadData()
+                                    didFinishEditing category: Category,
+                                    for index: IndexPath) {
+    var temp = fetchResultController.object(at: index)
+    temp = category
+    do {
+      try managedObjectContext.save()
+    } catch {
+      fatalError("Error \(error)")
+    }
     navigationController?.popViewController(animated: true)
   }
 }
