@@ -17,9 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window?.tintColor = UIColor(named: "Green2")
     let tabController = window?.rootViewController as? UITabBarController
     if let tabViewControllers = tabController?.viewControllers {
-      let navController = tabViewControllers[3] as? UINavigationController
-      let controller = navController?.viewControllers.first as? AddExpenseViewController
-      controller?.managedObjectContext = managedObjectContext
+      // First Tab
+      var navController = tabViewControllers[0] as? UINavigationController
+      let controller1 = navController?.viewControllers.first as? HomePageViewController
+      controller1?.managedObjectContext = managedObjectContext
+      // Fours Tab
+      navController = tabViewControllers[3] as? UINavigationController
+      let controller4 = navController?.viewControllers.first as? AddExpenseViewController
+      controller4?.managedObjectContext = managedObjectContext
+
     } else {
       fatalError()
     }

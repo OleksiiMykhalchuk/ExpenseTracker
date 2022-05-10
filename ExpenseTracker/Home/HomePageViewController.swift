@@ -6,17 +6,41 @@
 //
 
 import UIKit
+import CoreData
 
 class HomePageViewController: UIViewController {
   @IBOutlet weak var viewTotals: UIView!
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var categoryLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var amountLabel: UILabel!
+  // MARK: - Variables
+  var managedObjectContext: NSManagedObjectContext?
+  lazy var fetchResultsController: NSFetchedResultsController<Expense> = {
+    let fetchRequest = NSFetchRequest<Expense>()
+    let entity = Expense.entity()
+    fetchRequest.entity = entity
+    let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let fetchResultsController = NSFetchedResultsController(
+      fetchRequest: fetchRequest,
+      managedObjectContext: managedObjectContext!,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
+//    fetchResultsController.delegate = self
+    return fetchResultsController
+  }()
     override func viewDidLoad() {
         super.viewDidLoad()
       tableView.delegate = self
       tableView.dataSource = self
       showBackgroundView()
       configureViewTotals()
+      performFetch()
     }
+  deinit {
+    fetchResultsController.delegate = nil
+  }
   private func showBackgroundView() {
     let backgroundView = BackgroundView(frame: CGRect.zero)
     backgroundView.backgroundColor = .clear
@@ -39,6 +63,13 @@ class HomePageViewController: UIViewController {
       }
     }
   }
+  private func performFetch() {
+    do {
+      try fetchResultsController.performFetch()
+    } catch {
+      fatalError("Error \(error)")
+    }
+  }
 }
 // MARK: - TableView Delegate
 extension HomePageViewController: UITableViewDelegate {
@@ -48,6 +79,7 @@ extension HomePageViewController: UITableViewDelegate {
 extension HomePageViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath)
+    categoryLabel.text = "Category"
     return cell
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

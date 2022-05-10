@@ -19,7 +19,7 @@
                         <color key="selectedImageTintColor" name="Green2"/>
                     </tabBar>
                     <connections>
-                        <segue destination="FMV-bF-8p2" kind="relationship" relationship="viewControllers" id="YYz-g9-vS1"/>
+                        <segue destination="qCM-tv-aNc" kind="relationship" relationship="viewControllers" id="YYz-g9-vS1"/>
                         <segue destination="gbc-eo-WBi" kind="relationship" relationship="viewControllers" id="wnY-mu-5uj"/>
                         <segue destination="blb-MP-bRF" kind="relationship" relationship="viewControllers" id="uN4-lG-DTO"/>
                         <segue destination="Ab9-dG-lgd" kind="relationship" relationship="viewControllers" id="U4h-xC-kuH"/>
@@ -33,11 +33,11 @@
         <scene sceneID="gZd-TI-I1Q">
             <objects>
                 <viewControllerPlaceholder storyboardName="Home" id="FMV-bF-8p2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jze-vX-Bw2"/>
+                    <navigationItem key="navigationItem" id="Hrf-2c-67G"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DeX-EU-RyT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-188" y="-59"/>
+            <point key="canvasLocation" x="502" y="-298"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="Mwi-Ph-1Ol">
@@ -87,6 +87,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XYL-f8-meM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="55" y="538"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Wsa-ej-LpB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qCM-tv-aNc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="jze-vX-Bw2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c8G-VP-Gin">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FMV-bF-8p2" kind="relationship" relationship="rootViewController" id="zA7-5O-Kel"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8nl-jR-JW9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-76" y="-515"/>
         </scene>
     </scenes>
     <color key="tintColor" name="Green2"/>
