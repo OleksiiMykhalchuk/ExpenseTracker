@@ -10,7 +10,7 @@
 		5129DDDEE9FE0E980B0E8C91 /* Pods_ExpenseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */; };
 		88356ABB281C28B300C40F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88356ABA281C28B300C40F39 /* AppDelegate.swift */; };
 		88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88356ABC281C28B300C40F39 /* SceneDelegate.swift */; };
-		88356ABF281C28B300C40F39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88356ABE281C28B300C40F39 /* ViewController.swift */; };
+		88356ABF281C28B300C40F39 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88356ABE281C28B300C40F39 /* TabViewController.swift */; };
 		88356AC2281C28B300C40F39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88356AC0281C28B300C40F39 /* Main.storyboard */; };
 		88356AC5281C28B300C40F39 /* ExpenseTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88356AC3281C28B300C40F39 /* ExpenseTracker.xcdatamodeld */; };
 		88356AC7281C28B600C40F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88356AC6281C28B600C40F39 /* Assets.xcassets */; };
@@ -51,7 +51,7 @@
 		88356AB7281C28B300C40F39 /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88356ABA281C28B300C40F39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88356ABC281C28B300C40F39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		88356ABE281C28B300C40F39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		88356ABE281C28B300C40F39 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		88356AC1281C28B300C40F39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88356AC4281C28B300C40F39 /* ExpenseTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpenseTracker.xcdatamodel; sourceTree = "<group>"; };
 		88356AC6281C28B600C40F39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 				883D99922829067E0080DC7B /* AddExpense */,
 				88356ABA281C28B300C40F39 /* AppDelegate.swift */,
 				88356ABC281C28B300C40F39 /* SceneDelegate.swift */,
-				88356ABE281C28B300C40F39 /* ViewController.swift */,
+				88356ABE281C28B300C40F39 /* TabViewController.swift */,
 				88356AC0281C28B300C40F39 /* Main.storyboard */,
 				88356AC6281C28B600C40F39 /* Assets.xcassets */,
 				88356AC8281C28B600C40F39 /* LaunchScreen.storyboard */,
@@ -354,7 +354,7 @@
 				883D9984281D8E690080DC7B /* Expense+CoreDataClass.swift in Sources */,
 				883D998D2823E6800080DC7B /* CategoryViewController.swift in Sources */,
 				883D998F28257E000080DC7B /* HomePageViewController.swift in Sources */,
-				88356ABF281C28B300C40F39 /* ViewController.swift in Sources */,
+				88356ABF281C28B300C40F39 /* TabViewController.swift in Sources */,
 				883D9981281D8E690080DC7B /* Category+CoreDataProperties.swift in Sources */,
 				88356ABB281C28B300C40F39 /* AppDelegate.swift in Sources */,
 				88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */,
