@@ -9,8 +9,11 @@ import UIKit
 
 class HomePageViewController: UIViewController {
   @IBOutlet weak var viewTotals: UIView!
+  @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+      tableView.delegate = self
+      tableView.dataSource = self
       showBackgroundView()
       configureViewTotals()
     }
@@ -35,5 +38,19 @@ class HomePageViewController: UIViewController {
         label.textColor = .white
       }
     }
+  }
+}
+// MARK: - TableView Delegate
+extension HomePageViewController: UITableViewDelegate {
+
+}
+// MARK: - TableView DataSource
+extension HomePageViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath)
+    return cell
+  }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 4
   }
 }
