@@ -58,6 +58,9 @@ class CategoryDetailViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 20
   }
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 50
+  }
   // MARK: - Helper Methods
   private func textFieldConfiguration() {
 //    textField.text = categoryName

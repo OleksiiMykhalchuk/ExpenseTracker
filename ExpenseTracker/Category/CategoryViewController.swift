@@ -143,7 +143,7 @@ extension CategoryViewController: CategoryDetailViewControllerDelegate {
   }
 }
 // MARK: - GetData from Category Table
-extension CategoryViewController  {
+extension CategoryViewController {
   func performFetch() {
     do {
       try fetchResultController.performFetch()
@@ -174,7 +174,7 @@ extension CategoryViewController: NSFetchedResultsControllerDelegate {
       case .update:
           print("NSFetchResultChangeUpdate (object)")
           if let cell = tableView.cellForRow(
-            at: indexPath!) as? UITableViewCell {
+            at: indexPath!) {
             let category = controller.object(at: indexPath!) as? Category
             cell.textLabel!.text = category!.name
           }
