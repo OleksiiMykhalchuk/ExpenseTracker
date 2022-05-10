@@ -42,6 +42,7 @@
 		883D99912827A72D0080DC7B /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883D99902827A72D0080DC7B /* CategoryDetailViewController.swift */; };
 		883D9996282907410080DC7B /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883D9995282907410080DC7B /* Category.storyboard */; };
 		883D9998282907DF0080DC7B /* CategoryDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883D9997282907DF0080DC7B /* CategoryDetail.storyboard */; };
+		8856C8BE282A93CB004A38F9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		883D99902827A72D0080DC7B /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		883D9995282907410080DC7B /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
 		883D9997282907DF0080DC7B /* CategoryDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryDetail.storyboard; sourceTree = "<group>"; };
+		8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 			children = (
 				883D9959281D792E0080DC7B /* Home.storyboard */,
 				883D998E28257E000080DC7B /* HomePageViewController.swift */,
+				8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				88356AC5281C28B300C40F39 /* ExpenseTracker.xcdatamodeld in Sources */,
 				883D998B28217B940080DC7B /* AddExpenseContentViewController.swift in Sources */,
 				883D9982281D8E690080DC7B /* Income+CoreDataClass.swift in Sources */,
+				8856C8BE282A93CB004A38F9 /* HomeTableViewCell.swift in Sources */,
 				883D9987281FD4180080DC7B /* AddExpenseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

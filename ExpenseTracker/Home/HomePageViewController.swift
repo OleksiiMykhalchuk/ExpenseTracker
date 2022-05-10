@@ -11,9 +11,6 @@ import CoreData
 class HomePageViewController: UIViewController {
   @IBOutlet weak var viewTotals: UIView!
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var categoryLabel: UILabel!
-  @IBOutlet weak var dateLabel: UILabel!
-  @IBOutlet weak var amountLabel: UILabel!
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext?
   lazy var fetchResultsController: NSFetchedResultsController<Expense> = {
@@ -70,6 +67,22 @@ class HomePageViewController: UIViewController {
       fatalError("Error \(error)")
     }
   }
+  private func configureDate(_ date: Date, dateFormat: String) -> String{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = dateFormat
+    let dateString = dateFormatter.string(from: date)
+    return dateString
+  }
+  private func configureNumberAsCurrancy(
+    _ number: NSNumber,
+    numberStyle: NumberFormatter.Style,
+    currencyCode: String) -> String {
+      let formatter = NumberFormatter()
+      formatter.numberStyle = numberStyle
+      formatter.currencyCode = currencyCode
+      let numberString = formatter.string(from: number)
+      return numberString!
+  }
 }
 // MARK: - TableView Delegate
 extension HomePageViewController: UITableViewDelegate {
@@ -78,11 +91,19 @@ extension HomePageViewController: UITableViewDelegate {
 // MARK: - TableView DataSource
 extension HomePageViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath)
-    categoryLabel.text = "Category"
-    return cell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as? HomeTableViewCell
+    let object = fetchResultsController.object(at: indexPath)
+    cell?.categoryLabel.text = object.category
+    let date = object.date
+    cell?.dateLabel.text = configureDate(date, dateFormat: "d MMM, YYYY")
+    let number = NSNumber(value: object.amount)
+    cell?.amountLabel.text = configureNumberAsCurrancy(
+      number,
+      numberStyle: NumberFormatter.Style.currency,
+      currencyCode: "USD")
+    return cell!
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 4
+    return 6
   }
 }

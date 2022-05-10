@@ -103,11 +103,11 @@
                                 <rect key="frame" x="28" y="312" width="319" height="296"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeCell" id="YX6-gn-I41">
-                                        <rect key="frame" x="0.0" y="44.5" width="319" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeCell" id="YX6-gn-I41" customClass="HomeTableViewCell" customModule="ExpenseTracker" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="319" height="44.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YX6-gn-I41" id="pN8-zX-8H9">
-                                            <rect key="frame" x="0.0" y="0.0" width="319" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uV8-aE-0rK">
@@ -117,13 +117,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nY-4E-OQB">
-                                                    <rect key="frame" x="0.0" y="25" width="33" height="16"/>
+                                                    <rect key="frame" x="0.0" y="25.5" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot1-P3-GwV">
-                                                    <rect key="frame" x="257" y="11" width="46" height="22"/>
+                                                    <rect key="frame" x="257" y="11" width="46" height="22.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -139,6 +139,11 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="ot1-P3-GwV" secondAttribute="bottom" id="zg3-ih-bCf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="ot1-P3-GwV" id="j3q-OF-Jqk"/>
+                                            <outlet property="categoryLabel" destination="uV8-aE-0rK" id="uN4-6w-zsC"/>
+                                            <outlet property="dateLabel" destination="2nY-4E-OQB" id="Y0u-7Y-jgl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -165,9 +170,6 @@
                     <navigationItem key="navigationItem" title="Home" id="Cor-4F-5CH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="amountLabel" destination="ot1-P3-GwV" id="jHk-1y-Cvr"/>
-                        <outlet property="categoryLabel" destination="uV8-aE-0rK" id="5re-Sa-lAr"/>
-                        <outlet property="dateLabel" destination="2nY-4E-OQB" id="vH0-MR-OBo"/>
                         <outlet property="tableView" destination="nXR-bA-XJi" id="Gdy-S1-Zoq"/>
                         <outlet property="viewTotals" destination="xO8-QF-r95" id="mLT-dZ-aW7"/>
                     </connections>
