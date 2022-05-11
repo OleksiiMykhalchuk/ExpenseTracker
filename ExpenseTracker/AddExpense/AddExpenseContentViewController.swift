@@ -53,7 +53,7 @@ class AddExpenseContentViewController: UITableViewController {
   // MARK: - Table View Delegates
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     guard let header = view as? UITableViewHeaderFooterView else { return }
-    header.textLabel?.font = UIFont(name: "Inter", size: 12)
+      header.textLabel?.font = R.font.interRegular(size: 12)
   }
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 20

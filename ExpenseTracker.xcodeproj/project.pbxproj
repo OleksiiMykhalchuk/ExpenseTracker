@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08DA5E0E282AE53C00C93A5F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DA5E0D282AE53C00C93A5F /* R.generated.swift */; };
 		5129DDDEE9FE0E980B0E8C91 /* Pods_ExpenseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */; };
 		88356ABB281C28B300C40F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88356ABA281C28B300C40F39 /* AppDelegate.swift */; };
 		88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88356ABC281C28B300C40F39 /* SceneDelegate.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08DA5E0D282AE53C00C93A5F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		778D8A98CA6985A85E9997CA /* Pods-ExpenseTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseTracker.release.xcconfig"; path = "Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker.release.xcconfig"; sourceTree = "<group>"; };
 		7A7B5B7B2B18727A078C87F9 /* Pods-ExpenseTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseTracker.debug.xcconfig"; path = "Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		88356AB7281C28B300C40F39 /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 		88356AAE281C28B300C40F39 = {
 			isa = PBXGroup;
 			children = (
+				08DA5E0D282AE53C00C93A5F /* R.generated.swift */,
 				883D9961281D8D9E0080DC7B /* CoreData */,
 				883D9944281D67280080DC7B /* Font */,
 				88356AB9281C28B300C40F39 /* ExpenseTracker */,
@@ -237,10 +240,12 @@
 			buildConfigurationList = 88356ACE281C28B600C40F39 /* Build configuration list for PBXNativeTarget "ExpenseTracker" */;
 			buildPhases = (
 				4C320C8310BA751D6A470E3B /* [CP] Check Pods Manifest.lock */,
+				08DA5E07282ADFA200C93A5F /* Rswift */,
+				883D9943281D53D30080DC7B /* Swift lint */,
 				88356AB3281C28B300C40F39 /* Sources */,
 				88356AB4281C28B300C40F39 /* Frameworks */,
 				88356AB5281C28B300C40F39 /* Resources */,
-				883D9943281D53D30080DC7B /* ShellScript */,
+				254F0153F07367C6C90CE59B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,6 +318,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		08DA5E07282ADFA200C93A5F /* Rswift */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Rswift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		254F0153F07367C6C90CE59B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4C320C8310BA751D6A470E3B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -335,7 +376,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		883D9943281D53D30080DC7B /* ShellScript */ = {
+		883D9943281D53D30080DC7B /* Swift lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -345,9 +386,11 @@
 			);
 			inputPaths = (
 			);
+			name = "Swift lint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -372,6 +415,7 @@
 				88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */,
 				883D99892821308B0080DC7B /* BackgroundView.swift in Sources */,
 				883D9985281D8E690080DC7B /* Expense+CoreDataProperties.swift in Sources */,
+				08DA5E0E282AE53C00C93A5F /* R.generated.swift in Sources */,
 				883D9980281D8E690080DC7B /* Category+CoreDataClass.swift in Sources */,
 				88356AC5281C28B300C40F39 /* ExpenseTracker.xcdatamodeld in Sources */,
 				883D998B28217B940080DC7B /* AddExpenseContentViewController.swift in Sources */,
