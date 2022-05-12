@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene,
              willConnectTo session: UISceneSession,
              options connectionOptions: UIScene.ConnectionOptions) {
-    window?.tintColor = UIColor(named: "Green2")
+    window?.tintColor = R.color.green2()
     let tabController = window?.rootViewController as? UITabBarController
     if let tabViewControllers = tabController?.viewControllers {
       // First Tab

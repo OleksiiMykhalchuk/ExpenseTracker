@@ -24,7 +24,7 @@ class HomePageViewController: UIViewController {
       managedObjectContext: managedObjectContext!,
       sectionNameKeyPath: nil,
       cacheName: nil)
-//    fetchResultsController.delegate = self
+    fetchResultsController.delegate = self
     return fetchResultsController
   }()
     override func viewDidLoad() {
@@ -78,7 +78,7 @@ class HomePageViewController: UIViewController {
       fatalError("Error \(error)")
     }
   }
-  private func configureDate(_ date: Date, dateFormat: String) -> String{
+  private func configureDate(_ date: Date, dateFormat: String) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = dateFormat
     let dateString = dateFormatter.string(from: date)
@@ -104,21 +104,47 @@ extension HomePageViewController: UITableViewDelegate {
 // MARK: - TableView DataSource
 extension HomePageViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as? HomeTableViewCell
-    let object = fetchResultsController.object(at: indexPath)
-    cell?.categoryLabel.text = object.category
-    let date = object.date
-    cell?.dateLabel.text = configureDate(date, dateFormat: "d MMM, YYYY")
-    let number = NSNumber(value: object.amount)
-    cell?.amountLabel.textColor = .red
-    cell?.amountLabel.text = "- " + configureNumberAsCurrancy(
-      number,
-      numberStyle: NumberFormatter.Style.currency,
-      currencyCode: "USD")
-    cell?.isUserInteractionEnabled = false
-    return cell!
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as? HomeTableViewCell else {
+      return UITableViewCell()
+    }
+    if fetchedResultsControllerIsEmpty(fetchResultsController) {
+      cell.categoryLabel.text = "No Records"
+      cell.categoryLabel.textColor = .red
+      cell.amountLabel.text = ""
+      cell.dateLabel.text = ""
+      cell.isUserInteractionEnabled = false
+      return cell
+    } else {
+      let object = fetchResultsController.object(at: indexPath)
+        cell.categoryLabel.text = object.category
+        let date = object.date
+        cell.dateLabel.text = configureDate(date, dateFormat: "d MMM, YYYY")
+        let number = NSNumber(value: object.amount)
+        cell.amountLabel.textColor = .red
+        cell.amountLabel.text = "- " + configureNumberAsCurrancy(
+          number,
+          numberStyle: NumberFormatter.Style.currency,
+          currencyCode: "USD")
+      cell.isUserInteractionEnabled = false
+      return cell
+    }
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 6
+    if fetchedResultsControllerIsEmpty(fetchResultsController) {
+      return 1
+    } else {
+      return 6
+    }
+  }
+}
+extension HomePageViewController: NSFetchedResultsControllerDelegate {
+  func fetchedResultsControllerIsEmpty(_ controller: NSFetchedResultsController<Expense>) -> Bool {
+    if controller.sections?[0].numberOfObjects == 0 {
+      return true
+    } else {
+      return false
+    }
+  }
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
   }
 }
