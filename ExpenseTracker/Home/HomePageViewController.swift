@@ -132,10 +132,11 @@ extension HomePageViewController: UITableViewDataSource {
     }
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    let count = fetchResultsController.sections![0].numberOfObjects
     if fetchedResultsControllerIsEmpty(fetchResultsController) {
       return 1
     } else {
-      return 6
+      return count
     }
   }
 }

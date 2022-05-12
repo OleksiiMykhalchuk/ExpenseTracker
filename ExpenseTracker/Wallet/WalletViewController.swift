@@ -40,7 +40,9 @@ class WalletViewController: UIViewController {
 }
 // MARK: - UITableViewDelegates
 extension WalletViewController: UITableViewDelegate {
-
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 60
+  }
 }
 // MARK: - UITableViewDataSource
 extension WalletViewController: UITableViewDataSource {
