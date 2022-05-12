@@ -47,6 +47,8 @@
 		8856C8C1282ABCA6004A38F9 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */; };
 		8856C8C5282D1A6A004A38F9 /* WalletCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8856C8C4282D1A6A004A38F9 /* WalletCell.xib */; };
 		8856C8C7282D1CCE004A38F9 /* WalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8C6282D1CCE004A38F9 /* WalletCell.swift */; };
+		8856C8C9282D2190004A38F9 /* AddIncome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856C8C8282D2190004A38F9 /* AddIncome.storyboard */; };
+		8856C8CB282D21E5004A38F9 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8CA282D21E5004A38F9 /* AddIncomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,8 @@
 		8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		8856C8C4282D1A6A004A38F9 /* WalletCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCell.xib; sourceTree = "<group>"; };
 		8856C8C6282D1CCE004A38F9 /* WalletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCell.swift; sourceTree = "<group>"; };
+		8856C8C8282D2190004A38F9 /* AddIncome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddIncome.storyboard; sourceTree = "<group>"; };
+		8856C8CA282D21E5004A38F9 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
 		A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -225,6 +229,8 @@
 				8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */,
 				8856C8C4282D1A6A004A38F9 /* WalletCell.xib */,
 				8856C8C6282D1CCE004A38F9 /* WalletCell.swift */,
+				8856C8C8282D2190004A38F9 /* AddIncome.storyboard */,
+				8856C8CA282D21E5004A38F9 /* AddIncomeViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				88356AC7281C28B600C40F39 /* Assets.xcassets in Resources */,
 				883D9950281D67670080DC7B /* Inter-Medium.ttf in Resources */,
 				883D995C281D79570080DC7B /* Statistics.storyboard in Resources */,
+				8856C8C9282D2190004A38F9 /* AddIncome.storyboard in Resources */,
 				883D9953281D67670080DC7B /* Inter-SemiBold.ttf in Resources */,
 				883D9951281D67670080DC7B /* Inter-Bold.ttf in Resources */,
 				883D9956281D67670080DC7B /* Inter-Black.ttf in Resources */,
@@ -422,6 +429,7 @@
 				88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */,
 				883D99892821308B0080DC7B /* BackgroundView.swift in Sources */,
 				883D9985281D8E690080DC7B /* Expense+CoreDataProperties.swift in Sources */,
+				8856C8CB282D21E5004A38F9 /* AddIncomeViewController.swift in Sources */,
 				8856C8C7282D1CCE004A38F9 /* WalletCell.swift in Sources */,
 				08DA5E0E282AE53C00C93A5F /* R.generated.swift in Sources */,
 				883D9980281D8E690080DC7B /* Category+CoreDataClass.swift in Sources */,
