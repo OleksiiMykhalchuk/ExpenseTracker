@@ -11,6 +11,7 @@ class AddIncomeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      tableView.backgroundColor = R.color.whiteDarkBackground()
     }
   // MARK: - Table View Delegates
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
