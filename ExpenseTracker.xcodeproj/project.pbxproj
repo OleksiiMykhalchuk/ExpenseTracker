@@ -50,6 +50,10 @@
 		8856C8C9282D2190004A38F9 /* AddIncome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856C8C8282D2190004A38F9 /* AddIncome.storyboard */; };
 		8856C8CB282D21E5004A38F9 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8CA282D21E5004A38F9 /* AddIncomeViewController.swift */; };
 		8856C8CD282D5EB6004A38F9 /* AddIncomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8CC282D5EB6004A38F9 /* AddIncomeTableViewController.swift */; };
+		88FB16B5282D6CF400A2A528 /* IncomeExpense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB16B1282D6CF400A2A528 /* IncomeExpense+CoreDataClass.swift */; };
+		88FB16B6282D6CF400A2A528 /* IncomeExpense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB16B2282D6CF400A2A528 /* IncomeExpense+CoreDataProperties.swift */; };
+		88FB16B7282D6CF400A2A528 /* IncomeCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB16B3282D6CF400A2A528 /* IncomeCategory+CoreDataClass.swift */; };
+		88FB16B8282D6CF400A2A528 /* IncomeCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB16B4282D6CF400A2A528 /* IncomeCategory+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +103,10 @@
 		8856C8C8282D2190004A38F9 /* AddIncome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddIncome.storyboard; sourceTree = "<group>"; };
 		8856C8CA282D21E5004A38F9 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
 		8856C8CC282D5EB6004A38F9 /* AddIncomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeTableViewController.swift; sourceTree = "<group>"; };
+		88FB16B1282D6CF400A2A528 /* IncomeExpense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IncomeExpense+CoreDataClass.swift"; sourceTree = "<group>"; };
+		88FB16B2282D6CF400A2A528 /* IncomeExpense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IncomeExpense+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88FB16B3282D6CF400A2A528 /* IncomeCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IncomeCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		88FB16B4282D6CF400A2A528 /* IncomeCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IncomeCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -183,6 +191,10 @@
 		883D9961281D8D9E0080DC7B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				88FB16B1282D6CF400A2A528 /* IncomeExpense+CoreDataClass.swift */,
+				88FB16B2282D6CF400A2A528 /* IncomeExpense+CoreDataProperties.swift */,
+				88FB16B3282D6CF400A2A528 /* IncomeCategory+CoreDataClass.swift */,
+				88FB16B4282D6CF400A2A528 /* IncomeCategory+CoreDataProperties.swift */,
 				883D997A281D8E690080DC7B /* Category+CoreDataClass.swift */,
 				883D997B281D8E690080DC7B /* Category+CoreDataProperties.swift */,
 				883D997C281D8E690080DC7B /* Income+CoreDataClass.swift */,
@@ -422,19 +434,23 @@
 			files = (
 				883D9983281D8E690080DC7B /* Income+CoreDataProperties.swift in Sources */,
 				883D99912827A72D0080DC7B /* CategoryDetailViewController.swift in Sources */,
+				88FB16B7282D6CF400A2A528 /* IncomeCategory+CoreDataClass.swift in Sources */,
 				883D9984281D8E690080DC7B /* Expense+CoreDataClass.swift in Sources */,
 				883D998D2823E6800080DC7B /* CategoryViewController.swift in Sources */,
 				8856C8CD282D5EB6004A38F9 /* AddIncomeTableViewController.swift in Sources */,
 				883D998F28257E000080DC7B /* HomePageViewController.swift in Sources */,
 				8856C8C1282ABCA6004A38F9 /* WalletViewController.swift in Sources */,
+				88FB16B6282D6CF400A2A528 /* IncomeExpense+CoreDataProperties.swift in Sources */,
 				88356ABF281C28B300C40F39 /* TabViewController.swift in Sources */,
 				883D9981281D8E690080DC7B /* Category+CoreDataProperties.swift in Sources */,
 				88356ABB281C28B300C40F39 /* AppDelegate.swift in Sources */,
 				88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */,
+				88FB16B5282D6CF400A2A528 /* IncomeExpense+CoreDataClass.swift in Sources */,
 				883D99892821308B0080DC7B /* BackgroundView.swift in Sources */,
 				883D9985281D8E690080DC7B /* Expense+CoreDataProperties.swift in Sources */,
 				8856C8CB282D21E5004A38F9 /* AddIncomeViewController.swift in Sources */,
 				8856C8C7282D1CCE004A38F9 /* WalletCell.swift in Sources */,
+				88FB16B8282D6CF400A2A528 /* IncomeCategory+CoreDataProperties.swift in Sources */,
 				08DA5E0E282AE53C00C93A5F /* R.generated.swift in Sources */,
 				883D9980281D8E690080DC7B /* Category+CoreDataClass.swift in Sources */,
 				88356AC5281C28B300C40F39 /* ExpenseTracker.xcdatamodeld in Sources */,
