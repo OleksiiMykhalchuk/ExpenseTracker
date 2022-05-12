@@ -45,6 +45,8 @@
 		883D9998282907DF0080DC7B /* CategoryDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883D9997282907DF0080DC7B /* CategoryDetail.storyboard */; };
 		8856C8BE282A93CB004A38F9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */; };
 		8856C8C1282ABCA6004A38F9 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */; };
+		8856C8C5282D1A6A004A38F9 /* WalletCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8856C8C4282D1A6A004A38F9 /* WalletCell.xib */; };
+		8856C8C7282D1CCE004A38F9 /* WalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8C6282D1CCE004A38F9 /* WalletCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +91,8 @@
 		883D9997282907DF0080DC7B /* CategoryDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryDetail.storyboard; sourceTree = "<group>"; };
 		8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		8856C8C4282D1A6A004A38F9 /* WalletCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCell.xib; sourceTree = "<group>"; };
+		8856C8C6282D1CCE004A38F9 /* WalletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCell.swift; sourceTree = "<group>"; };
 		A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -219,6 +223,8 @@
 			children = (
 				883D995F281D79A80080DC7B /* Wallet.storyboard */,
 				8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */,
+				8856C8C4282D1A6A004A38F9 /* WalletCell.xib */,
+				8856C8C6282D1CCE004A38F9 /* WalletCell.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8856C8C5282D1A6A004A38F9 /* WalletCell.xib in Resources */,
 				883D995E281D79880080DC7B /* AddExpense.storyboard in Resources */,
 				883D9960281D79A80080DC7B /* Wallet.storyboard in Resources */,
 				883D9996282907410080DC7B /* Category.storyboard in Resources */,
@@ -415,6 +422,7 @@
 				88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */,
 				883D99892821308B0080DC7B /* BackgroundView.swift in Sources */,
 				883D9985281D8E690080DC7B /* Expense+CoreDataProperties.swift in Sources */,
+				8856C8C7282D1CCE004A38F9 /* WalletCell.swift in Sources */,
 				08DA5E0E282AE53C00C93A5F /* R.generated.swift in Sources */,
 				883D9980281D8E690080DC7B /* Category+CoreDataClass.swift in Sources */,
 				88356AC5281C28B300C40F39 /* ExpenseTracker.xcdatamodeld in Sources */,

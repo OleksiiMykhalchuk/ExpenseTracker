@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WalletCell" rowHeight="60" id="Mep-Zy-67f" customClass="WalletCell" customModule="ExpenseTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mep-Zy-67f" id="vKc-Ap-krG">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfY-wa-laJ">
+                        <rect key="frame" x="8" y="8" width="71.5" height="20"/>
+                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyC-Nu-Gl3">
+                        <rect key="frame" x="8" y="36" width="29" height="16"/>
+                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 99,999.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yP0-vF-bxc">
+                        <rect key="frame" x="297" y="19" width="108" height="22"/>
+                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="OfY-wa-laJ" firstAttribute="leading" secondItem="vKc-Ap-krG" secondAttribute="leading" constant="8" id="3fk-N7-GvF"/>
+                    <constraint firstAttribute="trailing" secondItem="yP0-vF-bxc" secondAttribute="trailing" constant="9" id="FDO-Xs-ff8"/>
+                    <constraint firstAttribute="bottom" secondItem="AyC-Nu-Gl3" secondAttribute="bottom" constant="8" id="GM0-Lo-Krm"/>
+                    <constraint firstItem="AyC-Nu-Gl3" firstAttribute="leading" secondItem="vKc-Ap-krG" secondAttribute="leading" constant="8" id="Lqi-HT-SBj"/>
+                    <constraint firstItem="OfY-wa-laJ" firstAttribute="top" secondItem="vKc-Ap-krG" secondAttribute="top" constant="8" id="VBA-aF-DZb"/>
+                    <constraint firstItem="yP0-vF-bxc" firstAttribute="centerY" secondItem="vKc-Ap-krG" secondAttribute="centerY" id="eY1-Nu-w45"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="195.6521739130435" y="98.4375"/>
+        </tableViewCell>
+    </objects>
+</document>

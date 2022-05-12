@@ -9,12 +9,19 @@ import UIKit
 
 class WalletViewController: UIViewController {
   @IBOutlet weak var viewContent: UIView!
+  @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Wallet"
       showBackgroundView()
       configureTitleTextAttributes()
       configureViewContent()
+      let cellNib = UINib(
+        nibName: "WalletCell",
+        bundle: nil)
+      tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
+      tableView.delegate = self
+      tableView.dataSource = self
     }
   private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
@@ -29,5 +36,22 @@ class WalletViewController: UIViewController {
   }
   private func configureViewContent() {
     viewContent.layer.cornerRadius = 30
+  }
+}
+// MARK: - UITableViewDelegates
+extension WalletViewController: UITableViewDelegate {
+
+}
+// MARK: - UITableViewDataSource
+extension WalletViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: "WalletCell",
+      for: indexPath)
+    cell.isUserInteractionEnabled = false
+    return cell
+  }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 10
   }
 }
