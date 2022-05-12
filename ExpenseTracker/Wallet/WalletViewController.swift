@@ -23,6 +23,7 @@ class WalletViewController: UIViewController {
       tableView.delegate = self
       tableView.dataSource = self
     }
+  // MARK: - Private Methods
   private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
     nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -36,6 +37,12 @@ class WalletViewController: UIViewController {
   }
   private func configureViewContent() {
     viewContent.layer.cornerRadius = 30
+  }
+  // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "AddIncome" {
+      guard let controller = segue.destination as? AddIncomeViewController else { return }
+    }
   }
 }
 // MARK: - UITableViewDelegates

@@ -37,7 +37,7 @@ class AddExpenseViewController: UIViewController {
   }
   // MARK: - Helper Methods
   private func configureContentView() {
-    contentView.backgroundColor = UIColor(named: "whiteDarkBackground")
+    contentView.backgroundColor = R.color.whiteDarkBackground()
     contentView.clipsToBounds = false
     contentView.layer.masksToBounds = false
     contentView.layer.shadowColor = UIColor.lightGray.cgColor

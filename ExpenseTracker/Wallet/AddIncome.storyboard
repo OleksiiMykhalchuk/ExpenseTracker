@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -15,9 +15,63 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyT-1E-uZB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Add Income" id="0KN-um-JZt">
+                                        <barButtonItem key="rightBarButtonItem" image="xmark.circle.fill" catalog="system" id="pG2-kq-nKD">
+                                            <connections>
+                                                <action selector="close" destination="Y6W-OH-hqX" id="ufh-1q-jcE"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dKf-7n-hG8">
+                                <rect key="frame" x="28" y="119" width="319" height="473"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mwu-Tr-fbw">
+                                        <rect key="frame" x="20" y="20" width="279" height="433"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddIncomeCell" id="8Dv-sl-vW3">
+                                                <rect key="frame" x="0.0" y="44.5" width="279" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Dv-sl-vW3" id="0w0-Bo-cpz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="279" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="mwu-Tr-fbw" secondAttribute="bottom" constant="20" id="ULZ-5M-Y31"/>
+                                    <constraint firstItem="mwu-Tr-fbw" firstAttribute="top" secondItem="dKf-7n-hG8" secondAttribute="top" constant="20" id="s6z-lt-vet"/>
+                                    <constraint firstAttribute="trailing" secondItem="mwu-Tr-fbw" secondAttribute="trailing" constant="20" id="yWI-08-Dvg"/>
+                                    <constraint firstItem="mwu-Tr-fbw" firstAttribute="leading" secondItem="dKf-7n-hG8" secondAttribute="leading" constant="20" id="z1O-NL-Aew"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VyT-1E-uZB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="2fW-t1-61v"/>
+                            <constraint firstItem="dKf-7n-hG8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="28" id="8aJ-Pc-1Ha"/>
+                            <constraint firstItem="dKf-7n-hG8" firstAttribute="top" secondItem="VyT-1E-uZB" secondAttribute="bottom" constant="75" id="LOg-YK-hhg"/>
+                            <constraint firstItem="VyT-1E-uZB" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="LYS-Co-JCl"/>
+                            <constraint firstItem="VyT-1E-uZB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ND0-YM-buM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dKf-7n-hG8" secondAttribute="trailing" constant="28" id="XcD-fb-upK"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dKf-7n-hG8" secondAttribute="bottom" constant="75" id="oem-Vb-0lV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentView" destination="dKf-7n-hG8" id="pWy-LK-1yJ"/>
+                        <outlet property="tableView" destination="mwu-Tr-fbw" id="0gU-9G-8de"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -25,6 +79,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

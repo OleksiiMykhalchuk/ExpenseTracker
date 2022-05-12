@@ -54,6 +54,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button" image="addIncome"/>
+                                        <connections>
+                                            <segue destination="wRZ-eb-k7D" kind="presentation" identifier="AddIncome" id="wIY-w3-2Eg"/>
+                                        </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4OU-6m-k2N">
                                         <rect key="frame" x="10" y="234" width="355" height="353"/>
@@ -98,6 +101,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-25" y="98"/>
+        </scene>
+        <!--AddIncome-->
+        <scene sceneID="SqP-yY-ZRF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddIncome" id="wRZ-eb-k7D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZB5-Ei-lGj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="683" y="114"/>
         </scene>
     </scenes>
     <color key="tintColor" name="Green2"/>
