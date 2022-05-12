@@ -16,8 +16,6 @@ class AddIncomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       configureContentView()
-      tableView.delegate = self
-      tableView.dataSource = self
     }
   // MARK: - Helper Methods
   private func configureContentView() {
@@ -29,35 +27,5 @@ class AddIncomeViewController: UIViewController {
     contentView.layer.shadowRadius = 15.0
     contentView.layer.shadowOpacity = 1.0
     contentView.layer.cornerRadius = 20
-  }
-}
-// MARK: - UITableViewDelegate
-extension AddIncomeViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    switch section {
-    case 0:
-        return "Section \(section)"
-    case 1:
-        return "Section \(section)"
-    case 2:
-        return "Section \(section)"
-    case 3:
-        return "Section \(section)"
-    default:
-        return ""
-    }
-  }
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 4
-  }
-}
-// MARK: - UITableVieDataSource
-extension AddIncomeViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddIncomeCell") else { return UITableViewCell() }
-    return cell
-  }
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
   }
 }
