@@ -104,7 +104,9 @@ extension HomePageViewController: UITableViewDelegate {
 // MARK: - TableView DataSource
 extension HomePageViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as? HomeTableViewCell else {
+    guard let cell = tableView.dequeueReusableCell(
+      withIdentifier: "HomeCell",
+      for: indexPath) as? HomeTableViewCell else {
       return UITableViewCell()
     }
     if fetchedResultsControllerIsEmpty(fetchResultsController) {
