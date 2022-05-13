@@ -54,6 +54,11 @@
                     <constraint firstItem="yP0-vF-bxc" firstAttribute="centerY" secondItem="vKc-Ap-krG" secondAttribute="centerY" id="eY1-Nu-w45"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="amountLabel" destination="yP0-vF-bxc" id="yEE-M3-zJc"/>
+                <outlet property="categoryLabel" destination="OfY-wa-laJ" id="5Da-Mp-E1B"/>
+                <outlet property="dateLabel" destination="AyC-Nu-Gl3" id="aBl-2M-ys9"/>
+            </connections>
             <point key="canvasLocation" x="195.6521739130435" y="98.4375"/>
         </tableViewCell>
     </objects>

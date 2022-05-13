@@ -34,7 +34,11 @@
                                                                     <action selector="cancel" destination="Szl-7H-ARq" id="2ky-Ji-MtF"/>
                                                                 </connections>
                                                             </barButtonItem>
-                                                            <barButtonItem key="rightBarButtonItem" systemItem="done" id="veS-Or-aul"/>
+                                                            <barButtonItem key="rightBarButtonItem" systemItem="done" id="veS-Or-aul">
+                                                                <connections>
+                                                                    <action selector="done" destination="Szl-7H-ARq" id="33h-9A-mCj"/>
+                                                                </connections>
+                                                            </barButtonItem>
                                                         </navigationItem>
                                                     </items>
                                                 </navigationBar>
@@ -54,13 +58,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0bs-uT-iXT">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0bs-uT-iXT">
                                                     <rect key="frame" x="10" y="0.0" width="355" height="50.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="47e-7w-Upr"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="done" destination="Szl-7H-ARq" eventType="editingDidEndOnExit" id="QU8-3X-s9a"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -79,6 +86,10 @@
                             <outlet property="delegate" destination="Szl-7H-ARq" id="pa8-98-ysJ"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="navigationBar" destination="9eQ-gW-0lz" id="dbO-GN-lbr"/>
+                        <outlet property="textField" destination="0bs-uT-iXT" id="Hij-Ti-S7G"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTE-N7-uXM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

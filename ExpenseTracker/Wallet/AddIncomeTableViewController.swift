@@ -77,7 +77,20 @@ class AddIncomeTableViewController: UITableViewController {
         return "DATE"
     default:
         return ""
-
     }
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "CategoryIncome" {
+      let controller = segue.destination as? CategoryIncomeViewController
+      controller?.managedObjectContext = managedObjectContext
+      controller?.delegate = self
+    }
+  }
+}
+extension AddIncomeTableViewController: CategoryIncomePickerDelegate {
+  func categoryIncome(_ controller: CategoryIncomeViewController, didPick category: String) {
+    categoryName = category
+    categoryLabel.text = categoryName
+    dismiss(animated: true)
   }
 }

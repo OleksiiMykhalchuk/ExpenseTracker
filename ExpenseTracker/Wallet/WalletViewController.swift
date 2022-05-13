@@ -13,6 +13,20 @@ class WalletViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext!
+  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
+    let fetchRequest = NSFetchRequest<IncomeExpense>()
+    let entity = IncomeExpense.entity()
+    fetchRequest.entity = entity
+    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    fetchRequest.fetchBatchSize = 20
+    let fetchResultsController = NSFetchedResultsController(
+      fetchRequest: fetchRequest,
+      managedObjectContext: managedObjectContext,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
+    return fetchResultsController
+  }()
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Wallet"
@@ -25,6 +39,7 @@ class WalletViewController: UIViewController {
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
       tableView.delegate = self
       tableView.dataSource = self
+      performFetch()
     }
   // MARK: - Private Methods
   private func configureTitleTextAttributes() {
@@ -48,6 +63,14 @@ class WalletViewController: UIViewController {
       controller.managedObjectContext = managedObjectContext
     }
   }
+  // MARK: - performFetch
+  func performFetch() {
+    do {
+      try fetchResultsController.performFetch()
+    } catch {
+      fatalError("Error \(error)")
+    }
+  }
 }
 // MARK: - UITableViewDelegates
 extension WalletViewController: UITableViewDelegate {
@@ -58,13 +81,49 @@ extension WalletViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension WalletViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(
+    guard let cell = tableView.dequeueReusableCell(
       withIdentifier: "WalletCell",
-      for: indexPath)
+      for: indexPath) as? WalletCell else { return UITableViewCell() }
+    if fetchedResultsControllerIsEmpty(fetchResultsController) {
+      cell.amountLabel.text = ""
+      cell.categoryLabel.text = "No Records"
+      cell.categoryLabel.textColor = .red
+      cell.dateLabel.text = ""
+      cell.isUserInteractionEnabled = false
+    } else {
+      if fetchResultsController.object(at: indexPath).isIncome {
+        let object = fetchResultsController.object(at: indexPath)
+        let date = object.date
+        let amount = NSNumber(value: object.amount)
+        let category = object.category
+        cell.dateLabel.text = ConfigureManager.configureDate(date, dateFormat: "d MMM, YYYY")
+        cell.categoryLabel.text = category
+        cell.amountLabel.text = ConfigureManager.configureNumberAsCurrancy(
+          amount,
+          numberStyle: .currency,
+          currencyCode: "USD")
+      }
+    }
     cell.isUserInteractionEnabled = false
     return cell
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    if fetchedResultsControllerIsEmpty(fetchResultsController) {
+      return 1
+    } else {
+      
+    }
+  }
+}
+// MARK: - NSFetchedResultsControllerDelegate
+extension WalletViewController: NSFetchedResultsControllerDelegate {
+  func fetchedResultsControllerIsEmpty(_ controller: NSFetchedResultsController<IncomeExpense>) -> Bool {
+    if controller.sections?[0].numberOfObjects == 0 {
+      return true
+    } else {
+      return false
+    }
+  }
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
   }
 }
