@@ -118,12 +118,18 @@ extension HomePageViewController: UITableViewDataSource {
       return cell
     } else {
       let object = fetchResultsController.object(at: indexPath)
+      var prefix = "- "
         cell.categoryLabel.text = object.category
         let date = object.date
         cell.dateLabel.text = configureDate(date, dateFormat: "d MMM, YYYY")
         let number = NSNumber(value: object.amount)
+      if object.isIncome {
+        prefix = "+ "
+        cell.amountLabel.textColor = R.color.green1()
+      } else {
         cell.amountLabel.textColor = .red
-        cell.amountLabel.text = "- " + configureNumberAsCurrancy(
+      }
+        cell.amountLabel.text = prefix + configureNumberAsCurrancy(
           number,
           numberStyle: NumberFormatter.Style.currency,
           currencyCode: "USD")
