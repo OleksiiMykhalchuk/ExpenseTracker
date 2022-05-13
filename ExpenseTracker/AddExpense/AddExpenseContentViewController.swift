@@ -16,11 +16,17 @@ class AddExpenseContentViewController: UITableViewController {
   @IBOutlet weak var addButton: UIButton!
   // MARK: - Actions
   @IBAction func buttonPressed() {
-    guard manageAlerts() else { return }
-    let expense = Expense(context: managedObjectContext)
+    let alertManager = AlertManager(
+      textField: textField,
+      datePicker: datePicker,
+      categoryName: categoryName,
+      tableViewController: self)
+    guard alertManager.manageAlerts() else { return }
+    let expense = IncomeExpense(context: managedObjectContext)
     expense.amount = Double(textField.text ?? "0.00") ?? 0.00
     expense.date = datePicker.date
     expense.category = categoryName
+    expense.isIncome = false
     do {
       try managedObjectContext.save()
       print("*** Saved!!!")
@@ -80,56 +86,6 @@ class AddExpenseContentViewController: UITableViewController {
       guard let controller = segue.destination as? CategoryViewController else { return }
       controller.delegate = self
       controller.managedObjectContext = managedObjectContext
-    }
-  }
-  // MARK: - Helper Methods
-  private func showAlert(
-    controllerTitle: String,
-    message: String,
-    preferredStyle: UIAlertController.Style,
-    actionStyle: UIAlertAction.Style,
-    handler: ((UIAlertAction) -> Void)? = nil) {
-    let alert = UIAlertController(
-      title: controllerTitle,
-      message: message,
-      preferredStyle: preferredStyle)
-    let action = UIAlertAction(
-      title: "OK",
-      style: actionStyle,
-      handler: handler)
-    alert.addAction(action)
-    present(alert, animated: true, completion: nil)
-  }
-  private func manageAlerts() -> Bool {
-    let amount = textField.text ?? "Nothing"
-    let formatter = DateFormatter()
-    formatter.calendar = datePicker.calendar
-    formatter.dateStyle = .medium
-    let dateString = formatter.string(from: datePicker.date)
-    if amount != "" {
-      let title = NSLocalizedString("Saved", comment: "AddExpense alert: title")
-      let message = NSLocalizedString(
-        "Success!!!\nAmount: \(amount)\nCategory: \(categoryName)\nDate: \(dateString)",
-        comment: "AddExpense alert: message")
-      showAlert(
-        controllerTitle: title,
-        message: message,
-        preferredStyle: .alert,
-        actionStyle: .default)
-      return true
-    } else {
-      let title = NSLocalizedString("Error", comment: "AddExpense alert: title")
-      let message = NSLocalizedString(
-        "Amount field should not be empty",
-        comment: "AddExpense alert Error: message")
-      showAlert(
-        controllerTitle: title,
-        message: message,
-        preferredStyle: .actionSheet,
-        actionStyle: .destructive) { _ in
-          self.textField.placeholder = "$ 00.00" }
-      textField.placeholder = "ERROR"
-      return false
     }
   }
 }

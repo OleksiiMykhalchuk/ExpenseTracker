@@ -13,9 +13,9 @@ class HomePageViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext?
-  lazy var fetchResultsController: NSFetchedResultsController<Expense> = {
-    let fetchRequest = NSFetchRequest<Expense>()
-    let entity = Expense.entity()
+  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
+    let fetchRequest = NSFetchRequest<IncomeExpense>()
+    let entity = IncomeExpense.entity()
     fetchRequest.entity = entity
     let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
     fetchRequest.sortDescriptors = [sortDescriptor]
@@ -141,7 +141,7 @@ extension HomePageViewController: UITableViewDataSource {
   }
 }
 extension HomePageViewController: NSFetchedResultsControllerDelegate {
-  func fetchedResultsControllerIsEmpty(_ controller: NSFetchedResultsController<Expense>) -> Bool {
+  func fetchedResultsControllerIsEmpty(_ controller: NSFetchedResultsController<IncomeExpense>) -> Bool {
     if controller.sections?[0].numberOfObjects == 0 {
       return true
     } else {

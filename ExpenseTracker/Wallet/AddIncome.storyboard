@@ -163,6 +163,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="299" height="31.5"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                                    <connections>
+                                                        <action selector="addButton" destination="IXj-jR-Y2Q" eventType="touchUpInside" id="oBN-Rc-4aK"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -181,6 +184,11 @@
                             <outlet property="delegate" destination="IXj-jR-Y2Q" id="4GK-z7-k9j"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="categoryLabel" destination="LFa-Ui-DRZ" id="EAE-0q-pvJ"/>
+                        <outlet property="datePicker" destination="JIq-3d-EwX" id="m0B-vf-bCa"/>
+                        <outlet property="textField" destination="Dh2-D4-6wJ" id="oNh-8U-thF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNE-Jm-bDv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,20 +9,14 @@
 import Foundation
 import CoreData
 
-
 extension IncomeExpense {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<IncomeExpense> {
         return NSFetchRequest<IncomeExpense>(entityName: "IncomeExpense")
     }
-
     @NSManaged public var amount: Double
     @NSManaged public var category: String
     @NSManaged public var date: Date
-    @NSManaged public var type: Bool
-
+    @NSManaged public var isIncome: Bool
 }
-
-extension IncomeExpense : Identifiable {
-
+extension IncomeExpense: Identifiable {
 }

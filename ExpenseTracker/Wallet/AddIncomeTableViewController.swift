@@ -8,8 +8,15 @@
 import UIKit
 
 class AddIncomeTableViewController: UITableViewController {
-
-    override func viewDidLoad() {
+  // MARK: - Outlets
+  @IBOutlet weak var categoryLabel: UILabel!
+  @IBOutlet weak var textField: UITextField!
+  @IBOutlet weak var datePicker: UIDatePicker!
+  // MARK: - Actions
+  @IBAction func addButton() {
+    
+  }
+  override func viewDidLoad() {
         super.viewDidLoad()
       tableView.backgroundColor = R.color.whiteDarkBackground()
     }
