@@ -21,6 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       var navController = tabViewControllers[0] as? UINavigationController
       let controller1 = navController?.viewControllers.first as? HomePageViewController
       controller1?.managedObjectContext = managedObjectContext
+      // Third Tab
+      navController = tabViewControllers[2] as? UINavigationController
+      let controller3 = navController?.viewControllers.first as? WalletViewController
+      controller3?.managedObjectContext = managedObjectContext
       // Fours Tab
       navController = tabViewControllers[3] as? UINavigationController
       let controller4 = navController?.viewControllers.first as? AddExpenseViewController

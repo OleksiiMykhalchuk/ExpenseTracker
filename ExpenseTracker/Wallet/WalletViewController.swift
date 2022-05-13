@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class WalletViewController: UIViewController {
   @IBOutlet weak var viewContent: UIView!
   @IBOutlet weak var tableView: UITableView!
+  // MARK: - Variables
+  var managedObjectContext: NSManagedObjectContext!
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Wallet"
@@ -42,6 +45,7 @@ class WalletViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "AddIncome" {
       guard let controller = segue.destination as? AddIncomeViewController else { return }
+      controller.managedObjectContext = managedObjectContext
     }
   }
 }

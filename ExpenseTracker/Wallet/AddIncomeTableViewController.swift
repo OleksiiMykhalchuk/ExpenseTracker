@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddIncomeTableViewController: UITableViewController {
   // MARK: - Outlets
@@ -20,9 +21,22 @@ class AddIncomeTableViewController: UITableViewController {
       categoryName: categoryName,
       tableViewController: self)
     guard alertManager.manageAlerts() else { return }
+    let income = IncomeExpense(context: managedObjectContext)
+    income.amount = Double(textField.text ?? "0.00") ?? 0.00
+    income.date = datePicker.date
+    income.category = categoryName
+    income.isIncome = true
+    do {
+      try managedObjectContext.save()
+      print("*** Saved!!!")
+    } catch {
+      fatalError("Error \(error)")
+    }
+    textField.text = ""
   }
   // MARK: - Variables
   var categoryName = "No Category"
+  var managedObjectContext: NSManagedObjectContext!
   override func viewDidLoad() {
         super.viewDidLoad()
       tableView.backgroundColor = R.color.whiteDarkBackground()

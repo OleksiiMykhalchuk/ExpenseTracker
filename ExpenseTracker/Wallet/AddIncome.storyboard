@@ -34,7 +34,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jo-Xl-nb9">
                                         <rect key="frame" x="10" y="10" width="299" height="453"/>
                                         <connections>
-                                            <segue destination="IXj-jR-Y2Q" kind="embed" id="MLy-Cf-yKE"/>
+                                            <segue destination="IXj-jR-Y2Q" kind="embed" identifier="EmbedTableView" id="MLy-Cf-yKE"/>
                                         </connections>
                                     </containerView>
                                 </subviews>

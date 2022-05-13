@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddIncomeViewController: UIViewController {
   @IBOutlet weak var contentView: UIView!
@@ -13,6 +14,8 @@ class AddIncomeViewController: UIViewController {
   @IBAction func close() {
     dismiss(animated: true)
   }
+  // MARK: - Variables
+  var managedObjectContext: NSManagedObjectContext!
     override func viewDidLoad() {
         super.viewDidLoad()
       configureContentView()
@@ -27,5 +30,11 @@ class AddIncomeViewController: UIViewController {
     contentView.layer.shadowRadius = 15.0
     contentView.layer.shadowOpacity = 1.0
     contentView.layer.cornerRadius = 20
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "EmbedTableView" {
+      let controller = segue.destination as? AddIncomeTableViewController
+      controller?.managedObjectContext = managedObjectContext
+    }
   }
 }
