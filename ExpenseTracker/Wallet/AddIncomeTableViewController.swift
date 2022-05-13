@@ -14,11 +14,19 @@ class AddIncomeTableViewController: UITableViewController {
   @IBOutlet weak var datePicker: UIDatePicker!
   // MARK: - Actions
   @IBAction func addButton() {
-    
+    let alertManager = AlertManager(
+      textField: textField,
+      datePicker: datePicker,
+      categoryName: categoryName,
+      tableViewController: self)
+    guard alertManager.manageAlerts() else { return }
   }
+  // MARK: - Variables
+  var categoryName = "No Category"
   override func viewDidLoad() {
         super.viewDidLoad()
       tableView.backgroundColor = R.color.whiteDarkBackground()
+    categoryLabel.text = categoryName
     }
   // MARK: - Table View Delegates
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -40,7 +48,7 @@ class AddIncomeTableViewController: UITableViewController {
       cell.layer.borderWidth = 1
       cell.layer.cornerRadius = 8
       cell.layer.borderColor = R.color.green2()?.cgColor
-      cell.isUserInteractionEnabled = false
+      cell.isUserInteractionEnabled = true
     }
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
