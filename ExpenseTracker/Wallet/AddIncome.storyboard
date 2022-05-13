@@ -99,6 +99,9 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="LFa-Ui-DRZ" secondAttribute="bottom" id="ty5-nO-sY0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="YLk-5i-3BJ" kind="show" identifier="CategoryIncome" id="OmD-eq-7C8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -193,6 +196,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNE-Jm-bDv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="838" y="68"/>
+        </scene>
+        <!--CategoryIncome-->
+        <scene sceneID="2Ed-SV-hCL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CategoryIncome" id="YLk-5i-3BJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="stp-dS-JQC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WGM-4s-Mwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1476" y="14"/>
         </scene>
     </scenes>
     <resources>

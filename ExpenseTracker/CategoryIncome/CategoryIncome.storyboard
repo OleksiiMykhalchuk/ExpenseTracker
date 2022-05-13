@@ -1,41 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gsg-in-gKC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0yz-mg-4nk">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Category Income Table View Controller-->
-        <scene sceneID="aSa-Uq-aHg">
+        <!--Category Income View Controller-->
+        <scene sceneID="T4i-WN-xrM">
             <objects>
-                <tableViewController id="Gsg-in-gKC" customClass="CategoryIncomeTableViewController" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="0bz-Vm-pcA">
+                <viewController id="0yz-mg-4nk" customClass="CategoryIncomeViewController" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PI5-7V-MUN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-as-gyy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Category" id="caj-Oj-5zY">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="L6T-22-Je5">
+                                            <connections>
+                                                <action selector="cancel:" destination="0yz-mg-4nk" id="spB-Jt-q5M"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Avc-yR-Uam">
+                                            <connections>
+                                                <action selector="addButton:" destination="0yz-mg-4nk" id="FKe-fj-vRp"/>
+                                                <segue destination="krV-Do-Awh" kind="show" id="3JW-sb-9p0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sgb-LJ-yN7">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="CategoryIncomeCell" id="9fi-xe-eu2">
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9fi-xe-eu2" id="N43-Zh-SQB">
+                                            <rect key="frame" x="0.0" y="0.0" width="322" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="krV-Do-Awh" kind="show" trigger="accessoryAction" id="VuT-uu-m3W"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JI1-Gi-Fzk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MBD-mH-Sfy">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MBD-mH-Sfy" id="VuC-AK-LQN">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Gsg-in-gKC" id="moZ-D7-wEn"/>
-                            <outlet property="delegate" destination="Gsg-in-gKC" id="Q4h-Bj-U0J"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vST-Aw-dWV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="E8e-as-gyy" firstAttribute="top" secondItem="JI1-Gi-Fzk" secondAttribute="top" id="0Os-Qs-uvn"/>
+                            <constraint firstItem="JI1-Gi-Fzk" firstAttribute="trailing" secondItem="sgb-LJ-yN7" secondAttribute="trailing" id="N6p-2S-yyL"/>
+                            <constraint firstItem="sgb-LJ-yN7" firstAttribute="leading" secondItem="JI1-Gi-Fzk" secondAttribute="leading" id="c86-sq-Yt0"/>
+                            <constraint firstItem="E8e-as-gyy" firstAttribute="leading" secondItem="JI1-Gi-Fzk" secondAttribute="leading" id="fLS-kT-IJi"/>
+                            <constraint firstItem="JI1-Gi-Fzk" firstAttribute="bottom" secondItem="sgb-LJ-yN7" secondAttribute="bottom" id="k9L-oK-Qqk"/>
+                            <constraint firstItem="sgb-LJ-yN7" firstAttribute="top" secondItem="E8e-as-gyy" secondAttribute="bottom" id="l7m-iB-Lko"/>
+                            <constraint firstItem="E8e-as-gyy" firstAttribute="trailing" secondItem="JI1-Gi-Fzk" secondAttribute="trailing" id="yyu-nF-YQV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="sgb-LJ-yN7" id="c13-HG-HsB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="okh-pN-4jh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-230" y="123"/>
+            <point key="canvasLocation" x="-530" y="87"/>
+        </scene>
+        <!--CategoryIncomeDetail-->
+        <scene sceneID="dh1-8u-8wO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CategoryIncomeDetail" id="krV-Do-Awh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UaG-eW-Qk8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="coE-kE-ODi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="76"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3JW-sb-9p0"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
