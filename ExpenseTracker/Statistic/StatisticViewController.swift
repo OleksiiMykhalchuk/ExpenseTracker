@@ -9,6 +9,7 @@ import UIKit
 
 class StatisticViewController: UIViewController {
   @IBOutlet weak var viewGraph: UIView!
+  @IBOutlet weak var tableView: UITableView!
   let label = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -59,6 +59,7 @@
                     <tabBarItem key="tabBarItem" title="Statistic" image="bar-chart 1" selectedImage="bar-selected" id="XNZ-76-cWP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="tableView" destination="Atv-MH-Vv7" id="ghK-Au-09E"/>
                         <outlet property="viewGraph" destination="bK1-qZ-ZpD" id="j8F-FZ-fiU"/>
                     </connections>
                 </viewController>
