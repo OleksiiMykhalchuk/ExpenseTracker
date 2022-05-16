@@ -40,7 +40,13 @@ class WalletViewController: UIViewController {
       tableView.delegate = self
       tableView.dataSource = self
       performFetch()
+      print("Wallet")
     }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    performFetch()
+    tableView.reloadData()
+  }
   // MARK: - Private Methods
   private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
@@ -61,6 +67,7 @@ class WalletViewController: UIViewController {
     if segue.identifier == "AddIncome" {
       guard let controller = segue.destination as? AddIncomeViewController else { return }
       controller.managedObjectContext = managedObjectContext
+      controller.delegate = self
     }
   }
   // MARK: - performFetch
@@ -111,7 +118,8 @@ extension WalletViewController: UITableViewDataSource {
     if fetchedResultsControllerIsEmpty(fetchResultsController) {
       return 1
     } else {
-      
+      let object = fetchResultsController.sections![section]
+      return object.numberOfObjects
     }
   }
 }
@@ -125,5 +133,16 @@ extension WalletViewController: NSFetchedResultsControllerDelegate {
     }
   }
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.endUpdates()
+  }
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.beginUpdates()
+  }
+}
+// MARK: - AddIncomeViewControllerDelegate
+extension WalletViewController: AddIncomeViewControllerDelegate {
+  func addIncomeViewControllerDidReloadOnDismiss() {
+    performFetch()
+    tableView.reloadData()
   }
 }

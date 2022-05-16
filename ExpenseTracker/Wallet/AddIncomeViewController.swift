@@ -8,14 +8,20 @@
 import UIKit
 import CoreData
 
+protocol AddIncomeViewControllerDelegate: AnyObject {
+  func addIncomeViewControllerDidReloadOnDismiss()
+}
+
 class AddIncomeViewController: UIViewController {
   @IBOutlet weak var contentView: UIView!
   @IBOutlet weak var tableView: UITableView!
   @IBAction func close() {
     dismiss(animated: true)
+    delegate?.addIncomeViewControllerDidReloadOnDismiss()
   }
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext!
+  var delegate: AddIncomeViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
       configureContentView()
