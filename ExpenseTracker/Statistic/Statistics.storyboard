@@ -19,12 +19,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bK1-qZ-ZpD">
                                 <rect key="frame" x="10" y="10" width="355" height="228"/>
                                 <subviews>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acZ-oJ-jU3">
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acZ-oJ-jU3">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <items>
                                             <barButtonItem style="plain" id="Pxe-bV-gCG">
-                                                <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="0Nc-aV-sZL">
+                                                <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="0Nc-aV-sZL">
                                                     <rect key="frame" x="16" y="5.5" width="323" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
@@ -37,10 +36,24 @@
                                             </barButtonItem>
                                         </items>
                                     </toolbar>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wxv-2Y-Ytt" customClass="DropDown" customModule="iOSDropDown">
+                                        <rect key="frame" x="189" y="51" width="150" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="bWz-tg-rcT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="acZ-oJ-jU3" firstAttribute="top" secondItem="bK1-qZ-ZpD" secondAttribute="top" id="6c4-aQ-6Kg"/>
                                     <constraint firstAttribute="height" constant="228" id="Q5B-aM-vzm"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wxv-2Y-Ytt" secondAttribute="trailing" constant="16" id="SO0-UP-rnx"/>
+                                    <constraint firstAttribute="trailing" secondItem="acZ-oJ-jU3" secondAttribute="trailing" id="VjL-27-uYM"/>
+                                    <constraint firstItem="Wxv-2Y-Ytt" firstAttribute="top" secondItem="acZ-oJ-jU3" secondAttribute="bottom" constant="7" id="XZD-uL-6Wk"/>
+                                    <constraint firstItem="acZ-oJ-jU3" firstAttribute="leading" secondItem="bK1-qZ-ZpD" secondAttribute="leading" id="ixC-jF-w4K"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wxv-2Y-Ytt" secondAttribute="bottom" constant="143" id="qkc-xE-cB1"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Spending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdf-86-gUR">
@@ -79,6 +92,7 @@
                     <tabBarItem key="tabBarItem" title="Statistic" image="bar-chart 1" selectedImage="bar-selected" id="XNZ-76-cWP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="dropDown" destination="Wxv-2Y-Ytt" id="Wqo-Kw-K1i"/>
                         <outlet property="tableView" destination="Atv-MH-Vv7" id="ghK-Au-09E"/>
                         <outlet property="viewGraph" destination="bK1-qZ-ZpD" id="j8F-FZ-fiU"/>
                     </connections>
