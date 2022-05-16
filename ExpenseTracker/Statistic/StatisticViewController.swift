@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class StatisticViewController: UIViewController {
   @IBOutlet weak var viewGraph: UIView!
   @IBOutlet weak var tableView: UITableView!
   let label = UILabel()
+  var managedObjectContext: NSManagedObjectContext!
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Statistic"
@@ -20,5 +22,20 @@ class StatisticViewController: UIViewController {
       label.center = viewGraph.center
       label.layer.borderWidth = 1
       viewGraph.addSubview(label)
+      tableView.dataSource = self
+      let cellNib = UINib(nibName: "WalletCell", bundle: nil)
+      tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
     }
+}
+// MARK: - StatisticViewController
+extension StatisticViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = UITableViewCell(style: .default, reuseIdentifier: "WalletCell")
+    let cellView = tableView.dequeueReusableCell(withIdentifier: "WalletCell", for: indexPath)
+    cell.textLabel?.text = "Label"
+    return cellView
+  }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
 }
