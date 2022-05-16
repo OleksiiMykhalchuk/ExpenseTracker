@@ -1,24 +1,28 @@
 PODS:
+  - iOSDropDown (0.3.4)
   - R.swift (6.1.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
   - SwiftLint (0.47.1)
 
 DEPENDENCIES:
+  - iOSDropDown
   - R.swift
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - iOSDropDown
     - R.swift
     - R.swift.Library
     - SwiftLint
 
 SPEC CHECKSUMS:
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
 
-PODFILE CHECKSUM: cfdfeba0a5e67525fef9bb396ceddb6ec8449b6a
+PODFILE CHECKSUM: c406b717b2d7b07175678829b785f93ef47f39ab
 
 COCOAPODS: 1.11.3

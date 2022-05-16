@@ -10,5 +10,6 @@ target 'ExpenseTracker' do
   # Pods for ExpenseTracker
   pod 'SwiftLint'
   pod 'R.swift'
+  pod 'iOSDropDown'
 
 end
