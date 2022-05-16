@@ -41,7 +41,6 @@ class HomePageViewController: UIViewController {
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    print("viewWillAppear HomePage")
     performFetch()
     tableView.reloadData()
   }

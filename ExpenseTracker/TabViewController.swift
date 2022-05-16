@@ -11,7 +11,6 @@ class TabViewController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.delegate = self
-    print("*** TabViewController")
   }
 }
 extension TabViewController: UITabBarControllerDelegate {

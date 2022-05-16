@@ -11,7 +11,10 @@ import CoreData
 protocol CategoryIncomeDetailTableViewControllerDelegate: AnyObject {
   func categoryIncomeDidCancel(_ controller: CategoryIncomeDetailTableViewController)
   func categoryIncomeDetail(_ controller: CategoryIncomeDetailTableViewController, didFinishAdding category: String)
-  func categoryIncomeDetail(_ controller: CategoryIncomeDetailTableViewController, didFinishEditing category: String, for indexPath: IndexPath)
+  func categoryIncomeDetail(
+    _ controller: CategoryIncomeDetailTableViewController,
+    didFinishEditing category: String,
+    for indexPath: IndexPath)
 }
 
 class CategoryIncomeDetailTableViewController: UITableViewController {

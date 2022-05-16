@@ -73,7 +73,10 @@ extension CategoryIncomeViewController: UITableViewDataSource {
   }
 }
 extension CategoryIncomeViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+  func tableView(
+    _ tableView: UITableView,
+    commit editingStyle: UITableViewCell.EditingStyle,
+    forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       let category = fetchResultsController.object(at: indexPath)
       managedObjectContext.delete(category)

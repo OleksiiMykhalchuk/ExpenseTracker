@@ -58,25 +58,25 @@
                                             <segue destination="wRZ-eb-k7D" kind="presentation" identifier="AddIncome" id="wIY-w3-2Eg"/>
                                         </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4OU-6m-k2N">
-                                        <rect key="frame" x="10" y="234" width="355" height="353"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9kB-qO-DXs">
+                                        <rect key="frame" x="28" y="240" width="319" height="295"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="eLv-x4-M6k" firstAttribute="centerX" secondItem="yTJ-XE-HJA" secondAttribute="centerX" id="4Jz-lZ-g1p"/>
-                                    <constraint firstAttribute="bottom" secondItem="4OU-6m-k2N" secondAttribute="bottom" constant="10" id="4W8-As-7Sd"/>
                                     <constraint firstItem="Xc4-a0-ldW" firstAttribute="top" secondItem="eLv-x4-M6k" secondAttribute="bottom" constant="20" id="64r-vT-ISc"/>
-                                    <constraint firstItem="4OU-6m-k2N" firstAttribute="leading" secondItem="yTJ-XE-HJA" secondAttribute="leading" constant="10" id="6YH-lF-01L"/>
-                                    <constraint firstAttribute="trailing" secondItem="4OU-6m-k2N" secondAttribute="trailing" constant="10" id="8Es-lD-gLq"/>
-                                    <constraint firstItem="4OU-6m-k2N" firstAttribute="top" secondItem="XMa-5J-XV8" secondAttribute="bottom" constant="4" id="Ill-P3-Fd7"/>
                                     <constraint firstItem="rhq-4x-9lb" firstAttribute="centerX" secondItem="yTJ-XE-HJA" secondAttribute="centerX" id="LIH-Tz-e4T"/>
                                     <constraint firstItem="eLv-x4-M6k" firstAttribute="top" secondItem="rhq-4x-9lb" secondAttribute="bottom" constant="10" id="Mp9-Xx-hpC"/>
+                                    <constraint firstItem="9kB-qO-DXs" firstAttribute="top" secondItem="XMa-5J-XV8" secondAttribute="bottom" constant="10" id="bTo-Dl-OuV"/>
+                                    <constraint firstItem="9kB-qO-DXs" firstAttribute="leading" secondItem="yTJ-XE-HJA" secondAttribute="leadingMargin" constant="20" id="blU-r6-cg1"/>
                                     <constraint firstItem="Xc4-a0-ldW" firstAttribute="centerX" secondItem="yTJ-XE-HJA" secondAttribute="centerX" id="cAu-KJ-9Yz"/>
                                     <constraint firstItem="rhq-4x-9lb" firstAttribute="top" secondItem="yTJ-XE-HJA" secondAttribute="top" constant="20" id="eMh-xR-0ys"/>
                                     <constraint firstAttribute="trailing" secondItem="XMa-5J-XV8" secondAttribute="trailing" id="eey-BT-VRg"/>
                                     <constraint firstItem="XMa-5J-XV8" firstAttribute="top" secondItem="Xc4-a0-ldW" secondAttribute="bottom" constant="20" id="ouu-Uj-ZoG"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="9kB-qO-DXs" secondAttribute="bottom" constant="5" id="re2-NA-S8g"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="9kB-qO-DXs" secondAttribute="trailing" constant="20" id="vmK-MC-7ZR"/>
                                     <constraint firstItem="XMa-5J-XV8" firstAttribute="leading" secondItem="yTJ-XE-HJA" secondAttribute="leading" id="wRc-gw-65e"/>
                                     <constraint firstItem="Xc4-a0-ldW" firstAttribute="top" secondItem="eLv-x4-M6k" secondAttribute="bottom" constant="20" id="z9m-j8-IoH"/>
                                 </constraints>
@@ -94,7 +94,7 @@
                     <tabBarItem key="tabBarItem" title="Wallet" image="wallet 1" selectedImage="wallet-selected" id="Wo1-S4-NgT"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="4OU-6m-k2N" id="oHV-Yd-WvR"/>
+                        <outlet property="tableView" destination="9kB-qO-DXs" id="nBU-H5-Lh7"/>
                         <outlet property="viewContent" destination="yTJ-XE-HJA" id="Mxr-eh-N0p"/>
                     </connections>
                 </viewController>
