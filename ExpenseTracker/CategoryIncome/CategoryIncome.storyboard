@@ -45,9 +45,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="322" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="krV-Do-Awh" kind="show" trigger="accessoryAction" id="VuT-uu-m3W"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -75,7 +72,7 @@
         <!--CategoryIncomeDetail-->
         <scene sceneID="dh1-8u-8wO">
             <objects>
-                <viewControllerPlaceholder storyboardName="CategoryIncomeDetail" id="krV-Do-Awh" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="Detail" storyboardName="CategoryIncomeDetail" id="krV-Do-Awh" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="UaG-eW-Qk8"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coE-kE-ODi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -83,9 +80,6 @@
             <point key="canvasLocation" x="388" y="76"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="3JW-sb-9p0"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

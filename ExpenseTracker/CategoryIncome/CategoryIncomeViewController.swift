@@ -45,6 +45,10 @@ class CategoryIncomeViewController: UIViewController {
       let controller = segue.destination as? CategoryIncomeDetailTableViewController
       controller?.managedObjectContext = managedObjectContext
       controller?.delegate = self
+    } else if segue.identifier == "EditCategory" {
+      let controller = segue.destination as? CategoryIncomeDetailTableViewController
+      controller?.delegate = self
+      print("Segue edit category")
     }
   }
   func performFetch() {
@@ -87,6 +91,14 @@ extension CategoryIncomeViewController: UITableViewDelegate {
     }
     tableView.deselectRow(at: indexPath, animated: true)
   }
+  func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    let controller = storyboard?.instantiateViewController(
+      withIdentifier: "Detail") as? CategoryIncomeDetailTableViewController
+      controller?.delegate = self
+    controller?.categoryToEdit = fetchResultsController.object(at: indexPath)
+    controller?.indexPath = indexPath
+    present(controller!, animated: true)
+  }
 }
 // MARK: - CategoryIncomeDetailTableViewControllerDelegate
 extension CategoryIncomeViewController: CategoryIncomeDetailTableViewControllerDelegate {
@@ -101,6 +113,19 @@ extension CategoryIncomeViewController: CategoryIncomeDetailTableViewControllerD
     dismiss(animated: true)
   }
   func categoryIncomeDidCancel(_ controller: CategoryIncomeDetailTableViewController) {
+    dismiss(animated: true)
+  }
+  func categoryIncomeDetail(
+    _ controller: CategoryIncomeDetailTableViewController,
+    didFinishEditing category: String,
+    for indexPath: IndexPath) {
+    let object = fetchResultsController.object(at: indexPath)
+    object.name = category
+    do {
+      try managedObjectContext.save()
+    } catch {
+      fatalError("Error \(error)")
+    }
     dismiss(animated: true)
   }
 }
@@ -127,7 +152,7 @@ extension CategoryIncomeViewController: NSFetchedResultsControllerDelegate {
           print("NSFetchResultChangeUpdate (object)")
           if let cell = tableView.cellForRow(
             at: indexPath!) {
-            let category = controller.object(at: indexPath!) as? Category
+            let category = controller.object(at: indexPath!) as? IncomeCategory
             cell.textLabel!.text = category!.name
           }
       case .move:
