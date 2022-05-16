@@ -41,6 +41,7 @@ class AddIncomeViewController: UIViewController {
     if segue.identifier == "EmbedTableView" {
       let controller = segue.destination as? AddIncomeTableViewController
       controller?.managedObjectContext = managedObjectContext
+      controller?.delegate = delegate
     }
   }
 }

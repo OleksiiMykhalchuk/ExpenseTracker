@@ -20,7 +20,9 @@ class AddIncomeTableViewController: UITableViewController {
       datePicker: datePicker,
       categoryName: categoryName,
       tableViewController: self)
-    guard alertManager.manageAlerts() else { return }
+    guard alertManager.manageAlerts(willDismiss: { _ in self.dismiss(animated: true)
+      self.delegate?.addIncomeViewControllerDidReloadOnDismiss()
+    }) else { return }
     let income = IncomeExpense(context: managedObjectContext)
     income.amount = Double(textField.text ?? "0.00") ?? 0.00
     income.date = datePicker.date
@@ -37,6 +39,7 @@ class AddIncomeTableViewController: UITableViewController {
   // MARK: - Variables
   var categoryName = "No Category"
   var managedObjectContext: NSManagedObjectContext!
+  var delegate: AddIncomeViewControllerDelegate?
   override func viewDidLoad() {
         super.viewDidLoad()
       tableView.backgroundColor = R.color.whiteDarkBackground()

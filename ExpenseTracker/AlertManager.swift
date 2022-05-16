@@ -28,7 +28,8 @@ class AlertManager {
     message: String,
     preferredStyle: UIAlertController.Style,
     actionStyle: UIAlertAction.Style,
-    handler: ((UIAlertAction) -> Void)? = nil) {
+    handler: ((UIAlertAction) -> Void)? = nil,
+    completion: (() -> Void)? = nil) {
     let alert = UIAlertController(
       title: controllerTitle,
       message: message,
@@ -38,9 +39,9 @@ class AlertManager {
       style: actionStyle,
       handler: handler)
     alert.addAction(action)
-      tableViewController.present(alert, animated: true, completion: nil)
+      tableViewController.present(alert, animated: true, completion: completion)
   }
-  func manageAlerts() -> Bool {
+  func manageAlerts(willDismiss: ((UIAlertAction) -> Void)? = nil) -> Bool {
     let amount = textField.text ?? "Nothing"
     let formatter = DateFormatter()
     formatter.calendar = datePicker.calendar
@@ -55,7 +56,8 @@ class AlertManager {
         controllerTitle: title,
         message: message,
         preferredStyle: .alert,
-        actionStyle: .default)
+        actionStyle: .default,
+        handler: willDismiss)
       return true
     } else {
       let title = NSLocalizedString("Error", comment: "AddExpense alert: title")
