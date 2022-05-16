@@ -49,6 +49,7 @@
 		883D99912827A72D0080DC7B /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883D99902827A72D0080DC7B /* CategoryDetailViewController.swift */; };
 		883D9996282907410080DC7B /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883D9995282907410080DC7B /* Category.storyboard */; };
 		883D9998282907DF0080DC7B /* CategoryDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883D9997282907DF0080DC7B /* CategoryDetail.storyboard */; };
+		883FCD50283282C500EFEC79 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883FCD4F283282C500EFEC79 /* StatisticViewController.swift */; };
 		8856C8BE282A93CB004A38F9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */; };
 		8856C8C1282ABCA6004A38F9 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */; };
 		8856C8C5282D1A6A004A38F9 /* WalletCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8856C8C4282D1A6A004A38F9 /* WalletCell.xib */; };
@@ -108,6 +109,7 @@
 		883D99902827A72D0080DC7B /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		883D9995282907410080DC7B /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
 		883D9997282907DF0080DC7B /* CategoryDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryDetail.storyboard; sourceTree = "<group>"; };
+		883FCD4F283282C500EFEC79 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		8856C8C4282D1A6A004A38F9 /* WalletCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCell.xib; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		88356AB9281C28B300C40F39 /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
+				883FCD4E2832826B00EFEC79 /* Statistic */,
 				88178EE2282E969C00E84146 /* CategoryIncome */,
 				8856C8BF282ABC4B004A38F9 /* Wallet */,
 				883D9994282906FB0080DC7B /* Home */,
@@ -190,7 +193,6 @@
 				88356AC8281C28B600C40F39 /* LaunchScreen.storyboard */,
 				88356ACB281C28B600C40F39 /* Info.plist */,
 				88356AC3281C28B300C40F39 /* ExpenseTracker.xcdatamodeld */,
-				883D995B281D79570080DC7B /* Statistics.storyboard */,
 				883D99882821308B0080DC7B /* BackgroundView.swift */,
 				88178EE0282E70BC00E84146 /* AlertManager.swift */,
 				88178EEB282EC15900E84146 /* ConfigureManager.swift */,
@@ -260,6 +262,15 @@
 				8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		883FCD4E2832826B00EFEC79 /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				883FCD4F283282C500EFEC79 /* StatisticViewController.swift */,
+				883D995B281D79570080DC7B /* Statistics.storyboard */,
+			);
+			path = Statistic;
 			sourceTree = "<group>";
 		};
 		8856C8BF282ABC4B004A38F9 /* Wallet */ = {
@@ -461,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88178EEC282EC15900E84146 /* ConfigureManager.swift in Sources */,
+				883FCD50283282C500EFEC79 /* StatisticViewController.swift in Sources */,
 				883D9983281D8E690080DC7B /* Income+CoreDataProperties.swift in Sources */,
 				88178EEA282E980400E84146 /* CategoryIncomeDetailTableViewController.swift in Sources */,
 				883D99912827A72D0080DC7B /* CategoryDetailViewController.swift in Sources */,
