@@ -43,7 +43,7 @@ class AddExpenseContentViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     nameLabel.text = categoryName
-    textField.becomeFirstResponder()
+//    textField.becomeFirstResponder()
   }
   // MARK: - Table View Delegates
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

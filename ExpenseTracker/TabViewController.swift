@@ -17,7 +17,6 @@ extension TabViewController: UITabBarControllerDelegate {
   public func tabBarController(
     _ tabBarController: UITabBarController,
     shouldSelect viewController: UIViewController) -> Bool {
-    print("\n*** tab bar should select\n")
       let fromView = tabBarController.selectedViewController?.view
       let toView = viewController.view
       if fromView == toView {
