@@ -13,6 +13,19 @@ class StatisticViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   let label = UILabel()
   var managedObjectContext: NSManagedObjectContext!
+  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
+    let fetchRequest = NSFetchRequest<IncomeExpense>()
+    let entity = IncomeExpense.entity()
+    fetchRequest.entity = entity
+    let sortDescriptor = NSSortDescriptor(key: "amount", ascending: false)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let fetchResultsController = NSFetchedResultsController(
+      fetchRequest: fetchRequest,
+      managedObjectContext: managedObjectContext,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
+    return fetchResultsController
+  }()
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Statistic"
@@ -25,17 +38,29 @@ class StatisticViewController: UIViewController {
       tableView.dataSource = self
       let cellNib = UINib(nibName: "WalletCell", bundle: nil)
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
+      performFetch()
     }
+  func performFetch() {
+    do {
+      try fetchResultsController.performFetch()
+    } catch {
+      fatalError("Error \(error)")
+    }
+  }
 }
 // MARK: - StatisticViewController
 extension StatisticViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell(style: .default, reuseIdentifier: "WalletCell")
-    let cellView = tableView.dequeueReusableCell(withIdentifier: "WalletCell", for: indexPath)
-    cell.textLabel?.text = "Label"
-    return cellView
+    let cellView = tableView.dequeueReusableCell(withIdentifier: "WalletCell", for: indexPath) as? WalletCell
+    let object = fetchResultsController.object(at: indexPath)
+    cellView?.categoryLabel.text = object.category
+    cellView?.dateLabel.text = ConfigureManager.configureDate(object.date, dateFormat: "d MMM, YYYY")
+    cellView?.amountLabel.text = ConfigureManager.configureNumberAsCurrancy(
+      object.amount as NSNumber, numberStyle: .currency, currencyCode: "USD")
+    return cellView!
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    let numberOfObjects = fetchResultsController.sections![section].numberOfObjects
+    return numberOfObjects
   }
 }
