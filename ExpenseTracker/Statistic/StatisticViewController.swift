@@ -11,7 +11,6 @@ import CoreData
 class StatisticViewController: UIViewController {
   @IBOutlet weak var viewGraph: UIView!
   @IBOutlet weak var tableView: UITableView!
-  let label = UILabel()
   var managedObjectContext: NSManagedObjectContext!
   lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
     let fetchRequest = NSFetchRequest<IncomeExpense>()
@@ -29,17 +28,16 @@ class StatisticViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Statistic"
-      viewGraph.layer.borderWidth = 1
-      label.text = "Graphs View"
-      label.bounds.size = CGSize(width: 100, height: 20)
-      label.center = viewGraph.center
-      label.layer.borderWidth = 1
-      viewGraph.addSubview(label)
       tableView.dataSource = self
       let cellNib = UINib(nibName: "WalletCell", bundle: nil)
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
       performFetch()
     }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    performFetch()
+    tableView.reloadData()
+  }
   func performFetch() {
     do {
       try fetchResultsController.performFetch()
@@ -51,13 +49,18 @@ class StatisticViewController: UIViewController {
 // MARK: - StatisticViewController
 extension StatisticViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cellView = tableView.dequeueReusableCell(withIdentifier: "WalletCell", for: indexPath) as? WalletCell
     let object = fetchResultsController.object(at: indexPath)
-    cellView?.categoryLabel.text = object.category
-    cellView?.dateLabel.text = ConfigureManager.configureDate(object.date, dateFormat: "d MMM, YYYY")
-    cellView?.amountLabel.text = ConfigureManager.configureNumberAsCurrancy(
-      object.amount as NSNumber, numberStyle: .currency, currencyCode: "USD")
-    return cellView!
+    let cell = tableView.dequeueReusableCell(withIdentifier: "WalletCell", for: indexPath) as? WalletCell
+    if object.isIncome {
+
+      cell?.categoryLabel.text = object.category
+      cell?.dateLabel.text = ConfigureManager.configureDate(object.date, dateFormat: "d MMM, YYYY")
+      cell?.amountLabel.text = "+ " +  ConfigureManager.configureNumberAsCurrancy(
+        object.amount as NSNumber, numberStyle: .currency, currencyCode: "USD")
+      cell?.amountLabel.textColor = R.color.green1()
+      cell?.isUserInteractionEnabled = false
+    }
+    return cell!
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let numberOfObjects = fetchResultsController.sections![section].numberOfObjects
