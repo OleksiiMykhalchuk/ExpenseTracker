@@ -10,13 +10,50 @@ import CoreData
 import iOSDropDown
 
 class StatisticViewController: UIViewController {
+  // MARK: - Outlets
   @IBOutlet weak var viewGraph: UIView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var dropDown: DropDown!
+  @IBOutlet weak var segmentControl: UISegmentedControl!
+  // MARK: - Action
+  @IBAction func segmentChanged(_ sender: Any) {
+    switch segmentControl.selectedSegmentIndex {
+    case 0:
+        segment = .day
+        performFetch()
+        tableView.reloadData()
+    case 1:
+        segment = .week
+        performFetch()
+        tableView.reloadData()
+    case 2:
+        segment = .month
+        performFetch()
+        tableView.reloadData()
+    case 3:
+        segment = .year
+        performFetch()
+        tableView.reloadData()
+    default:
+        return
+    }
+  }
+  // MARK: - Private Variable
+  private var segment: Segments = .day
+  private var dateFilter: DateFilter = .day
+  // MARK: - Enums
+  enum Segments: Int {
+    case day = 0, week, month, year
+  }
+  enum DateFilter: Int {
+    case day = 0, week, month, year
+  }
+  // MARK: - Varibles
   var dropDownisIncome = true
   var managedObjectContext: NSManagedObjectContext!
   var dataIncome = [IncomeExpense]()
   var dataExpense = [IncomeExpense]()
+  let now = Date()
   lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
     let fetchRequest = NSFetchRequest<IncomeExpense>()
     let entity = IncomeExpense.entity()
@@ -55,7 +92,6 @@ class StatisticViewController: UIViewController {
           self.performFetch()
         }
       })
-
     }
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -70,9 +106,13 @@ class StatisticViewController: UIViewController {
       if let dataFetched = fetchResultsController.fetchedObjects {
         for data in dataFetched {
           if data.isIncome {
-            dataIncome.append(data)
+            if segment.rawValue == filterByDate(now: Date(), dataDate: data.date).rawValue {
+              dataIncome.append(data)
+            }
           } else {
-            dataExpense.append(data)
+            if segment.rawValue == filterByDate(now: Date(), dataDate: data.date).rawValue {
+              dataExpense.append(data)
+            }
           }
         }
       }
@@ -80,8 +120,34 @@ class StatisticViewController: UIViewController {
       fatalError("Error \(error)")
     }
   }
+  // MARK: - Private Methods
+  private func filterByDate(now date: Date, dataDate: Date) -> DateFilter {
+    let myDateNow = MyDate(date: date)
+    let sqlDate = MyDate(date: dataDate)
+    let minute = 60
+    let hour = 60 * minute
+    let day = 24 * hour
+    let week = 7 * day
+    let time = abs(dataDate.timeIntervalSince(date))
+    let timeInterval = TimeInterval(week)
+    if myDateNow.getDay() == sqlDate.getDay() &&
+        myDateNow.getMonth() == sqlDate.getMonth() &&
+        myDateNow.getYear() == sqlDate.getYear() &&
+        segment == .day {
+      dateFilter = .day
+    } else if time <= timeInterval && segment == .week {
+      dateFilter = .week
+    } else if myDateNow.getMonth() == sqlDate.getMonth()
+                && myDateNow.getYear() == sqlDate.getYear() &&
+                segment == .month {
+      dateFilter = .month
+    } else if myDateNow.getYear() == sqlDate.getYear() {
+      dateFilter = .year
+    }
+    return dateFilter
+  }
 }
-// MARK: - StatisticViewController
+// MARK: - UITableViewDataSource
 extension StatisticViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "WalletCell", for: indexPath) as? WalletCell

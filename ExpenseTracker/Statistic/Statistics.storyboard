@@ -32,6 +32,9 @@
                                                         <segment title="Month"/>
                                                         <segment title="Year"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="segmentChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="cSD-2q-RLR"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </barButtonItem>
                                         </items>
@@ -93,6 +96,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dropDown" destination="Wxv-2Y-Ytt" id="Wqo-Kw-K1i"/>
+                        <outlet property="segmentControl" destination="0Nc-aV-sZL" id="pyf-G6-kbK"/>
                         <outlet property="tableView" destination="Atv-MH-Vv7" id="ghK-Au-09E"/>
                         <outlet property="viewGraph" destination="bK1-qZ-ZpD" id="j8F-FZ-fiU"/>
                     </connections>

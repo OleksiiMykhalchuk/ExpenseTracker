@@ -51,6 +51,7 @@
 		883D9998282907DF0080DC7B /* CategoryDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883D9997282907DF0080DC7B /* CategoryDetail.storyboard */; };
 		883FCD50283282C500EFEC79 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883FCD4F283282C500EFEC79 /* StatisticViewController.swift */; };
 		883FCD5428329FD900EFEC79 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883FCD5328329FD900EFEC79 /* iOSDropDown.framework */; };
+		883FCD562833DC2900EFEC79 /* MyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883FCD552833DC2900EFEC79 /* MyDate.swift */; };
 		8856C8BE282A93CB004A38F9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */; };
 		8856C8C1282ABCA6004A38F9 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */; };
 		8856C8C5282D1A6A004A38F9 /* WalletCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8856C8C4282D1A6A004A38F9 /* WalletCell.xib */; };
@@ -112,6 +113,7 @@
 		883D9997282907DF0080DC7B /* CategoryDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryDetail.storyboard; sourceTree = "<group>"; };
 		883FCD4F283282C500EFEC79 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		883FCD5328329FD900EFEC79 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		883FCD552833DC2900EFEC79 /* MyDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDate.swift; sourceTree = "<group>"; };
 		8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		8856C8C4282D1A6A004A38F9 /* WalletCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCell.xib; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				883D99882821308B0080DC7B /* BackgroundView.swift */,
 				88178EE0282E70BC00E84146 /* AlertManager.swift */,
 				88178EEB282EC15900E84146 /* ConfigureManager.swift */,
+				883FCD552833DC2900EFEC79 /* MyDate.swift */,
 			);
 			path = ExpenseTracker;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				8856C8CD282D5EB6004A38F9 /* AddIncomeTableViewController.swift in Sources */,
 				883D998F28257E000080DC7B /* HomePageViewController.swift in Sources */,
 				8856C8C1282ABCA6004A38F9 /* WalletViewController.swift in Sources */,
+				883FCD562833DC2900EFEC79 /* MyDate.swift in Sources */,
 				88178EE1282E70BC00E84146 /* AlertManager.swift in Sources */,
 				88FB16B6282D6CF400A2A528 /* IncomeExpense+CoreDataProperties.swift in Sources */,
 				88356ABF281C28B300C40F39 /* TabViewController.swift in Sources */,
