@@ -17,6 +17,9 @@ class HomePageViewController: UIViewController {
   @IBOutlet weak var expenseLabel: UILabel!
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext?
+  var totalBalance: Double!
+  var totalExpense: Double!
+  var totalIncome: Double!
   lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
     let fetchRequest = NSFetchRequest<IncomeExpense>()
     let entity = IncomeExpense.entity()
@@ -47,44 +50,71 @@ class HomePageViewController: UIViewController {
     super.viewWillAppear(animated)
     performFetch()
     tableView.reloadData()
-    for object in fetchResultsController.fetchedObjects! {
-      if object.isIncome {
-        let number = ConfigureManager.configureNumberAsCurrancy(
-          object.amount as NSNumber,
-          numberStyle: .currency,
-          currencyCode: "USD")
-        incomeLabel.text = "\(number)"
-        break
-      }
-    }
-    var totalIncome = 0.0
+//    for object in fetchResultsController.fetchedObjects! {
+//      if object.isIncome {
+//        let number = ConfigureManager.configureNumberAsCurrancy(
+//          object.amount as NSNumber,
+//          numberStyle: .currency,
+//          currencyCode: "USD")
+//        incomeLabel.text = "\(number)"
+//        break
+//      }
+//    }
+    totalIncome = 0.0
     for object in fetchResultsController.fetchedObjects! {
       if object.isIncome {
         totalIncome += object.amount
       }
     }
-    for object in fetchResultsController.fetchedObjects! {
-      if !object.isIncome {
-        let number = ConfigureManager.configureNumberAsCurrancy(
-          object.amount as NSNumber,
-          numberStyle: .currency,
-          currencyCode: "USD")
-        expenseLabel.text = "\(number)"
-        break
-      }
-    }
-    var totalExpense = 0.0
+//    for object in fetchResultsController.fetchedObjects! {
+//      if !object.isIncome {
+//        let number = ConfigureManager.configureNumberAsCurrancy(
+//          object.amount as NSNumber,
+//          numberStyle: .currency,
+//          currencyCode: "USD")
+//        expenseLabel.text = "\(number)"
+//        break
+//      }
+//    }
+    totalExpense = 0.0
     for object in fetchResultsController.fetchedObjects! {
       if !object.isIncome {
         totalExpense += object.amount
       }
     }
-    let totalBalance = totalIncome - totalExpense
-    let balance = ConfigureManager.configureNumberAsCurrancy(
-      totalBalance as NSNumber,
-      numberStyle: .currency,
-      currencyCode: "USD")
-    totalLabel.text = "\(balance)"
+    totalBalance = totalIncome - totalExpense
+
+//    totalLabel.text = "\(balance)"
+  }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    numberLabelAnimate(totalBalance, speed: 2.0) { balance in
+      self.totalLabel.text = "\(balance)"
+    }
+    numberLabelAnimate(totalIncome, speed: 2.0) { balance in
+      self.incomeLabel.text = "\(balance)"
+    }
+    numberLabelAnimate(totalExpense, speed: 2.0) { balance in
+      self.expenseLabel.text = "\(balance)"
+    }
+
+  }
+  func numberLabelAnimate(_ number: Double, speed: Double, completion: @escaping (String) -> Void) {
+    let total = Int(number)
+    let duration = speed
+    DispatchQueue.global().async {
+      for number in 0...total {
+        let sleepTime = Int32(duration/Double(total) * 1000000.0)
+        usleep(useconds_t(sleepTime))
+        let balance = ConfigureManager.configureNumberAsCurrancy(
+          number as NSNumber,
+          numberStyle: .currency,
+          currencyCode: "USD")
+        DispatchQueue.main.async {
+          completion(balance)
+        }
+      }
+    }
   }
   private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
