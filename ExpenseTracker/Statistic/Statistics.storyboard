@@ -27,7 +27,7 @@
                                                     <rect key="frame" x="16" y="5.5" width="323" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
-                                                        <segment title="First"/>
+                                                        <segment title="Day"/>
                                                         <segment title="Week"/>
                                                         <segment title="Month"/>
                                                         <segment title="Year"/>

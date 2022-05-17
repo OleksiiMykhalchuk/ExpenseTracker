@@ -15,6 +15,8 @@ class StatisticViewController: UIViewController {
   @IBOutlet weak var dropDown: DropDown!
   var dropDownisIncome = true
   var managedObjectContext: NSManagedObjectContext!
+  var dataIncome = [IncomeExpense]()
+  var dataExpense = [IncomeExpense]()
   lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
     let fetchRequest = NSFetchRequest<IncomeExpense>()
     let entity = IncomeExpense.entity()
@@ -42,7 +44,7 @@ class StatisticViewController: UIViewController {
       dropDown.selectedIndex = 0
       dropDown.isSearchEnable = false
       dropDown.text = "Income"
-      dropDown.didSelect(completion: {text, index, id in
+      dropDown.didSelect(completion: {_, index, _ in
         if index == 0 {
           self.dropDownisIncome = true
           self.tableView.reloadData()
@@ -63,6 +65,17 @@ class StatisticViewController: UIViewController {
   func performFetch() {
     do {
       try fetchResultsController.performFetch()
+      dataIncome.removeAll()
+      dataExpense.removeAll()
+      if let dataFetched = fetchResultsController.fetchedObjects {
+        for data in dataFetched {
+          if data.isIncome {
+            dataIncome.append(data)
+          } else {
+            dataExpense.append(data)
+          }
+        }
+      }
     } catch {
       fatalError("Error \(error)")
     }
@@ -71,9 +84,9 @@ class StatisticViewController: UIViewController {
 // MARK: - StatisticViewController
 extension StatisticViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let object = fetchResultsController.object(at: indexPath)
     let cell = tableView.dequeueReusableCell(withIdentifier: "WalletCell", for: indexPath) as? WalletCell
-    if object.isIncome {
+    if dropDownisIncome {
+        let object = dataIncome[indexPath.row]
         cell?.categoryLabel.text = object.category
         cell?.dateLabel.text = ConfigureManager.configureDate(object.date, dateFormat: "d MMM, YYYY")
         cell?.amountLabel.text = "+ " +  ConfigureManager.configureNumberAsCurrancy(
@@ -81,7 +94,8 @@ extension StatisticViewController: UITableViewDataSource {
         cell?.amountLabel.textColor = R.color.green1()
         cell?.isUserInteractionEnabled = false
     } else {
-     cell?.categoryLabel.text = object.category
+      let object = dataExpense[indexPath.row]
+        cell?.categoryLabel.text = object.category
         cell?.dateLabel.text = ConfigureManager.configureDate(object.date, dateFormat: "d MMM, YYYY")
         cell?.amountLabel.text = "- " +  ConfigureManager.configureNumberAsCurrancy(
           object.amount as NSNumber, numberStyle: .currency, currencyCode: "USD")
@@ -91,7 +105,10 @@ extension StatisticViewController: UITableViewDataSource {
     return cell!
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let numberOfObjects = fetchResultsController.sections![section].numberOfObjects
-      return numberOfObjects
+    if dropDownisIncome {
+      return dataIncome.count
+    } else {
+      return dataExpense.count
+    }
   }
 }
