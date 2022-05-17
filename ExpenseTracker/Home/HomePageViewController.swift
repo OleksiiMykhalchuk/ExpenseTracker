@@ -9,8 +9,12 @@ import UIKit
 import CoreData
 
 class HomePageViewController: UIViewController {
+  // MARK: - Outlets
   @IBOutlet weak var viewTotals: UIView!
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var totalLabel: UILabel!
+  @IBOutlet weak var incomeLabel: UILabel!
+  @IBOutlet weak var expenseLabel: UILabel!
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext?
   lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
@@ -43,6 +47,44 @@ class HomePageViewController: UIViewController {
     super.viewWillAppear(animated)
     performFetch()
     tableView.reloadData()
+    for object in fetchResultsController.fetchedObjects! {
+      if object.isIncome {
+        let number = ConfigureManager.configureNumberAsCurrancy(
+          object.amount as NSNumber,
+          numberStyle: .currency,
+          currencyCode: "USD")
+        incomeLabel.text = "\(number)"
+        break
+      }
+    }
+    var totalIncome = 0.0
+    for object in fetchResultsController.fetchedObjects! {
+      if object.isIncome {
+        totalIncome += object.amount
+      }
+    }
+    for object in fetchResultsController.fetchedObjects! {
+      if !object.isIncome {
+        let number = ConfigureManager.configureNumberAsCurrancy(
+          object.amount as NSNumber,
+          numberStyle: .currency,
+          currencyCode: "USD")
+        expenseLabel.text = "\(number)"
+        break
+      }
+    }
+    var totalExpense = 0.0
+    for object in fetchResultsController.fetchedObjects! {
+      if !object.isIncome {
+        totalExpense += object.amount
+      }
+    }
+    let totalBalance = totalIncome - totalExpense
+    let balance = ConfigureManager.configureNumberAsCurrancy(
+      totalBalance as NSNumber,
+      numberStyle: .currency,
+      currencyCode: "USD")
+    totalLabel.text = "\(balance)"
   }
   private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
