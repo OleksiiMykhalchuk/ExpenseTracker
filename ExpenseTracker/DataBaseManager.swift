@@ -19,6 +19,16 @@ class DataBaseManager {
       })
       return container
     }()
+    
+    func addCategory(_ category: CategoryEntity) {
+        let categorySQL = Category(context: managedObjectContext)
+        categorySQL.name = category.name
+        do {
+          try managedObjectContext.save()
+        } catch {
+          fatalError("Error \(error)")
+        }
+    }
 
     func save() {
       let context = persistentContainer.viewContext

@@ -118,14 +118,7 @@ extension CategoryViewController: CategoryDetailViewControllerDelegate {
     navigationController?.popViewController(animated: true)
   }
   func categoryDetailViewController(_ controller: CategoryDetailViewController, didFinishAdding category: String) {
-    let categorySQL = Category(context: managedObjectContext)
-    categorySQL.name = category
-    do {
-      try managedObjectContext.save()
-    } catch {
-      fatalError("Error \(error)")
-    }
-    //    getDataFromCategoryTable()
+      dataBaseManager.addCategory(.init(name: category))
     tableView.reloadData()
     navigationController?.popViewController(animated: true)
   }
