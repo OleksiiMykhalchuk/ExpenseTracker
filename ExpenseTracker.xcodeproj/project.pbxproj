@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08CEF9EE283563A4006F57F2 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08CEF9F0283563A4006F57F2 /* Localization.strings */; };
+		08CEF9F228356A94006F57F2 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CEF9F128356A94006F57F2 /* DataBaseManager.swift */; };
 		08DA5E0E282AE53C00C93A5F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DA5E0D282AE53C00C93A5F /* R.generated.swift */; };
 		5129DDDEE9FE0E980B0E8C91 /* Pods_ExpenseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */; };
 		88178EE1282E70BC00E84146 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88178EE0282E70BC00E84146 /* AlertManager.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		08CEF9EF283563A4006F57F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
+		08CEF9F128356A94006F57F2 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		08DA5E0D282AE53C00C93A5F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		778D8A98CA6985A85E9997CA /* Pods-ExpenseTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseTracker.release.xcconfig"; path = "Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker.release.xcconfig"; sourceTree = "<group>"; };
 		7A7B5B7B2B18727A078C87F9 /* Pods-ExpenseTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseTracker.debug.xcconfig"; path = "Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				88178EEB282EC15900E84146 /* ConfigureManager.swift */,
 				883FCD552833DC2900EFEC79 /* MyDate.swift */,
 				08CEF9F0283563A4006F57F2 /* Localization.strings */,
+				08CEF9F128356A94006F57F2 /* DataBaseManager.swift */,
 			);
 			path = ExpenseTracker;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				883D998D2823E6800080DC7B /* CategoryViewController.swift in Sources */,
 				8856C8CD282D5EB6004A38F9 /* AddIncomeTableViewController.swift in Sources */,
 				883D998F28257E000080DC7B /* HomePageViewController.swift in Sources */,
+				08CEF9F228356A94006F57F2 /* DataBaseManager.swift in Sources */,
 				8856C8C1282ABCA6004A38F9 /* WalletViewController.swift in Sources */,
 				883FCD562833DC2900EFEC79 /* MyDate.swift in Sources */,
 				88178EE1282E70BC00E84146 /* AlertManager.swift in Sources */,

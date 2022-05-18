@@ -18,7 +18,7 @@ protocol CategoryIncomeDetailTableViewControllerDelegate: AnyObject {
 }
 
 class CategoryIncomeDetailTableViewController: UITableViewController {
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var navigationBar: UINavigationBar!
   weak var delegate: CategoryIncomeDetailTableViewControllerDelegate?

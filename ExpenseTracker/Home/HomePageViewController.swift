@@ -16,7 +16,7 @@ class HomePageViewController: UIViewController {
   @IBOutlet weak var incomeLabel: UILabel!
   @IBOutlet weak var expenseLabel: UILabel!
   // MARK: - Variables
-  var managedObjectContext: NSManagedObjectContext?
+    var dataBaseManager: DataBaseManager!
   var totalBalance: Double!
   var totalExpense: Double!
   var totalIncome: Double!

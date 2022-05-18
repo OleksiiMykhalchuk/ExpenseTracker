@@ -26,7 +26,7 @@ class CategoryDetailViewController: UITableViewController {
   var barButton = UIBarButtonItem()
   var categoryToEdit: Category? 
   var indexToEdit: IndexPath?
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
   weak var delegate: CategoryDetailViewControllerDelegate?
   // MARK: - Actions
   @IBAction func doneButton() {

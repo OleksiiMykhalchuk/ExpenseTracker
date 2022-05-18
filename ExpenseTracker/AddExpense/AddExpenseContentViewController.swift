@@ -37,7 +37,7 @@ class AddExpenseContentViewController: UITableViewController {
   }
   // MARK: - Variables
   var categoryName: String = "No Category"
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
   var expenses = [Expense]()
   // MARK: - viewDidLoad
   override func viewDidLoad() {
@@ -74,7 +74,7 @@ class AddExpenseContentViewController: UITableViewController {
     if segue.identifier == "Category" {
       guard let controller = segue.destination as? CategoryViewController else { return }
       controller.delegate = self
-      controller.managedObjectContext = managedObjectContext
+      controller.dataBaseManager = dataBaseManager
     }
   }
 }

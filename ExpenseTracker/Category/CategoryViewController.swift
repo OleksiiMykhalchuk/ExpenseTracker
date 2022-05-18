@@ -15,7 +15,7 @@ protocol CategoryPickerViewControllerDelegate: AnyObject {
 class CategoryViewController: UIViewController {
   var categoryArray = [Category]()
   var categoryName: String?
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
   weak var delegate: CategoryPickerViewControllerDelegate?
   lazy var fetchResultController: NSFetchedResultsController<Category> = {
     let fetchRequest = NSFetchRequest<Category>()
@@ -71,7 +71,7 @@ extension CategoryViewController: UITableViewDataSource {
     controller.delegate = self
     controller.categoryToEdit = fetchResultController.object(at: indexPath)
     controller.indexToEdit = indexPath
-    controller.managedObjectContext = managedObjectContext
+    controller.dataBaseManager = dataBaseManager
     navigationController?.pushViewController(controller, animated: true)
   }
   func tableView(_ tableView: UITableView,
@@ -91,12 +91,12 @@ extension CategoryViewController: UITableViewDataSource {
     if segue.identifier == "AddCategory" {
       if let controller = segue.destination as? CategoryDetailViewController {
         controller.delegate = self
-        controller.managedObjectContext = managedObjectContext
+        controller.dataBaseManager = dataBaseManager
       }
     } else if segue.identifier == "EditCategory" {
       if let controller = segue.destination as? CategoryDetailViewController {
         controller.delegate = self
-        controller.managedObjectContext = managedObjectContext
+        controller.dataBaseManager = dataBaseManager
       }
     }
   }

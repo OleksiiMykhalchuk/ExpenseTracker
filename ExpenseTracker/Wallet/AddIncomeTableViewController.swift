@@ -39,7 +39,7 @@ class AddIncomeTableViewController: UITableViewController {
   }
   // MARK: - Variables
   var categoryName = "No Category"
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
   var delegate: AddIncomeViewControllerDelegate?
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +86,7 @@ class AddIncomeTableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "CategoryIncome" {
       let controller = segue.destination as? CategoryIncomeViewController
-      controller?.managedObjectContext = managedObjectContext
+      controller?.dataBaseManager = dataBaseManager
       controller?.delegate = self
     }
   }
