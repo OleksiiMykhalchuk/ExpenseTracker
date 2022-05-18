@@ -152,6 +152,9 @@
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="See All"/>
+                                <connections>
+                                    <action selector="seeAll" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ybp-Fg-acL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -177,6 +180,7 @@
                     <connections>
                         <outlet property="expenseLabel" destination="f7L-LX-POB" id="GxH-hz-2j7"/>
                         <outlet property="incomeLabel" destination="H3w-og-uE1" id="yZo-4F-PLE"/>
+                        <outlet property="seeAllBtn" destination="6ZQ-Cs-S6L" id="xaK-rf-HD1"/>
                         <outlet property="tableView" destination="nXR-bA-XJi" id="Gdy-S1-Zoq"/>
                         <outlet property="totalLabel" destination="1Bi-AG-ij6" id="0O9-7M-ghu"/>
                         <outlet property="viewTotals" destination="xO8-QF-r95" id="mLT-dZ-aW7"/>

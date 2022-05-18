@@ -15,6 +15,7 @@ class HomePageViewController: UIViewController {
   @IBOutlet weak var totalLabel: UILabel!
   @IBOutlet weak var incomeLabel: UILabel!
   @IBOutlet weak var expenseLabel: UILabel!
+  @IBOutlet weak var seeAllBtn: UIButton!
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext?
   var totalBalance: Double!
@@ -37,6 +38,45 @@ class HomePageViewController: UIViewController {
     fetchResultsController.delegate = self
     return fetchResultsController
   }()
+  // MARK: - Actions
+  @IBAction func seeAll() {
+    let allView = UIView()
+    allView.backgroundColor = .white
+    allView.layer.cornerRadius = 20
+    view.addSubview(allView)
+    allView.translatesAutoresizingMaskIntoConstraints = false
+
+    let constraints = [
+      allView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      allView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+      allView.widthAnchor.constraint(equalToConstant: view.bounds.width - 40),
+      allView.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
+      allView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -55)
+    ]
+    NSLayoutConstraint.activate(constraints)
+    let label = UILabel()
+    label.text = "Transaction History"
+    label.font = R.font.interBold(size: 14)
+    label.textColor = .black
+    allView.addSubview(label)
+    label.translatesAutoresizingMaskIntoConstraints = false
+    let labelConstraints = [
+      label.leadingAnchor.constraint(equalTo: allView.leadingAnchor, constant: 10),
+      label.topAnchor.constraint(equalTo: allView.topAnchor, constant: 10)
+    ]
+    NSLayoutConstraint.activate(labelConstraints)
+    let closeButton = UIButton()
+    closeButton.setTitle("Close", for: .normal)
+    closeButton.setTitleColor(R.color.green2(), for: .normal)
+    closeButton.titleLabel?.font = R.font.interBold(size: 14)
+    allView.addSubview(closeButton)
+    closeButton.translatesAutoresizingMaskIntoConstraints = false
+    let closeButtonConstraints = [
+      closeButton.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -10),
+      closeButton.topAnchor.constraint(equalTo: allView.topAnchor, constant: 4)
+    ]
+    NSLayoutConstraint.activate(closeButtonConstraints)
+  }
     override func viewDidLoad() {
         super.viewDidLoad()
       tableView.delegate = self
