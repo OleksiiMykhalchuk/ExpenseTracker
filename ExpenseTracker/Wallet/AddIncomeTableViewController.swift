@@ -35,6 +35,7 @@ class AddIncomeTableViewController: UITableViewController {
       fatalError("Error \(error)")
     }
     textField.text = ""
+    delegate?.reloadOnDone()
   }
   // MARK: - Variables
   var categoryName = "No Category"

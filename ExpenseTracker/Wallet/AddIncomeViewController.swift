@@ -10,6 +10,7 @@ import CoreData
 
 protocol AddIncomeViewControllerDelegate: AnyObject {
   func addIncomeViewControllerDidReloadOnDismiss()
+  func reloadOnDone()
 }
 
 class AddIncomeViewController: UIViewController {

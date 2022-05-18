@@ -95,6 +95,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="9kB-qO-DXs" id="nBU-H5-Lh7"/>
+                        <outlet property="totalLabel" destination="eLv-x4-M6k" id="u0h-nS-Slu"/>
                         <outlet property="viewContent" destination="yTJ-XE-HJA" id="Mxr-eh-N0p"/>
                     </connections>
                 </viewController>

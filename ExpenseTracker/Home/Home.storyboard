@@ -51,20 +51,26 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="$ 9,999.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H3w-og-uE1">
-                                        <rect key="frame" x="20" y="155.5" width="106" height="24.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="99,999.99 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H3w-og-uE1">
+                                        <rect key="frame" x="15" y="155.5" width="148" height="24.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="148" id="leU-ln-Apq"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expenses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSb-Wq-uOC">
-                                        <rect key="frame" x="215.5" y="128.5" width="83.5" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSb-Wq-uOC">
+                                        <rect key="frame" x="225.5" y="128.5" width="73.5" height="22"/>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="$ 999.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="f7L-LX-POB">
-                                        <rect key="frame" x="210.5" y="155.5" width="88.5" height="24.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="9,999.99 USD" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="f7L-LX-POB">
+                                        <rect key="frame" x="169" y="155.5" width="135" height="24.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="uKE-Dp-RNG"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -80,11 +86,11 @@
                                     <constraint firstItem="CCm-f7-7nU" firstAttribute="top" secondItem="xO8-QF-r95" secondAttribute="top" constant="20" id="LxN-ka-T8J"/>
                                     <constraint firstAttribute="bottom" secondItem="f7L-LX-POB" secondAttribute="bottom" constant="20" id="MtR-3m-nMV"/>
                                     <constraint firstItem="f7L-LX-POB" firstAttribute="top" secondItem="fSb-Wq-uOC" secondAttribute="bottom" constant="5" id="Vqe-8Y-SSK"/>
-                                    <constraint firstAttribute="trailing" secondItem="f7L-LX-POB" secondAttribute="trailing" constant="20" id="XWv-ZE-OgE"/>
+                                    <constraint firstAttribute="trailing" secondItem="f7L-LX-POB" secondAttribute="trailing" constant="15" id="XWv-ZE-OgE"/>
                                     <constraint firstAttribute="trailing" secondItem="fSb-Wq-uOC" secondAttribute="trailing" constant="20" id="gqZ-y2-Ar8"/>
                                     <constraint firstItem="H3w-og-uE1" firstAttribute="top" secondItem="bAb-YR-Jl4" secondAttribute="bottom" constant="5" id="qZP-ht-wv0"/>
                                     <constraint firstAttribute="bottom" secondItem="H3w-og-uE1" secondAttribute="bottom" constant="20" id="waB-p1-iGt"/>
-                                    <constraint firstItem="H3w-og-uE1" firstAttribute="leading" secondItem="xO8-QF-r95" secondAttribute="leading" constant="20" id="ywg-Zx-enk"/>
+                                    <constraint firstItem="H3w-og-uE1" firstAttribute="leading" secondItem="xO8-QF-r95" secondAttribute="leading" constant="15" id="ywg-Zx-enk"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9Q-iL-vng">
@@ -98,10 +104,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeCell" id="YX6-gn-I41" customClass="HomeTableViewCell" customModule="ExpenseTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="335" height="44.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="335" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YX6-gn-I41" id="pN8-zX-8H9">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uV8-aE-0rK">
@@ -111,13 +117,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nY-4E-OQB">
-                                                    <rect key="frame" x="10" y="25.5" width="33" height="16"/>
+                                                    <rect key="frame" x="10" y="25" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot1-P3-GwV">
-                                                    <rect key="frame" x="273" y="11" width="46" height="22.5"/>
+                                                    <rect key="frame" x="273" y="11" width="46" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

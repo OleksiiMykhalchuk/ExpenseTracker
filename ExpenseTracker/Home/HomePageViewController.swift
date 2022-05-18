@@ -20,6 +20,9 @@ class HomePageViewController: UIViewController {
   var totalBalance: Double!
   var totalExpense: Double!
   var totalIncome: Double!
+  var expense: Double?
+  var income: Double?
+  var negative = ""
   lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
     let fetchRequest = NSFetchRequest<IncomeExpense>()
     let entity = IncomeExpense.entity()
@@ -42,6 +45,9 @@ class HomePageViewController: UIViewController {
       configureViewTotals()
       performFetch()
       configureTitleTextAttributes()
+      totalLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
+      incomeLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
+      expenseLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
     }
   deinit {
     fetchResultsController.delegate = nil
@@ -50,60 +56,51 @@ class HomePageViewController: UIViewController {
     super.viewWillAppear(animated)
     performFetch()
     tableView.reloadData()
-//    for object in fetchResultsController.fetchedObjects! {
-//      if object.isIncome {
-//        let number = ConfigureManager.configureNumberAsCurrancy(
-//          object.amount as NSNumber,
-//          numberStyle: .currency,
-//          currencyCode: "USD")
-//        incomeLabel.text = "\(number)"
-//        break
-//      }
-//    }
-    totalIncome = 0.0
-    for object in fetchResultsController.fetchedObjects! {
-      if object.isIncome {
-        totalIncome += object.amount
-      }
+    for object in fetchResultsController.fetchedObjects! where object.isIncome {
+          income = object.amount
+        break
     }
-//    for object in fetchResultsController.fetchedObjects! {
-//      if !object.isIncome {
-//        let number = ConfigureManager.configureNumberAsCurrancy(
-//          object.amount as NSNumber,
-//          numberStyle: .currency,
-//          currencyCode: "USD")
-//        expenseLabel.text = "\(number)"
-//        break
-//      }
-//    }
+    totalIncome = 0.0
+    for object in fetchResultsController.fetchedObjects! where object.isIncome {
+        totalIncome += object.amount
+    }
+    for object in fetchResultsController.fetchedObjects! where !object.isIncome {
+          expense = object.amount
+        break
+    }
     totalExpense = 0.0
-    for object in fetchResultsController.fetchedObjects! {
-      if !object.isIncome {
+    for object in fetchResultsController.fetchedObjects! where !object.isIncome {
         totalExpense += object.amount
-      }
     }
     totalBalance = totalIncome - totalExpense
+    totalBalance < 0 ? (negative = "- ") : (negative = "")
 
-//    totalLabel.text = "\(balance)"
+    print("view will appear")
   }
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    if totalBalance != 0.0 {
     numberLabelAnimate(totalBalance, speed: 2.0) { balance in
-      self.totalLabel.text = "\(balance)"
+      self.totalLabel.text = self.negative + "\(balance)"
+      }
     }
-    numberLabelAnimate(totalIncome, speed: 2.0) { balance in
-      self.incomeLabel.text = "\(balance)"
+    if let income = income {
+      numberLabelAnimate(income, speed: 2.0) { balance in
+        self.incomeLabel.text = "\(balance)"
+      }
     }
-    numberLabelAnimate(totalExpense, speed: 2.0) { balance in
-      self.expenseLabel.text = "\(balance)"
+    if let expense = expense {
+      numberLabelAnimate(expense, speed: 2.0) { balance in
+        self.expenseLabel.text = "\(balance)"
+      }
     }
-
+    print("view did appear")
   }
   func numberLabelAnimate(_ number: Double, speed: Double, completion: @escaping (String) -> Void) {
-    let total = Int(number)
+    let total = abs(Int(number))
     let duration = speed
     DispatchQueue.global().async {
-      for number in 0...total {
+      for number in 0...abs(total) {
         let sleepTime = Int32(duration/Double(total) * 1000000.0)
         usleep(useconds_t(sleepTime))
         let balance = ConfigureManager.configureNumberAsCurrancy(

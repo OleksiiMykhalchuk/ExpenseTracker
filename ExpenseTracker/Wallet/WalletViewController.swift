@@ -11,8 +11,13 @@ import CoreData
 class WalletViewController: UIViewController {
   @IBOutlet weak var viewContent: UIView!
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var totalLabel: UILabel!
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext!
+  var totalBalance: Double!
+  var totalIncome: Double!
+  var totalExpense: Double!
+  var negative = ""
   lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
     let fetchRequest = NSFetchRequest<IncomeExpense>()
     let entity = IncomeExpense.entity()
@@ -40,12 +45,47 @@ class WalletViewController: UIViewController {
       tableView.delegate = self
       tableView.dataSource = self
       performFetch()
-      print("Wallet")
+      totalLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
     }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     performFetch()
     tableView.reloadData()
+    totalIncome = 0.0
+    for object in fetchResultsController.fetchedObjects! where object.isIncome {
+      totalIncome += object.amount
+    }
+    totalExpense = 0.0
+    for object in fetchResultsController.fetchedObjects! where !object.isIncome {
+      totalExpense += object.amount
+    }
+    totalBalance = totalIncome - totalExpense
+    if totalBalance < 0 { negative = "- "} else { negative = ""}
+  }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    if totalBalance != 0.0 {
+      numberLabelAnimate(totalBalance, speed: 2.0) { balance in
+        self.totalLabel.text = self.negative + "\(balance)"
+      }
+    }
+  }
+  func numberLabelAnimate(_ number: Double, speed: Double, completion: @escaping (String) -> Void) {
+    let total = abs(Int(number))
+    let duration = speed
+    DispatchQueue.global().async {
+      for number in 0...abs(total) {
+        let sleepTime = Int32(duration/Double(total) * 1000000.0)
+        usleep(useconds_t(sleepTime))
+        let balance = ConfigureManager.configureNumberAsCurrancy(
+          number as NSNumber,
+          numberStyle: .currency,
+          currencyCode: "USD")
+        DispatchQueue.main.async {
+          completion(balance)
+        }
+      }
+    }
   }
   // MARK: - Private Methods
   private func configureTitleTextAttributes() {
@@ -144,5 +184,11 @@ extension WalletViewController: AddIncomeViewControllerDelegate {
   func addIncomeViewControllerDidReloadOnDismiss() {
     performFetch()
     tableView.reloadData()
+    viewWillAppear(true)
+    viewDidAppear(true)
+  }
+  func reloadOnDone() {
+    viewWillAppear(true)
+    viewDidAppear(true)
   }
 }
