@@ -74,8 +74,6 @@ class HomePageViewController: UIViewController {
     }
     totalBalance = totalIncome - totalExpense
     totalBalance < 0 ? (negative = "- ") : (negative = "")
-
-    print("view will appear")
   }
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
@@ -94,7 +92,6 @@ class HomePageViewController: UIViewController {
         self.expenseLabel.text = "\(balance)"
       }
     }
-    print("view did appear")
   }
   func numberLabelAnimate(_ number: Double, speed: Double, completion: @escaping (String) -> Void) {
     let total = abs(Int(number))

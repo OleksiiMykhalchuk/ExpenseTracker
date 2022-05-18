@@ -14,6 +14,7 @@ class WalletViewController: UIViewController {
   @IBOutlet weak var totalLabel: UILabel!
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext!
+  var incomes = [IncomeExpense]()
   var totalBalance: Double!
   var totalIncome: Double!
   var totalExpense: Double!
@@ -113,7 +114,11 @@ class WalletViewController: UIViewController {
   // MARK: - performFetch
   func performFetch() {
     do {
+      incomes.removeAll()
       try fetchResultsController.performFetch()
+      for object in fetchResultsController.fetchedObjects! where object.isIncome {
+        incomes.append(object)
+      }
     } catch {
       fatalError("Error \(error)")
     }
@@ -138,8 +143,7 @@ extension WalletViewController: UITableViewDataSource {
       cell.dateLabel.text = ""
       cell.isUserInteractionEnabled = false
     } else {
-      if fetchResultsController.object(at: indexPath).isIncome {
-        let object = fetchResultsController.object(at: indexPath)
+      let object = incomes[indexPath.row]
         let date = object.date
         let amount = NSNumber(value: object.amount)
         let category = object.category
@@ -149,7 +153,6 @@ extension WalletViewController: UITableViewDataSource {
           amount,
           numberStyle: .currency,
           currencyCode: "USD")
-      }
     }
     cell.isUserInteractionEnabled = false
     return cell
@@ -158,8 +161,7 @@ extension WalletViewController: UITableViewDataSource {
     if fetchedResultsControllerIsEmpty(fetchResultsController) {
       return 1
     } else {
-      let object = fetchResultsController.sections![section]
-      return object.numberOfObjects
+      return incomes.count
     }
   }
 }
