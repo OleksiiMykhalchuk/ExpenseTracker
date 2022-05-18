@@ -73,6 +73,7 @@ class StatisticViewController: UIViewController {
       tableView.dataSource = self
       let cellNib = UINib(nibName: "WalletCell", bundle: nil)
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
+      tableView.rowHeight = 60
       performFetch()
       dropDown.optionArray = ["Income", "Expense"]
       dropDown.optionIds = [0, 1]
