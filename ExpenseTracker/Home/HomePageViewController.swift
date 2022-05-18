@@ -27,6 +27,7 @@ class HomePageViewController: UIViewController {
   let allView = UIView()
   let closeButton = UIButton()
   let label = UILabel()
+  let seeAllTableView = UITableView()
   lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
     let fetchRequest = NSFetchRequest<IncomeExpense>()
     let entity = IncomeExpense.entity()
@@ -81,9 +82,24 @@ class HomePageViewController: UIViewController {
     ]
     NSLayoutConstraint.activate(closeButtonConstraints)
     closeButton.addTarget(self, action: #selector(closePress(_:)), for: .touchUpInside)
+
+    view.bringSubviewToFront(tableView)
+    for constraint in tableView.constraints {
+      tableView.removeConstraint(constraint)
+    }
+    tableView.translatesAutoresizingMaskIntoConstraints = false
+    let tableConstraints = [
+      tableView.leadingAnchor.constraint(equalTo: allView.leadingAnchor, constant: 10),
+      tableView.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -10),
+      tableView.topAnchor.constraint(equalTo: allView.topAnchor, constant: 30),
+      tableView.bottomAnchor.constraint(equalTo: allView.bottomAnchor, constant: -10)
+    ]
+    NSLayoutConstraint.activate(tableConstraints)
   }
   @objc func closePress(_ sender: UIButton) {
-    print("Close \(sender)")
+    allView.removeFromSuperview()
+    label.removeFromSuperview()
+    closeButton.removeFromSuperview()
   }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -271,3 +287,4 @@ extension HomePageViewController: NSFetchedResultsControllerDelegate {
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
   }
 }
+
