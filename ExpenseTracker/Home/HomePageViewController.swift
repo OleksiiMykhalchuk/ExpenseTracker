@@ -184,6 +184,7 @@ extension HomePageViewController: UITableViewDataSource {
     } else {
       let object = fetchResultsController.object(at: indexPath)
       var prefix = "- "
+      cell.categoryLabel.textColor = R.color.blackWhiteText()
         cell.categoryLabel.text = object.category
         let date = object.date
         cell.dateLabel.text = configureDate(date, dateFormat: "d MMM, YYYY")

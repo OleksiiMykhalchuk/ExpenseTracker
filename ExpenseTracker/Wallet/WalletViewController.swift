@@ -144,6 +144,7 @@ extension WalletViewController: UITableViewDataSource {
       cell.isUserInteractionEnabled = false
     } else {
       let object = incomes[indexPath.row]
+      cell.categoryLabel.textColor = R.color.blackWhiteText()
         let date = object.date
         let amount = NSNumber(value: object.amount)
         let category = object.category
