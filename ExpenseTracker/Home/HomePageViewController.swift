@@ -16,6 +16,7 @@ class HomePageViewController: UIViewController {
   @IBOutlet weak var incomeLabel: UILabel!
   @IBOutlet weak var expenseLabel: UILabel!
   @IBOutlet weak var seeAllBtn: UIButton!
+  @IBOutlet weak var transactionLabel: UILabel!
   // MARK: - Variables
   var managedObjectContext: NSManagedObjectContext?
   var totalBalance: Double!
@@ -28,6 +29,7 @@ class HomePageViewController: UIViewController {
   let closeButton = UIButton()
   let label = UILabel()
   let seeAllTableView = UITableView()
+  var constraintTop = NSLayoutConstraint()
   lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
     let fetchRequest = NSFetchRequest<IncomeExpense>()
     let entity = IncomeExpense.entity()
@@ -49,13 +51,44 @@ class HomePageViewController: UIViewController {
     view.addSubview(allView)
     view.bringSubviewToFront(allView)
     allView.translatesAutoresizingMaskIntoConstraints = false
+    label.alpha = 0.0
+    closeButton.alpha = 0.0
+    tableView.alpha = 0.0
+    allView.alpha = 0.0
+    UIView.animate(
+      withDuration: 1.0,
+      delay: 0.0,
+      options: .allowAnimatedContent,
+      animations: {self.viewTotals.alpha = 0.0},
+      completion: nil)
+    UIView.animate(
+      withDuration: 1.0,
+      delay: 1.0,
+      options: .curveEaseIn,
+      animations: {
+        self.allView.alpha = 1.0
+      },
+      completion: nil)
+    UIView.animate(
+      withDuration: 1.0,
+      delay: 2.0,
+      options: .curveEaseIn,
+      animations: {
+        self.label.alpha = 1.0
+        self.closeButton.alpha = 1.0
+        self.tableView.alpha = 1.0
 
+      },
+      completion: nil)
     let constraints = [
       allView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
       allView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-      allView.widthAnchor.constraint(equalToConstant: view.bounds.width - 40),
       allView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.size.height / 10),
       allView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -55)
+//      allView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//      allView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//      allView.widthAnchor.constraint(equalToConstant: view.bounds.size.width - 20),
+//      allView.heightAnchor.constraint(equalToConstant: view.bounds.size.height - 100)
     ]
     NSLayoutConstraint.activate(constraints)
 
@@ -84,22 +117,56 @@ class HomePageViewController: UIViewController {
     closeButton.addTarget(self, action: #selector(closePress(_:)), for: .touchUpInside)
 
     view.bringSubviewToFront(tableView)
-    for constraint in tableView.constraints {
-      tableView.removeConstraint(constraint)
-    }
+//    tableView.removeFromSuperview()
+//    allView.addSubview(tableView)
+    var constraints1 = [NSLayoutConstraint]()
+//    for constraint in tableView.constraints {
+//
+//      constraints1.append(constraint)
+//      tableView.removeConstraint(constraint)
+//    }
     tableView.translatesAutoresizingMaskIntoConstraints = false
+//    let constraintTop = NSLayoutConstraint(
+//      item: tableView,
+//      attribute: .top,
+//      relatedBy: .equal,
+//      toItem: allView,
+//      attribute: .top,
+//      multiplier: 0,
+//      constant: 100)
+//    constraintTop.isActive = true
+    tableView.clipsToBounds = false
+    constraintTop.isActive = false
     let tableConstraints = [
-      tableView.leadingAnchor.constraint(equalTo: allView.leadingAnchor, constant: 10),
-      tableView.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -10),
-      tableView.topAnchor.constraint(equalTo: allView.topAnchor, constant: 30),
-      tableView.bottomAnchor.constraint(equalTo: allView.bottomAnchor, constant: -10)
+//      tableView.leadingAnchor.constraint(equalTo: allView.leadingAnchor, constant: 10),
+//      tableView.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -10),
+      tableView.topAnchor.constraint(equalTo: allView.topAnchor, constant: 40)
+//      tableView.bottomAnchor.constraint(equalTo: allView.bottomAnchor, constant: -10)
+//      tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//      tableView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//      tableView.widthAnchor.constraint(equalToConstant: view.bounds.size.width - 20),
+//      tableView.heightAnchor.constraint(equalToConstant: view.bounds.size.height - 50)
     ]
     NSLayoutConstraint.activate(tableConstraints)
   }
   @objc func closePress(_ sender: UIButton) {
+
+//    UIView.animate(
+//      withDuration: 1.0,
+//      delay: 0.0,
+//      options: .curveLinear,
+//      animations: {self.allView.alpha = 0.0},
+//      completion: nil)
+//    UIView.animate(
+//      withDuration: 1.0,
+//      delay: 1.0,
+//      options: .curveLinear,
+//      animations: {self.viewTotals.alpha = 1.0},
+//      completion: nil)
     allView.removeFromSuperview()
     label.removeFromSuperview()
     closeButton.removeFromSuperview()
+    constraintTop.isActive = true
   }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +179,8 @@ class HomePageViewController: UIViewController {
       totalLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
       incomeLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
       expenseLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
+      constraintTop = tableView.topAnchor.constraint(equalTo: transactionLabel.bottomAnchor, constant: 5)
+      constraintTop.isActive = true
     }
   deinit {
     fetchResultsController.delegate = nil
