@@ -32,7 +32,7 @@ class HomePageViewController: UIViewController {
     let fetchRequest = NSFetchRequest<IncomeExpense>()
     let entity = IncomeExpense.entity()
     fetchRequest.entity = entity
-    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+    let sortDescriptor = NSSortDescriptor(key: "objectID", ascending: false)
     fetchRequest.sortDescriptors = [sortDescriptor]
     let fetchResultsController = NSFetchedResultsController(
       fetchRequest: fetchRequest,
@@ -54,7 +54,7 @@ class HomePageViewController: UIViewController {
       allView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
       allView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
       allView.widthAnchor.constraint(equalToConstant: view.bounds.width - 40),
-      allView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+      allView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.size.height / 10),
       allView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -55)
     ]
     NSLayoutConstraint.activate(constraints)
