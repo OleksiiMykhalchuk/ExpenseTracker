@@ -20,19 +20,19 @@ class StatisticViewController: UIViewController {
     switch segmentControl.selectedSegmentIndex {
     case 0:
         segment = .day
-        performFetch()
+        dataBaseManager.performFetch()
         tableView.reloadData()
     case 1:
         segment = .week
-        performFetch()
+        dataBaseManager.performFetch()
         tableView.reloadData()
     case 2:
         segment = .month
-        performFetch()
+        dataBaseManager.performFetch()
         tableView.reloadData()
     case 3:
         segment = .year
-        performFetch()
+        dataBaseManager.performFetch()
         tableView.reloadData()
     default:
         return
@@ -54,19 +54,19 @@ class StatisticViewController: UIViewController {
   var dataIncome = [IncomeExpense]()
   var dataExpense = [IncomeExpense]()
   let now = Date()
-  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
-    let fetchRequest = NSFetchRequest<IncomeExpense>()
-    let entity = IncomeExpense.entity()
-    fetchRequest.entity = entity
-    let sortDescriptor = NSSortDescriptor(key: "amount", ascending: false)
-    fetchRequest.sortDescriptors = [sortDescriptor]
-    let fetchResultsController = NSFetchedResultsController(
-      fetchRequest: fetchRequest,
-      managedObjectContext: managedObjectContext,
-      sectionNameKeyPath: nil,
-      cacheName: nil)
-    return fetchResultsController
-  }()
+//  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
+//    let fetchRequest = NSFetchRequest<IncomeExpense>()
+//    let entity = IncomeExpense.entity()
+//    fetchRequest.entity = entity
+//    let sortDescriptor = NSSortDescriptor(key: "amount", ascending: false)
+//    fetchRequest.sortDescriptors = [sortDescriptor]
+//    let fetchResultsController = NSFetchedResultsController(
+//      fetchRequest: fetchRequest,
+//      managedObjectContext: managedObjectContext,
+//      sectionNameKeyPath: nil,
+//      cacheName: nil)
+//    return fetchResultsController
+//  }()
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Statistic"
@@ -74,7 +74,7 @@ class StatisticViewController: UIViewController {
       let cellNib = UINib(nibName: "WalletCell", bundle: nil)
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
       tableView.rowHeight = 60
-      performFetch()
+      dataBaseManager.performFetch()
       dropDown.optionArray = ["Income", "Expense"]
       dropDown.optionIds = [0, 1]
       dropDown.selectedRowColor = R.color.green2()!
@@ -86,41 +86,41 @@ class StatisticViewController: UIViewController {
         if index == 0 {
           self.dropDownisIncome = true
           self.tableView.reloadData()
-          self.performFetch()
+          self.dataBaseManager.performFetch()
         } else {
           self.dropDownisIncome = false
           self.tableView.reloadData()
-          self.performFetch()
+          self.dataBaseManager.performFetch()
         }
       })
     }
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    performFetch()
+    dataBaseManager.performFetch()
     tableView.reloadData()
   }
-  func performFetch() {
-    do {
-      try fetchResultsController.performFetch()
-      dataIncome.removeAll()
-      dataExpense.removeAll()
-      if let dataFetched = fetchResultsController.fetchedObjects {
-        for data in dataFetched {
-          if data.isIncome {
-            if segment.rawValue == filterByDate(now: Date(), dataDate: data.date).rawValue {
-              dataIncome.append(data)
-            }
-          } else {
-            if segment.rawValue == filterByDate(now: Date(), dataDate: data.date).rawValue {
-              dataExpense.append(data)
-            }
-          }
-        }
-      }
-    } catch {
-      fatalError("Error \(error)")
-    }
-  }
+//  func performFetch() {
+//    do {
+//      try fetchResultsController.performFetch()
+//      dataIncome.removeAll()
+//      dataExpense.removeAll()
+//      if let dataFetched = fetchResultsController.fetchedObjects {
+//        for data in dataFetched {
+//          if data.isIncome {
+//            if segment.rawValue == filterByDate(now: Date(), dataDate: data.date).rawValue {
+//              dataIncome.append(data)
+//            }
+//          } else {
+//            if segment.rawValue == filterByDate(now: Date(), dataDate: data.date).rawValue {
+//              dataExpense.append(data)
+//            }
+//          }
+//        }
+//      }
+//    } catch {
+//      fatalError("Error \(error)")
+//    }
+//  }
   // MARK: - Private Methods
   private func filterByDate(now date: Date, dataDate: Date) -> DateFilter {
     let myDateNow = MyDate(date: date)

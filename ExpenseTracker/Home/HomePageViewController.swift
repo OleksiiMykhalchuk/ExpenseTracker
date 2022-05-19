@@ -331,14 +331,3 @@ extension HomePageViewController: UITableViewDataSource {
     }
   }
 }
-extension HomePageViewController: NSFetchedResultsControllerDelegate {
-  func fetchedResultsControllerIsEmpty(_ controller: NSFetchedResultsController<IncomeExpense>) -> Bool {
-    if controller.sections?[0].numberOfObjects == 0 {
-      return true
-    } else {
-      return false
-    }
-  }
-  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-  }
-}
