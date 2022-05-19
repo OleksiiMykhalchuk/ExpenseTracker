@@ -45,7 +45,7 @@ class CategoryDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       textField.becomeFirstResponder()
-      title = "Add Category"
+      title = R.string.localization.addCategory()
       textFieldConfiguration()
       if let categoryToEdit = categoryToEdit {
         textField.text = categoryToEdit.name
