@@ -17,7 +17,7 @@ class CategoryIncomeViewController: UIViewController {
     dismiss(animated: true)
   }
   @IBOutlet weak var tableView: UITableView!
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
   var delegate: CategoryIncomePickerDelegate?
   lazy var fetchResultsController: NSFetchedResultsController<IncomeCategory> = {
     let fetchRequest = NSFetchRequest<IncomeCategory>()
@@ -43,7 +43,7 @@ class CategoryIncomeViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "AddCategory" {
       let controller = segue.destination as? CategoryIncomeDetailTableViewController
-      controller?.managedObjectContext = managedObjectContext
+      controller?.dataBaseManager = dataBaseManager
       controller?.delegate = self
     } else if segue.identifier == "EditCategory" {
       let controller = segue.destination as? CategoryIncomeDetailTableViewController
