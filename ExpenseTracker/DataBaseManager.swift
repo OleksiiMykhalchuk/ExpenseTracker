@@ -19,7 +19,35 @@ class DataBaseManager {
       })
       return container
     }()
-    
+  private lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
+    let fetchRequest = NSFetchRequest<IncomeExpense>()
+    let entity = IncomeExpense.entity()
+    fetchRequest.entity = entity
+    let sortDescriptor = NSSortDescriptor(key: "objectID", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let fetchResultsController = NSFetchedResultsController(
+      fetchRequest: fetchRequest,
+      managedObjectContext: managedObjectContext,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
+      return fetchResultsController
+  }()
+  private var incomeExpense = [IncomeExpense]()
+  func getIncomeExpense() -> [IncomeExpense]{
+    incomeExpense.removeAll()
+    for object in fetchResultsController.fetchedObjects! {
+      incomeExpense.append(object)
+    }
+    return incomeExpense
+  }
+  func performFetch() {
+    do {
+      try fetchResultsController.performFetch()
+    } catch {
+      let nserror = error as NSError
+      fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+    }
+  }
     func addCategory(_ category: CategoryEntity) {
         let categorySQL = Category(context: managedObjectContext)
         categorySQL.name = category.name

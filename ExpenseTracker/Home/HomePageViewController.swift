@@ -31,20 +31,20 @@ class HomePageViewController: UIViewController {
   let seeAllTableView = UITableView()
   var constraintTop = NSLayoutConstraint()
   var tableConstraints = NSLayoutConstraint()
-  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
-    let fetchRequest = NSFetchRequest<IncomeExpense>()
-    let entity = IncomeExpense.entity()
-    fetchRequest.entity = entity
-    let sortDescriptor = NSSortDescriptor(key: "objectID", ascending: false)
-    fetchRequest.sortDescriptors = [sortDescriptor]
-    let fetchResultsController = NSFetchedResultsController(
-      fetchRequest: fetchRequest,
-      managedObjectContext: managedObjectContext!,
-      sectionNameKeyPath: nil,
-      cacheName: nil)
-    fetchResultsController.delegate = self
-    return fetchResultsController
-  }()
+//  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
+//    let fetchRequest = NSFetchRequest<IncomeExpense>()
+//    let entity = IncomeExpense.entity()
+//    fetchRequest.entity = entity
+//    let sortDescriptor = NSSortDescriptor(key: "objectID", ascending: false)
+//    fetchRequest.sortDescriptors = [sortDescriptor]
+//    let fetchResultsController = NSFetchedResultsController(
+//      fetchRequest: fetchRequest,
+//      managedObjectContext: managedObjectContext!,
+//      sectionNameKeyPath: nil,
+//      cacheName: nil)
+//    fetchResultsController.delegate = self
+//    return fetchResultsController
+//  }()
   // MARK: - Actions
   @IBAction func seeAll() {
     allView.backgroundColor = .white
@@ -102,7 +102,7 @@ class HomePageViewController: UIViewController {
       tableView.dataSource = self
       showBackgroundView()
       configureViewTotals()
-      performFetch()
+      dataBaseManager.performFetch()
       configureTitleTextAttributes()
       totalLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
       incomeLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
@@ -111,26 +111,26 @@ class HomePageViewController: UIViewController {
       constraintTop.isActive = true
     }
   deinit {
-    fetchResultsController.delegate = nil
+//    fetchResultsController.delegate = nil
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    performFetch()
+    dataBaseManager.performFetch()
     tableView.reloadData()
-    for object in fetchResultsController.fetchedObjects! where object.isIncome {
+    for object in dataBaseManager.getIncomeExpense() where object.isIncome {
           income = object.amount
         break
     }
     totalIncome = 0.0
-    for object in fetchResultsController.fetchedObjects! where object.isIncome {
+    for object in dataBaseManager.getIncomeExpense() where object.isIncome {
         totalIncome += object.amount
     }
-    for object in fetchResultsController.fetchedObjects! where !object.isIncome {
+    for object in dataBaseManager.getIncomeExpense() where !object.isIncome {
           expense = object.amount
         break
     }
     totalExpense = 0.0
-    for object in fetchResultsController.fetchedObjects! where !object.isIncome {
+    for object in dataBaseManager.getIncomeExpense() where !object.isIncome {
         totalExpense += object.amount
     }
     totalBalance = totalIncome - totalExpense
@@ -256,13 +256,13 @@ class HomePageViewController: UIViewController {
       }
     }
   }
-  private func performFetch() {
-    do {
-      try fetchResultsController.performFetch()
-    } catch {
-      fatalError("Error \(error)")
-    }
-  }
+//  private func performFetch() {
+//    do {
+//      try fetchResultsController.performFetch()
+//    } catch {
+//      fatalError("Error \(error)")
+//    }
+//  }
   private func configureDate(_ date: Date, dateFormat: String) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = dateFormat
@@ -294,7 +294,7 @@ extension HomePageViewController: UITableViewDataSource {
       for: indexPath) as? HomeTableViewCell else {
       return UITableViewCell()
     }
-    if fetchedResultsControllerIsEmpty(fetchResultsController) {
+    if dataBaseManager.getIncomeExpense().isEmpty {
       cell.categoryLabel.text = "No Records"
       cell.categoryLabel.textColor = .red
       cell.amountLabel.text = ""
@@ -302,7 +302,7 @@ extension HomePageViewController: UITableViewDataSource {
       cell.isUserInteractionEnabled = false
       return cell
     } else {
-      let object = fetchResultsController.object(at: indexPath)
+      let object = dataBaseManager.getIncomeExpense()[indexPath.row]
       var prefix = "- "
       cell.categoryLabel.textColor = R.color.blackWhiteText()
         cell.categoryLabel.text = object.category
@@ -324,11 +324,10 @@ extension HomePageViewController: UITableViewDataSource {
     }
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let count = fetchResultsController.sections![0].numberOfObjects
-    if fetchedResultsControllerIsEmpty(fetchResultsController) {
+    if dataBaseManager.getIncomeExpense().isEmpty {
       return 1
     } else {
-      return count
+      return dataBaseManager.getIncomeExpense().count
     }
   }
 }
