@@ -51,50 +51,16 @@ class HomePageViewController: UIViewController {
     view.addSubview(allView)
     view.bringSubviewToFront(allView)
     allView.translatesAutoresizingMaskIntoConstraints = false
-    label.alpha = 0.0
-    closeButton.alpha = 0.0
-    allView.alpha = 0.0
-    UIView.animate(
-      withDuration: 0.4,
-      delay: 0.0,
-      options: .allowAnimatedContent,
-      animations: {self.viewTotals.alpha = 0.0
-        self.tableView.alpha = 0.0
-      },
-      completion: nil)
-    UIView.animate(
-      withDuration: 0.4,
-      delay: 0.4,
-      options: .curveEaseIn,
-      animations: {
-        self.allView.alpha = 1.0
-        self.allView.layer.cornerRadius = 20
-      },
-      completion: nil)
-    UIView.animate(
-      withDuration: 0.4,
-      delay: 0.8,
-      options: .curveEaseIn,
-      animations: {
-        self.label.alpha = 1.0
-        self.closeButton.alpha = 1.0
-        self.tableView.alpha = 1.0
-
-      },
-      completion: nil)
+    seeAllAnimation()
     let constraints = [
       allView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
       allView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
       allView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.size.height / 10),
       allView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -55)
-//      allView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//      allView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//      allView.widthAnchor.constraint(equalToConstant: view.bounds.size.width - 20),
-//      allView.heightAnchor.constraint(equalToConstant: view.bounds.size.height - 100)
     ]
     NSLayoutConstraint.activate(constraints)
 
-    label.text = "Transaction History"
+    label.text = R.string.localization.transactionHistory()
     label.font = R.font.interBold(size: 14)
     label.textColor = .black
     allView.addSubview(label)
@@ -119,69 +85,15 @@ class HomePageViewController: UIViewController {
     closeButton.addTarget(self, action: #selector(closePress(_:)), for: .touchUpInside)
 
     view.bringSubviewToFront(tableView)
-//    tableView.removeFromSuperview()
-//    allView.addSubview(tableView)
-    var constraints1 = [NSLayoutConstraint]()
-//    for constraint in tableView.constraints {
-//
-//      constraints1.append(constraint)
-//      tableView.removeConstraint(constraint)
-//    }
+
     tableView.translatesAutoresizingMaskIntoConstraints = false
-//    let constraintTop = NSLayoutConstraint(
-//      item: tableView,
-//      attribute: .top,
-//      relatedBy: .equal,
-//      toItem: allView,
-//      attribute: .top,
-//      multiplier: 0,
-//      constant: 100)
-//    constraintTop.isActive = true
-//    tableView.clipsToBounds = false
+
     constraintTop.isActive = false
     tableConstraints = tableView.topAnchor.constraint(equalTo: allView.topAnchor, constant: 40)
     tableConstraints.isActive = true
-//      tableView.leadingAnchor.constraint(equalTo: allView.leadingAnchor, constant: 10),
-//      tableView.trailingAnchor.constraint(equalTo: allView.trailingAnchor, constant: -10),
-
-//      tableView.bottomAnchor.constraint(equalTo: allView.bottomAnchor, constant: -10)
-//      tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//      tableView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//      tableView.widthAnchor.constraint(equalToConstant: view.bounds.size.width - 20),
-//      tableView.heightAnchor.constraint(equalToConstant: view.bounds.size.height - 50)
-
-//    NSLayoutConstraint.activate(tableConstraints)
   }
   @objc func closePress(_ sender: UIButton) {
-
-    UIView.animate(
-      withDuration: 0.4,
-      delay: 0.0,
-      options: .curveLinear,
-      animations: {
-        self.tableConstraints.isActive = false
-        self.allView.alpha = 0.0
-        self.tableView.alpha = 0.0
-        self.label.alpha = 0.0
-        self.closeButton.alpha = 0.0
-      },
-      completion: {    _ in self.allView.removeFromSuperview()
-        self.label.removeFromSuperview()
-        self.closeButton.removeFromSuperview()
-      })
-    UIView.animate(
-      withDuration: 0.4,
-      delay: 0.4,
-      options: .curveLinear,
-      animations: {self.viewTotals.alpha = 1.0
-        self.tableView.alpha = 1.0
-      },
-      completion: nil)
-
-
-//    allView.removeFromSuperview()
-//    label.removeFromSuperview()
-//    closeButton.removeFromSuperview()
+    closeAnimate()
     constraintTop.isActive = true
   }
     override func viewDidLoad() {
@@ -258,6 +170,65 @@ class HomePageViewController: UIViewController {
         }
       }
     }
+  }
+  // MARK: - Private Methods
+  private func seeAllAnimation() {
+    label.alpha = 0.0
+    closeButton.alpha = 0.0
+    allView.alpha = 0.0
+    UIView.animate(
+      withDuration: 0.4,
+      delay: 0.0,
+      options: .allowAnimatedContent,
+      animations: {self.viewTotals.alpha = 0.0
+        self.tableView.alpha = 0.0
+      },
+      completion: nil)
+    UIView.animate(
+      withDuration: 0.4,
+      delay: 0.4,
+      options: .curveEaseIn,
+      animations: {
+        self.allView.alpha = 1.0
+        self.allView.layer.cornerRadius = 20
+      },
+      completion: nil)
+    UIView.animate(
+      withDuration: 0.4,
+      delay: 0.8,
+      options: .curveEaseIn,
+      animations: {
+        self.label.alpha = 1.0
+        self.closeButton.alpha = 1.0
+        self.tableView.alpha = 1.0
+
+      },
+      completion: nil)
+  }
+  private func closeAnimate() {
+    UIView.animate(
+      withDuration: 0.4,
+      delay: 0.0,
+      options: .curveLinear,
+      animations: {
+        self.tableConstraints.isActive = false
+        self.allView.alpha = 0.0
+        self.tableView.alpha = 0.0
+        self.label.alpha = 0.0
+        self.closeButton.alpha = 0.0
+      },
+      completion: {    _ in self.allView.removeFromSuperview()
+        self.label.removeFromSuperview()
+        self.closeButton.removeFromSuperview()
+      })
+    UIView.animate(
+      withDuration: 0.4,
+      delay: 0.4,
+      options: .curveLinear,
+      animations: {self.viewTotals.alpha = 1.0
+        self.tableView.alpha = 1.0
+      },
+      completion: nil)
   }
   private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
@@ -372,4 +343,3 @@ extension HomePageViewController: NSFetchedResultsControllerDelegate {
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
   }
 }
-
