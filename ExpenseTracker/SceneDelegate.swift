@@ -10,7 +10,7 @@ import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
-  lazy var managedObjectContext = persistentContainer.viewContext
+    private var dataBaseManager = DataBaseManager()
   func scene(_ scene: UIScene,
              willConnectTo session: UISceneSession,
              options connectionOptions: UIScene.ConnectionOptions) {
@@ -20,19 +20,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       // First Tab
       var navController = tabViewControllers[0] as? UINavigationController
       let controller1 = navController?.viewControllers.first as? HomePageViewController
-      controller1?.managedObjectContext = managedObjectContext
+      controller1?.dataBaseManager = dataBaseManager
       // Second Tab
       navController = tabViewControllers[1] as? UINavigationController
       let controller2 = navController?.viewControllers.first as? StatisticViewController
-      controller2?.managedObjectContext = managedObjectContext
+      controller2?.dataBaseManager = dataBaseManager
       // Third Tab
       navController = tabViewControllers[2] as? UINavigationController
       let controller3 = navController?.viewControllers.first as? WalletViewController
-      controller3?.managedObjectContext = managedObjectContext
+      controller3?.dataBaseManager = dataBaseManager
       // Fours Tab
       navController = tabViewControllers[3] as? UINavigationController
       let controller4 = navController?.viewControllers.first as? AddExpenseViewController
-      controller4?.managedObjectContext = managedObjectContext
+      controller4?.dataBaseManager = dataBaseManager
 
     } else {
       fatalError()
@@ -70,18 +70,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
     // Save changes in the application's managed object context when the application transitions to the background.
-    saveContext()
+      dataBaseManager.save()
   }
   // MARK: - Core Data stack
-  lazy var persistentContainer: NSPersistentContainer = {
-    let container = NSPersistentContainer(name: "ExpenseTracker")
-    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-      if let error = error as NSError? {
-        fatalError("Unresolved error \(error), \(error.userInfo)")
-      }
-    })
-    return container
-  }()
+//  lazy var persistentContainer: NSPersistentContainer = {
+//    let container = NSPersistentContainer(name: "ExpenseTracker")
+//    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//      if let error = error as NSError? {
+//        fatalError("Unresolved error \(error), \(error.userInfo)")
+//      }
+//    })
+//    return container
+//  }()
   let applicationDocumentsDirectory: URL = {
     let paths = FileManager.default.urls(
       for: .documentDirectory,
@@ -89,15 +89,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     return paths[0]
   }()
   // MARK: - Core Data Saving support
-  func saveContext () {
-    let context = persistentContainer.viewContext
-    if context.hasChanges {
-      do {
-        try context.save()
-      } catch {
-        let nserror = error as NSError
-        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-      }
-    }
-  }
+//  func saveContext () {
+//    let context = persistentContainer.viewContext
+//    if context.hasChanges {
+//      do {
+//        try context.save()
+//      } catch {
+//        let nserror = error as NSError
+//        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//      }
+//    }
+//  }
 }
