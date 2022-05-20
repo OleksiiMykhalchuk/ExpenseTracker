@@ -49,25 +49,8 @@ class WalletViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     if totalBalance != 0.0 {
-      numberLabelAnimate(totalBalance, speed: 2.0) { balance in
+      NumberLabelAnimate.startAnimate(totalBalance, speed: 2.0) { balance in
         self.totalLabel.text = self.negative + "\(balance)"
-      }
-    }
-  }
-  func numberLabelAnimate(_ number: Double, speed: Double, completion: @escaping (String) -> Void) {
-    let total = abs(Int(number))
-    let duration = speed
-    DispatchQueue.global().async {
-      for number in 0...abs(total) {
-        let sleepTime = Int32(duration/Double(total) * 1000000.0)
-        usleep(useconds_t(sleepTime))
-        let balance = ConfigureManager.configureNumberAsCurrancy(
-          number as NSNumber,
-          numberStyle: .currency,
-          currencyCode: "USD")
-        DispatchQueue.main.async {
-          completion(balance)
-        }
       }
     }
   }
