@@ -19,20 +19,20 @@ class WalletViewController: UIViewController {
   var totalIncome: Double!
   var totalExpense: Double!
   var negative = ""
-  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
-    let fetchRequest = NSFetchRequest<IncomeExpense>()
-    let entity = IncomeExpense.entity()
-    fetchRequest.entity = entity
-    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
-    fetchRequest.sortDescriptors = [sortDescriptor]
-    fetchRequest.fetchBatchSize = 20
-    let fetchResultsController = NSFetchedResultsController(
-      fetchRequest: fetchRequest,
-      managedObjectContext: managedObjectContext,
-      sectionNameKeyPath: nil,
-      cacheName: nil)
-    return fetchResultsController
-  }()
+//  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
+//    let fetchRequest = NSFetchRequest<IncomeExpense>()
+//    let entity = IncomeExpense.entity()
+//    fetchRequest.entity = entity
+//    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+//    fetchRequest.sortDescriptors = [sortDescriptor]
+//    fetchRequest.fetchBatchSize = 20
+//    let fetchResultsController = NSFetchedResultsController(
+//      fetchRequest: fetchRequest,
+//      managedObjectContext: managedObjectContext,
+//      sectionNameKeyPath: nil,
+//      cacheName: nil)
+//    return fetchResultsController
+//  }()
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Wallet"
@@ -45,19 +45,19 @@ class WalletViewController: UIViewController {
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
       tableView.delegate = self
       tableView.dataSource = self
-      performFetch()
+//      performFetch()
       totalLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
     }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    performFetch()
-    tableView.reloadData()
+//    performFetch()
+//    tableView.reloadData()
     totalIncome = 0.0
-    for object in fetchResultsController.fetchedObjects! where object.isIncome {
+    for object in dataBaseManager.getIncomeExpense().1 {
       totalIncome += object.amount
     }
     totalExpense = 0.0
-    for object in fetchResultsController.fetchedObjects! where !object.isIncome {
+    for object in dataBaseManager.getIncomeExpense().2 {
       totalExpense += object.amount
     }
     totalBalance = totalIncome - totalExpense
@@ -112,17 +112,17 @@ class WalletViewController: UIViewController {
     }
   }
   // MARK: - performFetch
-  func performFetch() {
-    do {
-      incomes.removeAll()
-      try fetchResultsController.performFetch()
-      for object in fetchResultsController.fetchedObjects! where object.isIncome {
-        incomes.append(object)
-      }
-    } catch {
-      fatalError("Error \(error)")
-    }
-  }
+//  func performFetch() {
+//    do {
+//      incomes.removeAll()
+//      try fetchResultsController.performFetch()
+//      for object in fetchResultsController.fetchedObjects! where object.isIncome {
+//        incomes.append(object)
+//      }
+//    } catch {
+//      fatalError("Error \(error)")
+//    }
+//  }
 }
 // MARK: - UITableViewDelegates
 extension WalletViewController: UITableViewDelegate {
@@ -136,14 +136,14 @@ extension WalletViewController: UITableViewDataSource {
     guard let cell = tableView.dequeueReusableCell(
       withIdentifier: "WalletCell",
       for: indexPath) as? WalletCell else { return UITableViewCell() }
-    if fetchedResultsControllerIsEmpty(fetchResultsController) {
+    if dataBaseManager.getIncomeExpense().1.isEmpty {
       cell.amountLabel.text = ""
       cell.categoryLabel.text = "No Records"
       cell.categoryLabel.textColor = .red
       cell.dateLabel.text = ""
       cell.isUserInteractionEnabled = false
     } else {
-      let object = incomes[indexPath.row]
+      let object = dataBaseManager.getIncomeExpense().1[indexPath.row]
       cell.categoryLabel.textColor = R.color.blackWhiteText()
         let date = object.date
         let amount = NSNumber(value: object.amount)
@@ -159,10 +159,10 @@ extension WalletViewController: UITableViewDataSource {
     return cell
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if fetchedResultsControllerIsEmpty(fetchResultsController) {
+    if dataBaseManager.getIncomeExpense().1.isEmpty {
       return 1
     } else {
-      return incomes.count
+      return dataBaseManager.getIncomeExpense().1.count
     }
   }
 }
@@ -185,7 +185,7 @@ extension WalletViewController: NSFetchedResultsControllerDelegate {
 // MARK: - AddIncomeViewControllerDelegate
 extension WalletViewController: AddIncomeViewControllerDelegate {
   func addIncomeViewControllerDidReloadOnDismiss() {
-    performFetch()
+//    performFetch()
     tableView.reloadData()
     viewWillAppear(true)
     viewDidAppear(true)

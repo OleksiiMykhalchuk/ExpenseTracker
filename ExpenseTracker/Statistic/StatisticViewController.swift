@@ -20,19 +20,19 @@ class StatisticViewController: UIViewController {
     switch segmentControl.selectedSegmentIndex {
     case 0:
         segment = .day
-        dataBaseManager.performFetch()
+        getData()
         tableView.reloadData()
     case 1:
         segment = .week
-        dataBaseManager.performFetch()
+        getData()
         tableView.reloadData()
     case 2:
         segment = .month
-        dataBaseManager.performFetch()
+        getData()
         tableView.reloadData()
     case 3:
         segment = .year
-        dataBaseManager.performFetch()
+        getData()
         tableView.reloadData()
     default:
         return
@@ -74,7 +74,7 @@ class StatisticViewController: UIViewController {
       let cellNib = UINib(nibName: "WalletCell", bundle: nil)
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
       tableView.rowHeight = 60
-      dataBaseManager.performFetch()
+//      dataBaseManager.performFetch()
       dropDown.optionArray = ["Income", "Expense"]
       dropDown.optionIds = [0, 1]
       dropDown.selectedRowColor = R.color.green2()!
@@ -86,18 +86,30 @@ class StatisticViewController: UIViewController {
         if index == 0 {
           self.dropDownisIncome = true
           self.tableView.reloadData()
-          self.dataBaseManager.performFetch()
+          self.getData()
         } else {
           self.dropDownisIncome = false
           self.tableView.reloadData()
-          self.dataBaseManager.performFetch()
+          self.getData()
         }
       })
     }
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    dataBaseManager.performFetch()
+    getData()
     tableView.reloadData()
+  }
+  func getData() {
+    dataIncome.removeAll()
+    dataExpense.removeAll()
+    for income in dataBaseManager.getIncomeExpense().1
+    where segment.rawValue == filterByDate(now: Date(), dataDate: income.date).rawValue {
+        dataIncome.append(income)
+    }
+    for expense in dataBaseManager.getIncomeExpense().2
+    where segment.rawValue == filterByDate(now: Date(), dataDate: expense.date).rawValue {
+      dataExpense.append(expense)
+    }
   }
 //  func performFetch() {
 //    do {

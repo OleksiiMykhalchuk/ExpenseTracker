@@ -19,26 +19,26 @@ class CategoryIncomeViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var dataBaseManager: DataBaseManager!
   var delegate: CategoryIncomePickerDelegate?
-  lazy var fetchResultsController: NSFetchedResultsController<IncomeCategory> = {
-    let fetchRequest = NSFetchRequest<IncomeCategory>()
-    let entity = IncomeCategory.entity()
-    fetchRequest.entity = entity
-    let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-    fetchRequest.sortDescriptors = [sortDescriptor]
-    fetchRequest.fetchBatchSize = 20
-    let fetchResultsController = NSFetchedResultsController(
-      fetchRequest: fetchRequest,
-      managedObjectContext: managedObjectContext,
-      sectionNameKeyPath: nil,
-      cacheName: nil)
-    fetchResultsController.delegate = self
-    return fetchResultsController
-  }()
+//  lazy var fetchResultsController: NSFetchedResultsController<IncomeCategory> = {
+//    let fetchRequest = NSFetchRequest<IncomeCategory>()
+//    let entity = IncomeCategory.entity()
+//    fetchRequest.entity = entity
+//    let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+//    fetchRequest.sortDescriptors = [sortDescriptor]
+//    fetchRequest.fetchBatchSize = 20
+//    let fetchResultsController = NSFetchedResultsController(
+//      fetchRequest: fetchRequest,
+//      managedObjectContext: managedObjectContext,
+//      sectionNameKeyPath: nil,
+//      cacheName: nil)
+//    fetchResultsController.delegate = self
+//    return fetchResultsController
+//  }()
   override func viewDidLoad() {
         super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
-    performFetch()
+//    dataBaseManager.performFetch()
     }
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "AddCategory" {
@@ -51,23 +51,23 @@ class CategoryIncomeViewController: UIViewController {
       print("Segue edit category")
     }
   }
-  func performFetch() {
-    do {
-      try fetchResultsController.performFetch()
-    } catch {
-      fatalError("Error \(error)")
-    }
-  }
+//  func performFetch() {
+//    do {
+//      try fetchResultsController.performFetch()
+//    } catch {
+//      fatalError("Error \(error)")
+//    }
+//  }
 }
 // MARK: - UITableViewDataSource
 extension CategoryIncomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return fetchResultsController.sections![0].numberOfObjects
+    return dataBaseManager.getIncomeCategory().count
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryIncomeCell")
     cell!.textLabel?.font = R.font.interRegular(size: 14)
-    let object = fetchResultsController.object(at: indexPath)
+    let object = dataBaseManager.getIncomeCategory()[indexPath.row]
     cell?.textLabel?.text = object.name
     return cell!
   }
@@ -78,18 +78,20 @@ extension CategoryIncomeViewController: UITableViewDelegate {
     commit editingStyle: UITableViewCell.EditingStyle,
     forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      let category = fetchResultsController.object(at: indexPath)
-      managedObjectContext.delete(category)
-      do {
-        try managedObjectContext.save()
-      } catch {
-        fatalError("Error \(error)")
-      }
+//      let category = fetchResultsController.object(at: indexPath)
+//      managedObjectContext.delete(category)
+//      do {
+//        try managedObjectContext.save()
+//      } catch {
+//        fatalError("Error \(error)")
+//      }
+      dataBaseManager.deleteIncomeCategory(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let delegate = delegate {
-      let categoryName = fetchResultsController.object(at: indexPath).name
+      let categoryName = dataBaseManager.getIncomeCategory()[indexPath.row].name
       delegate.categoryIncome(self, didPick: categoryName)
     }
     tableView.deselectRow(at: indexPath, animated: true)
@@ -98,7 +100,7 @@ extension CategoryIncomeViewController: UITableViewDelegate {
     let controller = storyboard?.instantiateViewController(
       withIdentifier: "Detail") as? CategoryIncomeDetailTableViewController
       controller?.delegate = self
-    controller?.categoryToEdit = fetchResultsController.object(at: indexPath)
+    controller?.categoryToEdit = dataBaseManager.getIncomeCategory()[indexPath.row]
     controller?.indexPath = indexPath
     present(controller!, animated: true)
   }
@@ -106,13 +108,16 @@ extension CategoryIncomeViewController: UITableViewDelegate {
 // MARK: - CategoryIncomeDetailTableViewControllerDelegate
 extension CategoryIncomeViewController: CategoryIncomeDetailTableViewControllerDelegate {
   func categoryIncomeDetail(_ controller: CategoryIncomeDetailTableViewController, didFinishAdding category: String) {
-    let categorySQL = IncomeCategory(context: managedObjectContext)
-    categorySQL.name = category
-    do {
-      try managedObjectContext.save()
-    } catch {
-      fatalError("Error \(error)")
-    }
+//    let categorySQL = IncomeCategory(context: managedObjectContext)
+//    categorySQL.name = category
+//    do {
+//      try managedObjectContext.save()
+//    } catch {
+//      fatalError("Error \(error)")
+//    }
+    let incomeCategory = IncomeCategoryEntity(name: category)
+    dataBaseManager.addIncomeCategory(incomeCategory)
+    tableView.reloadData()
     dismiss(animated: true)
   }
   func categoryIncomeDidCancel(_ controller: CategoryIncomeDetailTableViewController) {
@@ -120,16 +125,19 @@ extension CategoryIncomeViewController: CategoryIncomeDetailTableViewControllerD
   }
   func categoryIncomeDetail(
     _ controller: CategoryIncomeDetailTableViewController,
-    didFinishEditing category: String,
+    didFinishEditing category: IncomeCategory,
     for indexPath: IndexPath) {
-    let object = fetchResultsController.object(at: indexPath)
-    object.name = category
-    do {
-      try managedObjectContext.save()
-    } catch {
-      fatalError("Error \(error)")
-    }
-    dismiss(animated: true)
+//    let object = fetchResultsController.object(at: indexPath)
+//    object.name = category
+//    do {
+//      try managedObjectContext.save()
+//    } catch {
+//      fatalError("Error \(error)")
+//    }
+//    dismiss(animated: true)
+      dataBaseManager.updateIncomeCategory(category, at: indexPath)
+      tableView.reloadData()
+      dismiss(animated: true)
   }
 }
 // MARK: - NSFetchResultsControllerDelegate

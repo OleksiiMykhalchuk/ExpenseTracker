@@ -22,17 +22,23 @@ class AddExpenseContentViewController: UITableViewController {
       categoryName: categoryName,
       tableViewController: self)
     guard alertManager.manageAlerts() else { return }
-    let expense = IncomeExpense(context: managedObjectContext)
-    expense.amount = Double(textField.text ?? "0.00") ?? 0.00
-    expense.date = datePicker.date
-    expense.category = categoryName
-    expense.isIncome = false
-    do {
-      try managedObjectContext.save()
-      print("*** Saved!!!")
-    } catch {
-      fatalError("Error \(error)")
-    }
+//    let expense = IncomeExpense(context: managedObjectContext)
+//    expense.amount = Double(textField.text ?? "0.00") ?? 0.00
+//    expense.date = datePicker.date
+//    expense.category = categoryName
+//    expense.isIncome = false
+//    do {
+//      try managedObjectContext.save()
+//      print("*** Saved!!!")
+//    } catch {
+//      fatalError("Error \(error)")
+//    }
+    let expense = IncomeExpenseEntity(
+      amount: Double(textField.text ?? "0.00") ?? 0.00,
+      category: categoryName,
+      date: datePicker.date,
+      isIncome: false)
+    dataBaseManager.addIncomeExpense(expense)
     textField.text = ""
   }
   // MARK: - Variables

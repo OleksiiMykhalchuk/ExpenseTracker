@@ -13,7 +13,7 @@ protocol CategoryIncomeDetailTableViewControllerDelegate: AnyObject {
   func categoryIncomeDetail(_ controller: CategoryIncomeDetailTableViewController, didFinishAdding category: String)
   func categoryIncomeDetail(
     _ controller: CategoryIncomeDetailTableViewController,
-    didFinishEditing category: String,
+    didFinishEditing category: IncomeCategory,
     for indexPath: IndexPath)
 }
 
@@ -28,8 +28,9 @@ class CategoryIncomeDetailTableViewController: UITableViewController {
     delegate?.categoryIncomeDidCancel(self)
   }
   @IBAction func done() {
-    if categoryToEdit != nil {
-      delegate?.categoryIncomeDetail(self, didFinishEditing: textField.text!, for: indexPath!)
+    if let temp = categoryToEdit {
+      temp.name = textField.text!
+      delegate?.categoryIncomeDetail(self, didFinishEditing: temp, for: indexPath!)
     } else {
       let category = textField.text!
       delegate?.categoryIncomeDetail(self, didFinishAdding: category)

@@ -102,7 +102,7 @@ class HomePageViewController: UIViewController {
       tableView.dataSource = self
       showBackgroundView()
       configureViewTotals()
-      dataBaseManager.performFetch()
+//      dataBaseManager.performFetch()
       configureTitleTextAttributes()
       totalLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
       incomeLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
@@ -115,22 +115,22 @@ class HomePageViewController: UIViewController {
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    dataBaseManager.performFetch()
+//    dataBaseManager.performFetch()
     tableView.reloadData()
-    for object in dataBaseManager.getIncomeExpense() where object.isIncome {
+    for object in dataBaseManager.getIncomeExpense().1 {
           income = object.amount
         break
     }
     totalIncome = 0.0
-    for object in dataBaseManager.getIncomeExpense() where object.isIncome {
+    for object in dataBaseManager.getIncomeExpense().1 {
         totalIncome += object.amount
     }
-    for object in dataBaseManager.getIncomeExpense() where !object.isIncome {
+    for object in dataBaseManager.getIncomeExpense().2 {
           expense = object.amount
         break
     }
     totalExpense = 0.0
-    for object in dataBaseManager.getIncomeExpense() where !object.isIncome {
+    for object in dataBaseManager.getIncomeExpense().2 {
         totalExpense += object.amount
     }
     totalBalance = totalIncome - totalExpense
@@ -294,7 +294,7 @@ extension HomePageViewController: UITableViewDataSource {
       for: indexPath) as? HomeTableViewCell else {
       return UITableViewCell()
     }
-    if dataBaseManager.getIncomeExpense().isEmpty {
+    if dataBaseManager.getIncomeExpense().0.isEmpty {
       cell.categoryLabel.text = "No Records"
       cell.categoryLabel.textColor = .red
       cell.amountLabel.text = ""
@@ -302,7 +302,7 @@ extension HomePageViewController: UITableViewDataSource {
       cell.isUserInteractionEnabled = false
       return cell
     } else {
-      let object = dataBaseManager.getIncomeExpense()[indexPath.row]
+      let object = dataBaseManager.getIncomeExpense().0[indexPath.row]
       var prefix = "- "
       cell.categoryLabel.textColor = R.color.blackWhiteText()
         cell.categoryLabel.text = object.category
@@ -324,10 +324,10 @@ extension HomePageViewController: UITableViewDataSource {
     }
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if dataBaseManager.getIncomeExpense().isEmpty {
+    if dataBaseManager.getIncomeExpense().0.isEmpty {
       return 1
     } else {
-      return dataBaseManager.getIncomeExpense().count
+      return dataBaseManager.getIncomeExpense().0.count
     }
   }
 }

@@ -23,17 +23,23 @@ class AddIncomeTableViewController: UITableViewController {
     guard alertManager.manageAlerts(willDismiss: { _ in self.dismiss(animated: true)
       self.delegate?.addIncomeViewControllerDidReloadOnDismiss()
     }) else { return }
-    let income = IncomeExpense(context: managedObjectContext)
-    income.amount = Double(textField.text ?? "0.00") ?? 0.00
-    income.date = datePicker.date
-    income.category = categoryName
-    income.isIncome = true
-    do {
-      try managedObjectContext.save()
-      print("*** Saved!!!")
-    } catch {
-      fatalError("Error \(error)")
-    }
+//    let income = IncomeExpense(context: managedObjectContext)
+//    income.amount = Double(textField.text ?? "0.00") ?? 0.00
+//    income.date = datePicker.date
+//    income.category = categoryName
+//    income.isIncome = true
+//    do {
+//      try managedObjectContext.save()
+//      print("*** Saved!!!")
+//    } catch {
+//      fatalError("Error \(error)")
+//    }
+    let income = IncomeExpenseEntity(
+      amount: Double(textField.text ?? "0.00") ?? 0.00,
+      category: categoryName,
+      date: datePicker.date,
+      isIncome: true)
+    dataBaseManager.addIncomeExpense(income)
     textField.text = ""
     delegate?.reloadOnDone()
   }
