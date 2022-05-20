@@ -54,6 +54,10 @@ class WalletViewController: UIViewController {
       }
     }
   }
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    NumberLabelAnimate.stopAnimation()
+  }
   // MARK: - Private Methods
   private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
