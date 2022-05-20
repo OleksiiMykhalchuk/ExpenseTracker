@@ -11,7 +11,7 @@ import CoreData
 class AddExpenseViewController: UIViewController {
   @IBOutlet weak var contentView: UIView!
   var contentTableView: AddExpenseContentViewController?
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,7 +32,7 @@ class AddExpenseViewController: UIViewController {
   }
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let controller  = segue.destination as? AddExpenseContentViewController, segue.identifier == "EmbedSegue" {
-      controller.managedObjectContext = managedObjectContext
+      controller.dataBaseManager = dataBaseManager
     }
   }
   // MARK: - Helper Methods

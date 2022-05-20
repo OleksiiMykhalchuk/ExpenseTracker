@@ -21,7 +21,7 @@ class AddIncomeViewController: UIViewController {
     delegate?.addIncomeViewControllerDidReloadOnDismiss()
   }
   // MARK: - Variables
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
   var delegate: AddIncomeViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class AddIncomeViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "EmbedTableView" {
       let controller = segue.destination as? AddIncomeTableViewController
-      controller?.managedObjectContext = managedObjectContext
+      controller?.dataBaseManager = dataBaseManager
       controller?.delegate = delegate
     }
   }

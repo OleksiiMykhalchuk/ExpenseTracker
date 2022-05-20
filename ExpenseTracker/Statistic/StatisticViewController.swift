@@ -50,7 +50,7 @@ class StatisticViewController: UIViewController {
   }
   // MARK: - Varibles
   var dropDownisIncome = true
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
   var dataIncome = [IncomeExpense]()
   var dataExpense = [IncomeExpense]()
   let now = Date()

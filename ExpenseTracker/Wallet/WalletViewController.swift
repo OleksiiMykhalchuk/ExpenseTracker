@@ -13,7 +13,7 @@ class WalletViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var totalLabel: UILabel!
   // MARK: - Variables
-  var managedObjectContext: NSManagedObjectContext!
+  var dataBaseManager: DataBaseManager!
   var incomes = [IncomeExpense]()
   var totalBalance: Double!
   var totalIncome: Double!
@@ -107,7 +107,7 @@ class WalletViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "AddIncome" {
       guard let controller = segue.destination as? AddIncomeViewController else { return }
-      controller.managedObjectContext = managedObjectContext
+      controller.dataBaseManager = dataBaseManager
       controller.delegate = self
     }
   }
