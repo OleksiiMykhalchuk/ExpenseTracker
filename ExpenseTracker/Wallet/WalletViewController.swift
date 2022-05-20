@@ -19,20 +19,6 @@ class WalletViewController: UIViewController {
   var totalIncome: Double!
   var totalExpense: Double!
   var negative = ""
-//  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
-//    let fetchRequest = NSFetchRequest<IncomeExpense>()
-//    let entity = IncomeExpense.entity()
-//    fetchRequest.entity = entity
-//    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
-//    fetchRequest.sortDescriptors = [sortDescriptor]
-//    fetchRequest.fetchBatchSize = 20
-//    let fetchResultsController = NSFetchedResultsController(
-//      fetchRequest: fetchRequest,
-//      managedObjectContext: managedObjectContext,
-//      sectionNameKeyPath: nil,
-//      cacheName: nil)
-//    return fetchResultsController
-//  }()
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Wallet"
@@ -45,13 +31,10 @@ class WalletViewController: UIViewController {
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
       tableView.delegate = self
       tableView.dataSource = self
-//      performFetch()
       totalLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
     }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-//    performFetch()
-//    tableView.reloadData()
     totalIncome = 0.0
     for object in dataBaseManager.getIncomeExpense().1 {
       totalIncome += object.amount
@@ -111,18 +94,6 @@ class WalletViewController: UIViewController {
       controller.delegate = self
     }
   }
-  // MARK: - performFetch
-//  func performFetch() {
-//    do {
-//      incomes.removeAll()
-//      try fetchResultsController.performFetch()
-//      for object in fetchResultsController.fetchedObjects! where object.isIncome {
-//        incomes.append(object)
-//      }
-//    } catch {
-//      fatalError("Error \(error)")
-//    }
-//  }
 }
 // MARK: - UITableViewDelegates
 extension WalletViewController: UITableViewDelegate {
@@ -185,7 +156,6 @@ extension WalletViewController: NSFetchedResultsControllerDelegate {
 // MARK: - AddIncomeViewControllerDelegate
 extension WalletViewController: AddIncomeViewControllerDelegate {
   func addIncomeViewControllerDidReloadOnDismiss() {
-//    performFetch()
     tableView.reloadData()
     viewWillAppear(true)
     viewDidAppear(true)

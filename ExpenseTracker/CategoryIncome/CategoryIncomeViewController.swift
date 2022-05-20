@@ -19,26 +19,10 @@ class CategoryIncomeViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var dataBaseManager: DataBaseManager!
   var delegate: CategoryIncomePickerDelegate?
-//  lazy var fetchResultsController: NSFetchedResultsController<IncomeCategory> = {
-//    let fetchRequest = NSFetchRequest<IncomeCategory>()
-//    let entity = IncomeCategory.entity()
-//    fetchRequest.entity = entity
-//    let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-//    fetchRequest.sortDescriptors = [sortDescriptor]
-//    fetchRequest.fetchBatchSize = 20
-//    let fetchResultsController = NSFetchedResultsController(
-//      fetchRequest: fetchRequest,
-//      managedObjectContext: managedObjectContext,
-//      sectionNameKeyPath: nil,
-//      cacheName: nil)
-//    fetchResultsController.delegate = self
-//    return fetchResultsController
-//  }()
   override func viewDidLoad() {
         super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
-//    dataBaseManager.performFetch()
     }
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "AddCategory" {
@@ -51,13 +35,6 @@ class CategoryIncomeViewController: UIViewController {
       print("Segue edit category")
     }
   }
-//  func performFetch() {
-//    do {
-//      try fetchResultsController.performFetch()
-//    } catch {
-//      fatalError("Error \(error)")
-//    }
-//  }
 }
 // MARK: - UITableViewDataSource
 extension CategoryIncomeViewController: UITableViewDataSource {
@@ -78,13 +55,6 @@ extension CategoryIncomeViewController: UITableViewDelegate {
     commit editingStyle: UITableViewCell.EditingStyle,
     forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-//      let category = fetchResultsController.object(at: indexPath)
-//      managedObjectContext.delete(category)
-//      do {
-//        try managedObjectContext.save()
-//      } catch {
-//        fatalError("Error \(error)")
-//      }
       dataBaseManager.deleteIncomeCategory(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
@@ -108,13 +78,6 @@ extension CategoryIncomeViewController: UITableViewDelegate {
 // MARK: - CategoryIncomeDetailTableViewControllerDelegate
 extension CategoryIncomeViewController: CategoryIncomeDetailTableViewControllerDelegate {
   func categoryIncomeDetail(_ controller: CategoryIncomeDetailTableViewController, didFinishAdding category: String) {
-//    let categorySQL = IncomeCategory(context: managedObjectContext)
-//    categorySQL.name = category
-//    do {
-//      try managedObjectContext.save()
-//    } catch {
-//      fatalError("Error \(error)")
-//    }
     let incomeCategory = IncomeCategoryEntity(name: category)
     dataBaseManager.addIncomeCategory(incomeCategory)
     tableView.reloadData()
@@ -127,14 +90,6 @@ extension CategoryIncomeViewController: CategoryIncomeDetailTableViewControllerD
     _ controller: CategoryIncomeDetailTableViewController,
     didFinishEditing category: IncomeCategory,
     for indexPath: IndexPath) {
-//    let object = fetchResultsController.object(at: indexPath)
-//    object.name = category
-//    do {
-//      try managedObjectContext.save()
-//    } catch {
-//      fatalError("Error \(error)")
-//    }
-//    dismiss(animated: true)
       dataBaseManager.updateIncomeCategory(category, at: indexPath)
       tableView.reloadData()
       dismiss(animated: true)

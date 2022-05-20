@@ -31,20 +31,6 @@ class HomePageViewController: UIViewController {
   let seeAllTableView = UITableView()
   var constraintTop = NSLayoutConstraint()
   var tableConstraints = NSLayoutConstraint()
-//  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
-//    let fetchRequest = NSFetchRequest<IncomeExpense>()
-//    let entity = IncomeExpense.entity()
-//    fetchRequest.entity = entity
-//    let sortDescriptor = NSSortDescriptor(key: "objectID", ascending: false)
-//    fetchRequest.sortDescriptors = [sortDescriptor]
-//    let fetchResultsController = NSFetchedResultsController(
-//      fetchRequest: fetchRequest,
-//      managedObjectContext: managedObjectContext!,
-//      sectionNameKeyPath: nil,
-//      cacheName: nil)
-//    fetchResultsController.delegate = self
-//    return fetchResultsController
-//  }()
   // MARK: - Actions
   @IBAction func seeAll() {
     allView.backgroundColor = .white
@@ -110,12 +96,8 @@ class HomePageViewController: UIViewController {
       constraintTop = tableView.topAnchor.constraint(equalTo: transactionLabel.bottomAnchor, constant: 5)
       constraintTop.isActive = true
     }
-  deinit {
-//    fetchResultsController.delegate = nil
-  }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-//    dataBaseManager.performFetch()
     tableView.reloadData()
     for object in dataBaseManager.getIncomeExpense().1 {
           income = object.amount
@@ -256,13 +238,6 @@ class HomePageViewController: UIViewController {
       }
     }
   }
-//  private func performFetch() {
-//    do {
-//      try fetchResultsController.performFetch()
-//    } catch {
-//      fatalError("Error \(error)")
-//    }
-//  }
   private func configureDate(_ date: Date, dateFormat: String) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = dateFormat

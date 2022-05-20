@@ -54,19 +54,6 @@ class StatisticViewController: UIViewController {
   var dataIncome = [IncomeExpense]()
   var dataExpense = [IncomeExpense]()
   let now = Date()
-//  lazy var fetchResultsController: NSFetchedResultsController<IncomeExpense> = {
-//    let fetchRequest = NSFetchRequest<IncomeExpense>()
-//    let entity = IncomeExpense.entity()
-//    fetchRequest.entity = entity
-//    let sortDescriptor = NSSortDescriptor(key: "amount", ascending: false)
-//    fetchRequest.sortDescriptors = [sortDescriptor]
-//    let fetchResultsController = NSFetchedResultsController(
-//      fetchRequest: fetchRequest,
-//      managedObjectContext: managedObjectContext,
-//      sectionNameKeyPath: nil,
-//      cacheName: nil)
-//    return fetchResultsController
-//  }()
     override func viewDidLoad() {
         super.viewDidLoad()
       title = "Statistic"
@@ -74,7 +61,6 @@ class StatisticViewController: UIViewController {
       let cellNib = UINib(nibName: "WalletCell", bundle: nil)
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
       tableView.rowHeight = 60
-//      dataBaseManager.performFetch()
       dropDown.optionArray = ["Income", "Expense"]
       dropDown.optionIds = [0, 1]
       dropDown.selectedRowColor = R.color.green2()!
@@ -102,37 +88,21 @@ class StatisticViewController: UIViewController {
   func getData() {
     dataIncome.removeAll()
     dataExpense.removeAll()
-    for income in dataBaseManager.getIncomeExpense().1
+    let getIncomeSorted = dataBaseManager.getIncomeExpense().1.sorted(by: {lhs, rhs in
+      return lhs.amount > rhs.amount
+    })
+    let getExpenseSorted = dataBaseManager.getIncomeExpense().2.sorted(by: { lhs, rhs in
+      return lhs.amount > rhs.amount
+    })
+    for income in getIncomeSorted
     where segment.rawValue == filterByDate(now: Date(), dataDate: income.date).rawValue {
         dataIncome.append(income)
     }
-    for expense in dataBaseManager.getIncomeExpense().2
+    for expense in getExpenseSorted
     where segment.rawValue == filterByDate(now: Date(), dataDate: expense.date).rawValue {
       dataExpense.append(expense)
     }
   }
-//  func performFetch() {
-//    do {
-//      try fetchResultsController.performFetch()
-//      dataIncome.removeAll()
-//      dataExpense.removeAll()
-//      if let dataFetched = fetchResultsController.fetchedObjects {
-//        for data in dataFetched {
-//          if data.isIncome {
-//            if segment.rawValue == filterByDate(now: Date(), dataDate: data.date).rawValue {
-//              dataIncome.append(data)
-//            }
-//          } else {
-//            if segment.rawValue == filterByDate(now: Date(), dataDate: data.date).rawValue {
-//              dataExpense.append(data)
-//            }
-//          }
-//        }
-//      }
-//    } catch {
-//      fatalError("Error \(error)")
-//    }
-//  }
   // MARK: - Private Methods
   private func filterByDate(now date: Date, dataDate: Date) -> DateFilter {
     let myDateNow = MyDate(date: date)
