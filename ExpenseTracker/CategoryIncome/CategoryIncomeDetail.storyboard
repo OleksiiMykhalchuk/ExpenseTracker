@@ -44,24 +44,24 @@
                                                 </navigationBar>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="9eQ-gW-0lz" secondAttribute="bottom" id="255-Zw-3tV"/>
-                                                <constraint firstItem="9eQ-gW-0lz" firstAttribute="leading" secondItem="5Mb-Py-v5l" secondAttribute="leading" id="Dbx-2e-AMt"/>
-                                                <constraint firstAttribute="trailing" secondItem="9eQ-gW-0lz" secondAttribute="trailing" id="KYa-h7-53w"/>
-                                                <constraint firstItem="9eQ-gW-0lz" firstAttribute="top" secondItem="5Mb-Py-v5l" secondAttribute="top" id="UJA-17-Oc2"/>
+                                                <constraint firstAttribute="bottom" secondItem="9eQ-gW-0lz" secondAttribute="bottom" id="7HI-mB-cZb"/>
+                                                <constraint firstAttribute="trailing" secondItem="9eQ-gW-0lz" secondAttribute="trailing" id="JeW-Yf-XTk"/>
+                                                <constraint firstItem="9eQ-gW-0lz" firstAttribute="leading" secondItem="5Mb-Py-v5l" secondAttribute="leading" id="hAr-62-CRN"/>
+                                                <constraint firstItem="9eQ-gW-0lz" firstAttribute="top" secondItem="5Mb-Py-v5l" secondAttribute="top" id="sMR-Xx-gmU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gxZ-LF-X6p">
-                                        <rect key="frame" x="0.0" y="89" width="375" height="50.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="gxZ-LF-X6p">
+                                        <rect key="frame" x="0.0" y="89" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gxZ-LF-X6p" id="Qh6-dV-vjQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0bs-uT-iXT">
-                                                    <rect key="frame" x="10" y="0.0" width="355" height="50.5"/>
+                                                    <rect key="frame" x="10" y="0.0" width="355" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="47e-7w-Upr"/>
+                                                        <constraint firstAttribute="height" constant="50" id="6Ak-2q-Va4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -71,10 +71,9 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0bs-uT-iXT" firstAttribute="leading" secondItem="Qh6-dV-vjQ" secondAttribute="leading" constant="10" id="0tn-HF-5zb"/>
-                                                <constraint firstItem="0bs-uT-iXT" firstAttribute="top" secondItem="Qh6-dV-vjQ" secondAttribute="top" id="69Y-Ya-eH2"/>
-                                                <constraint firstAttribute="bottom" secondItem="0bs-uT-iXT" secondAttribute="bottom" id="OLk-1Q-SQ7"/>
-                                                <constraint firstAttribute="trailing" secondItem="0bs-uT-iXT" secondAttribute="trailing" constant="10" id="gM3-nN-A6k"/>
+                                                <constraint firstItem="0bs-uT-iXT" firstAttribute="leading" secondItem="Qh6-dV-vjQ" secondAttribute="leading" constant="10" id="DX4-Um-Fep"/>
+                                                <constraint firstItem="0bs-uT-iXT" firstAttribute="centerY" secondItem="Qh6-dV-vjQ" secondAttribute="centerY" id="VnV-kn-1MU"/>
+                                                <constraint firstAttribute="trailing" secondItem="0bs-uT-iXT" secondAttribute="trailing" constant="10" id="tyQ-wi-G84"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

@@ -94,8 +94,6 @@ class HomePageViewController: UIViewController {
       expenseLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
       constraintTop = tableView.topAnchor.constraint(equalTo: transactionLabel.bottomAnchor, constant: 5)
       constraintTop.isActive = true
-      print("Thread current \(Thread.current)")
-      print("Thread main \(Thread.main)")
     }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
