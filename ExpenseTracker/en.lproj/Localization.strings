@@ -6,5 +6,7 @@
   
 */
 "addCategory" = "Add Category";
-
+"statistic" = "Statistic";
+"income" = "Income";
+"expense" = "Expense";
 "transactionHistory" = "Transaction History";

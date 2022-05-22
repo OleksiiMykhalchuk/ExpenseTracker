@@ -56,18 +56,18 @@ class StatisticViewController: UIViewController {
   let now = Date()
     override func viewDidLoad() {
         super.viewDidLoad()
-      title = "Statistic"
+
+        title = R.string.localization.statistic()
       tableView.dataSource = self
-      let cellNib = UINib(nibName: "WalletCell", bundle: nil)
-      tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
+        tableView.register(R.nib.walletCell)
       tableView.rowHeight = 60
-      dropDown.optionArray = ["Income", "Expense"]
+        dropDown.optionArray = [R.string.localization.income(), R.string.localization.expense()]
       dropDown.optionIds = [0, 1]
       dropDown.selectedRowColor = R.color.green2()!
       dropDown.checkMarkEnabled = false
       dropDown.selectedIndex = 0
       dropDown.isSearchEnable = false
-      dropDown.text = "Income"
+      dropDown.text = R.string.localization.income()
       dropDown.didSelect(completion: {_, index, _ in
         if index == 0 {
           self.dropDownisIncome = true
@@ -133,7 +133,7 @@ class StatisticViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension StatisticViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "WalletCell", for: indexPath) as? WalletCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.walletCell, for: indexPath)
     if dropDownisIncome {
         let object = dataIncome[indexPath.row]
         cell?.categoryLabel.text = object.category
