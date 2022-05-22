@@ -69,11 +69,11 @@
             </objects>
             <point key="canvasLocation" x="814" y="348"/>
         </scene>
-        <!--Item-->
+        <!--Add Expense-->
         <scene sceneID="zKk-82-xG6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ab9-dG-lgd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="idK-26-iu4"/>
+                    <tabBarItem key="tabBarItem" title="Add Expense" image="plus" catalog="system" id="idK-26-iu4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AlG-RN-EQT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -88,11 +88,11 @@
             </objects>
             <point key="canvasLocation" x="-502" y="921"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="Wsa-ej-LpB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qCM-tv-aNc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jze-vX-Bw2"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home 1" selectedImage="home-selected" id="jze-vX-Bw2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c8G-VP-Gin">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -107,11 +107,11 @@
             </objects>
             <point key="canvasLocation" x="-575" y="-697"/>
         </scene>
-        <!--Item-->
+        <!--Statisctic-->
         <scene sceneID="OXS-qd-Xb1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NXA-f6-hWB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="7S5-7R-7Q9"/>
+                    <tabBarItem key="tabBarItem" title="Statisctic" image="bar-chart 1" selectedImage="bar-selected" id="7S5-7R-7Q9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SoS-KJ-e2G">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -126,11 +126,11 @@
             </objects>
             <point key="canvasLocation" x="169" y="-327"/>
         </scene>
-        <!--Item-->
+        <!--Wallet-->
         <scene sceneID="Jwh-m8-urA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1sc-6a-7FW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="iSl-sh-vH9"/>
+                    <tabBarItem key="tabBarItem" title="Wallet" image="wallet 1" selectedImage="wallet-selected" id="iSl-sh-vH9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cT9-eK-XSW">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -148,6 +148,13 @@
     </scenes>
     <color key="tintColor" name="Green2"/>
     <resources>
+        <image name="bar-chart 1" width="34" height="34"/>
+        <image name="bar-selected" width="35" height="34"/>
+        <image name="home 1" width="35" height="36"/>
+        <image name="home-selected" width="36" height="36"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="wallet 1" width="36" height="36"/>
+        <image name="wallet-selected" width="36" height="36"/>
         <namedColor name="Green2">
             <color red="0.2627450980392157" green="0.53333333333333333" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Statistic-->
+        <!--Statistic View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="StatisticViewController" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,7 +92,6 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bK1-qZ-ZpD" secondAttribute="trailing" constant="10" id="yiJ-zw-HfD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statistic" image="bar-chart 1" selectedImage="bar-selected" id="XNZ-76-cWP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dropDown" destination="Wxv-2Y-Ytt" id="Wqo-Kw-K1i"/>
@@ -108,8 +107,6 @@
     </scenes>
     <color key="tintColor" name="Green2"/>
     <resources>
-        <image name="bar-chart 1" width="34" height="34"/>
-        <image name="bar-selected" width="35" height="34"/>
         <image name="direction" width="14" height="18"/>
         <namedColor name="Green2">
             <color red="0.2627450980392157" green="0.53333333333333333" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

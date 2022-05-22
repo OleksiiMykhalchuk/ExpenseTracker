@@ -173,7 +173,6 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xO8-QF-r95" secondAttribute="trailing" constant="28" id="yRR-pL-5pZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home 1" selectedImage="home-selected" id="MkT-su-ZVG"/>
                     <navigationItem key="navigationItem" title="Home" id="Cor-4F-5CH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -193,8 +192,6 @@
     </scenes>
     <color key="tintColor" name="Green2"/>
     <resources>
-        <image name="home 1" width="35" height="36"/>
-        <image name="home-selected" width="36" height="36"/>
         <namedColor name="Green2">
             <color red="0.2627450980392157" green="0.53333333333333333" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

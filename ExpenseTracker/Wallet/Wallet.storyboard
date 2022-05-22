@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Wallet-->
+        <!--Wallet View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="WalletViewController" id="Y6W-OH-hqX" customClass="WalletViewController" customModule="ExpenseTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,7 +91,6 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yTJ-XE-HJA" secondAttribute="trailing" id="xjQ-51-w8Z"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wallet" image="wallet 1" selectedImage="wallet-selected" id="Wo1-S4-NgT"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="9kB-qO-DXs" id="nBU-H5-Lh7"/>
@@ -115,8 +114,6 @@
     <color key="tintColor" name="Green2"/>
     <resources>
         <image name="addIncome" width="60" height="60"/>
-        <image name="wallet 1" width="36" height="36"/>
-        <image name="wallet-selected" width="36" height="36"/>
         <namedColor name="Green2">
             <color red="0.2627450980392157" green="0.53333333333333333" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
