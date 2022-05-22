@@ -61,13 +61,13 @@ class StatisticViewController: UIViewController {
       let cellNib = UINib(nibName: "WalletCell", bundle: nil)
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
       tableView.rowHeight = 60
-      dropDown.optionArray = ["Income", "Expense"]
+      dropDown.optionArray = [R.string.localization.income(), R.string.localization.expense()]
       dropDown.optionIds = [0, 1]
       dropDown.selectedRowColor = R.color.green2()!
       dropDown.checkMarkEnabled = false
       dropDown.selectedIndex = 0
       dropDown.isSearchEnable = false
-      dropDown.text = "Income"
+      dropDown.text = R.string.localization.income()
       dropDown.didSelect(completion: {_, index, _ in
         if index == 0 {
           self.dropDownisIncome = true

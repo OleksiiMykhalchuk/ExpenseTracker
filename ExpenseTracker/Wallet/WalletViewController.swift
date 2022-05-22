@@ -21,7 +21,7 @@ class WalletViewController: UIViewController {
   var negative = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-      title = "Wallet"
+      title = R.string.localization.wallet()
       showBackgroundView()
       configureTitleTextAttributes()
       configureViewContent()
@@ -96,7 +96,7 @@ extension WalletViewController: UITableViewDataSource {
       for: indexPath) as? WalletCell else { return UITableViewCell() }
     if dataBaseManager.getIncomeExpense().1.isEmpty {
       cell.amountLabel.text = ""
-      cell.categoryLabel.text = "No Records"
+      cell.categoryLabel.text = R.string.localization.noRecords()
       cell.categoryLabel.textColor = .red
       cell.dateLabel.text = ""
       cell.isUserInteractionEnabled = false

@@ -38,9 +38,9 @@ class CategoryIncomeDetailTableViewController: UITableViewController {
   }
     override func viewDidLoad() {
         super.viewDidLoad()
-      navigationBar.topItem?.title = "Add Category"
+      navigationBar.topItem?.title = R.string.localization.addCategory()
       if categoryToEdit != nil {
-        navigationBar.topItem?.title = "Edit Category"
+        navigationBar.topItem?.title = R.string.localization.editCategory()
         textField.text = categoryToEdit?.name
       }
       textField.becomeFirstResponder()

@@ -221,6 +221,7 @@
 				883D9993282906CE0080DC7B /* Category */,
 				883D99922829067E0080DC7B /* AddExpense */,
 				88356ABA281C28B300C40F39 /* AppDelegate.swift */,
+				08CEF9F0283563A4006F57F2 /* Localization.strings */,
 				88356ABC281C28B300C40F39 /* SceneDelegate.swift */,
 				88356ABE281C28B300C40F39 /* TabViewController.swift */,
 				88356AC0281C28B300C40F39 /* Main.storyboard */,
@@ -232,7 +233,6 @@
 				88178EE0282E70BC00E84146 /* AlertManager.swift */,
 				88178EEB282EC15900E84146 /* ConfigureManager.swift */,
 				883FCD552833DC2900EFEC79 /* MyDate.swift */,
-				08CEF9F0283563A4006F57F2 /* Localization.strings */,
 				08CEF9F128356A94006F57F2 /* DataBaseManager.swift */,
 				883FCD5B2837D0F900EFEC79 /* NumberLabelAnimate.swift */,
 			);

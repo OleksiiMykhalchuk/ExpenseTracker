@@ -8,3 +8,11 @@
 "addCategory" = "Add Category";
 
 "transactionHistory" = "Transaction History";
+
+"Income" = "Income";
+"Expense" = "Expense";
+
+"addCategory" = "Add Category";
+"editCategory" = "Edit Category";
+"wallet" = "Wallet"; // title
+"noRecords" = "No Records"; // cell.categoryLabel.text WalletVC
