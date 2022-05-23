@@ -14,6 +14,7 @@
 		08CEF9FB28356E79006F57F2 /* IncomeExpenseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CEF9FA28356E79006F57F2 /* IncomeExpenseEntity.swift */; };
 		08DA5E0E282AE53C00C93A5F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DA5E0D282AE53C00C93A5F /* R.generated.swift */; };
 		5129DDDEE9FE0E980B0E8C91 /* Pods_ExpenseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */; };
+		88053FF2283BCBFC007D2762 /* DateFormatter Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88053FF1283BCBFC007D2762 /* DateFormatter Extension.swift */; };
 		88178EE1282E70BC00E84146 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88178EE0282E70BC00E84146 /* AlertManager.swift */; };
 		88178EE4282E96B800E84146 /* CategoryIncome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88178EE3282E96B800E84146 /* CategoryIncome.storyboard */; };
 		88178EE6282E979900E84146 /* CategoryIncomeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88178EE5282E979900E84146 /* CategoryIncomeDetail.storyboard */; };
@@ -76,6 +77,7 @@
 		08DA5E0D282AE53C00C93A5F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		778D8A98CA6985A85E9997CA /* Pods-ExpenseTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseTracker.release.xcconfig"; path = "Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker.release.xcconfig"; sourceTree = "<group>"; };
 		7A7B5B7B2B18727A078C87F9 /* Pods-ExpenseTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseTracker.debug.xcconfig"; path = "Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		88053FF1283BCBFC007D2762 /* DateFormatter Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter Extension.swift"; sourceTree = "<group>"; };
 		88178EE0282E70BC00E84146 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		88178EE3282E96B800E84146 /* CategoryIncome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryIncome.storyboard; sourceTree = "<group>"; };
 		88178EE5282E979900E84146 /* CategoryIncomeDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryIncomeDetail.storyboard; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				883FCD552833DC2900EFEC79 /* MyDate.swift */,
 				08CEF9F128356A94006F57F2 /* DataBaseManager.swift */,
 				883FCD5B2837D0F900EFEC79 /* NumberLabelAnimate.swift */,
+				88053FF1283BCBFC007D2762 /* DateFormatter Extension.swift */,
 			);
 			path = ExpenseTracker;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				883D9981281D8E690080DC7B /* Category+CoreDataProperties.swift in Sources */,
 				88356ABB281C28B300C40F39 /* AppDelegate.swift in Sources */,
 				88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */,
+				88053FF2283BCBFC007D2762 /* DateFormatter Extension.swift in Sources */,
 				88FB16B5282D6CF400A2A528 /* IncomeExpense+CoreDataClass.swift in Sources */,
 				08CEF9F528356E30006F57F2 /* CategoryEntity.swift in Sources */,
 				883D99892821308B0080DC7B /* BackgroundView.swift in Sources */,

@@ -25,14 +25,7 @@ class ConfigureManager {
       return numberString!
   }
 }
-extension DateFormatter {
-  static func stringFrom(_ date: Date, dateFormat: String) -> String {
-    let formatter = DateFormatter()
-    formatter.dateFormat = dateFormat
-    let dateString = formatter.string(from: date)
-    return dateString
-  }
-}
+
 extension NumberFormatter {
   static func configureNumberAsCurrancy(
     _ number: NSNumber,
