@@ -89,9 +89,9 @@ class HomePageViewController: UIViewController {
       showBackgroundView()
       configureViewTotals()
       configureTitleTextAttributes()
-      totalLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
-      incomeLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
-      expenseLabel.text = ConfigureManager.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
+      totalLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
+      incomeLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
+      expenseLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
       constraintTop = tableView.topAnchor.constraint(equalTo: transactionLabel.bottomAnchor, constant: 5)
       constraintTop.isActive = true
     }
@@ -268,7 +268,7 @@ extension HomePageViewController: UITableViewDataSource {
       cell.categoryLabel.textColor = R.color.blackWhiteText()
         cell.categoryLabel.text = object.category
         let date = object.date
-        cell.dateLabel.text = configureDate(date, dateFormat: "d MMM, YYYY")
+        cell.dateLabel.text = DateFormatter.stringFrom(date, dateFormat: "d MMM, YYYY")
         let number = NSNumber(value: object.amount)
       if object.isIncome {
         prefix = "+ "

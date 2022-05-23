@@ -19,7 +19,7 @@ class NumberLabelAnimate {
       for number in 0...abs(total) {
         let sleepTime = Int32(duration/Double(total) * 1000000.0)
         usleep(useconds_t(sleepTime))
-        let balance = ConfigureManager.configureNumberAsCurrancy(
+        let balance = NumberFormatter.configureNumberAsCurrancy(
           number as NSNumber,
           numberStyle: .currency,
           currencyCode: "USD")

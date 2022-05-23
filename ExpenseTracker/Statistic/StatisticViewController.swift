@@ -105,26 +105,26 @@ class StatisticViewController: UIViewController {
   }
   // MARK: - Private Methods
   private func filterByDate(now date: Date, dataDate: Date) -> DateFilter {
-    let myDateNow = MyDate(date: date)
-    let sqlDate = MyDate(date: dataDate)
+//    let myDateNow = MyDate(date: date)
+//    let sqlDate = MyDate(date: dataDate)
     let minute = 60
     let hour = 60 * minute
     let day = 24 * hour
     let week = 7 * day
     let time = abs(dataDate.timeIntervalSince(date))
     let timeInterval = TimeInterval(week)
-    if myDateNow.getDay() == sqlDate.getDay() &&
-        myDateNow.getMonth() == sqlDate.getMonth() &&
-        myDateNow.getYear() == sqlDate.getYear() &&
+    if date.getDay() == dataDate.getDay() &&
+        date.getMonth() == dataDate.getMonth() &&
+        date.getYear() == dataDate.getYear() &&
         segment == .day {
       dateFilter = .day
     } else if time <= timeInterval && segment == .week {
       dateFilter = .week
-    } else if myDateNow.getMonth() == sqlDate.getMonth()
-                && myDateNow.getYear() == sqlDate.getYear() &&
+    } else if date.getMonth() == dataDate.getMonth()
+                && date.getYear() == dataDate.getYear() &&
                 segment == .month {
       dateFilter = .month
-    } else if myDateNow.getYear() == sqlDate.getYear() {
+    } else if date.getYear() == dataDate.getYear() {
       dateFilter = .year
     }
     return dateFilter
@@ -137,16 +137,16 @@ extension StatisticViewController: UITableViewDataSource {
     if dropDownisIncome {
         let object = dataIncome[indexPath.row]
         cell?.categoryLabel.text = object.category
-        cell?.dateLabel.text = ConfigureManager.configureDate(object.date, dateFormat: "d MMM, YYYY")
-        cell?.amountLabel.text = "+ " +  ConfigureManager.configureNumberAsCurrancy(
+        cell?.dateLabel.text = DateFormatter.stringFrom(object.date, dateFormat: "d MMM, YYYY")
+        cell?.amountLabel.text = "+ " +  NumberFormatter.configureNumberAsCurrancy(
           object.amount as NSNumber, numberStyle: .currency, currencyCode: "USD")
         cell?.amountLabel.textColor = R.color.green1()
         cell?.isUserInteractionEnabled = false
     } else {
       let object = dataExpense[indexPath.row]
         cell?.categoryLabel.text = object.category
-        cell?.dateLabel.text = ConfigureManager.configureDate(object.date, dateFormat: "d MMM, YYYY")
-        cell?.amountLabel.text = "- " +  ConfigureManager.configureNumberAsCurrancy(
+        cell?.dateLabel.text = DateFormatter.stringFrom(object.date, dateFormat: "d MMM, YYYY")
+        cell?.amountLabel.text = "- " +  NumberFormatter.configureNumberAsCurrancy(
           object.amount as NSNumber, numberStyle: .currency, currencyCode: "USD")
         cell?.amountLabel.textColor = .red
         cell?.isUserInteractionEnabled = false
