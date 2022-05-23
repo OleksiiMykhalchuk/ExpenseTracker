@@ -13,8 +13,7 @@ protocol CategoryIncomeDetailTableViewControllerDelegate: AnyObject {
   func categoryIncomeDetail(_ controller: CategoryIncomeDetailTableViewController, didFinishAdding category: String)
   func categoryIncomeDetail(
     _ controller: CategoryIncomeDetailTableViewController,
-    didFinishEditing category: IncomeCategory,
-    for indexPath: IndexPath)
+    didFinishEditing category: IncomeCategoryEntity)
 }
 
 class CategoryIncomeDetailTableViewController: UITableViewController {
@@ -22,15 +21,14 @@ class CategoryIncomeDetailTableViewController: UITableViewController {
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var navigationBar: UINavigationBar!
   weak var delegate: CategoryIncomeDetailTableViewControllerDelegate?
-  var categoryToEdit: IncomeCategory?
+  var categoryToEdit: IncomeCategoryEntity?
   var indexPath: IndexPath?
   @IBAction func cancel() {
     delegate?.categoryIncomeDidCancel(self)
   }
   @IBAction func done() {
     if let temp = categoryToEdit {
-      temp.name = textField.text!
-      delegate?.categoryIncomeDetail(self, didFinishEditing: temp, for: indexPath!)
+      delegate?.categoryIncomeDetail(self, didFinishEditing: .init(id: temp.id, name: textField.text!))
     } else {
       let category = textField.text!
       delegate?.categoryIncomeDetail(self, didFinishAdding: category)

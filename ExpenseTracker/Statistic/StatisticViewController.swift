@@ -51,8 +51,8 @@ class StatisticViewController: UIViewController {
   // MARK: - Varibles
   var dropDownisIncome = true
   var dataBaseManager: DataBaseManager!
-  var dataIncome = [IncomeExpense]()
-  var dataExpense = [IncomeExpense]()
+  var dataIncome = [IncomeExpenseEntity]()
+  var dataExpense = [IncomeExpenseEntity]()
   let now = Date()
     override func viewDidLoad() {
         super.viewDidLoad()

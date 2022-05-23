@@ -12,17 +12,13 @@ class DataBaseManager {
   private lazy var managedObjectContext = persistentContainer.viewContext
   private lazy var persistentContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: "ExpenseTracker")
-    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+    container.loadPersistentStores(completionHandler: { (_, error) in // storeDescription
       if let error = error as NSError? {
         fatalError("Unresolved error \(error), \(error.userInfo)")
       }
     })
     return container
   }()
-  private var incomeExpense = [IncomeExpense]()
-  private var income = [IncomeExpense]()
-  private var expense = [IncomeExpense]()
-  private var incomeCategory = [IncomeCategory]()
   // MARK: - Expense Category
   func addCategory(_ category: CategoryEntity) {
     let categorySQL = Category(context: managedObjectContext)
@@ -69,56 +65,61 @@ class DataBaseManager {
       let nserror = error as NSError
       fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
     }
-    return items.map{ CategoryEntity(id: $0.id, name: $0.name) }
+    return items.map { CategoryEntity(id: $0.id, name: $0.name) }
   }
   // MARK: - Income Category
   func addIncomeCategory(_ category: IncomeCategoryEntity) {
     let categorySQL = IncomeCategory(context: managedObjectContext)
+    categorySQL.id = category.id
     categorySQL.name = category.name
     saveManagedObjectContext()
   }
-  func deleteIncomeCategory(at index: Int) {
-    let object = incomeCategory[index]
-    managedObjectContext.delete(object)
+  func deleteIncomeCategory(_ category: IncomeCategoryEntity) {
+    let fetchRequest = IncomeCategory.fetchRequest()
+    fetchRequest.fetchLimit = 1
+    fetchRequest.predicate = NSPredicate(format: "id == %@", category.id)
+    var item: [IncomeCategory] = []
+    do {
+      item = try managedObjectContext.fetch(fetchRequest)
+    } catch {
+      AlertManager.alertOnError(message: "Fetch Error \(error)")
+    }
+    managedObjectContext.delete(item.first!)
     saveManagedObjectContext()
   }
-  func updateIncomeCategory(_ newCategory: IncomeCategory) {
+  func updateIncomeCategory(_ newCategory: IncomeCategoryEntity) {
     let fetchRequest = IncomeCategory.fetchRequest()
     let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
     fetchRequest.sortDescriptors = [sortDescriptor]
-    let fetchResutsController = NSFetchedResultsController(
-      fetchRequest: fetchRequest,
-      managedObjectContext: managedObjectContext,
-      sectionNameKeyPath: nil,
-      cacheName: nil)
+    fetchRequest.predicate = NSPredicate(format: "id == %@", newCategory.id)
+    fetchRequest.fetchLimit = 1
+    var item: [IncomeCategory]  = []
     do {
-      try fetchResutsController.performFetch()
+      item = try managedObjectContext.fetch(fetchRequest)
     } catch {
-      fatalError()
+      AlertManager.alertOnError(message: "Fetch Error \(error)")
     }
-    var object = fetchResutsController.object(at: indexPath)
-    object = newCategory
+    item.first?.name = newCategory.name
     saveManagedObjectContext()
   }
-  func getIncomeCategory() -> [IncomeCategory] {
+  func getIncomeCategory() -> [IncomeCategoryEntity] {
     let fetchRequest = IncomeCategory.fetchRequest()
-    incomeCategory.removeAll()
+    var items: [IncomeCategory] = []
     do {
-      incomeCategory = try managedObjectContext.fetch(fetchRequest)
+      items = try managedObjectContext.fetch(fetchRequest)
     } catch {
-      let nserror = error as NSError
-      fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+      AlertManager.alertOnError(message: "Fetch Error \(error)")
     }
-    return incomeCategory
+    return items.map { IncomeCategoryEntity(id: $0.id, name: $0.name)}
   }
   // MARK: - Income Expense Table
-  func getIncomeExpense() -> ([IncomeExpense], [IncomeExpense],[IncomeExpense]) {
+  func getIncomeExpense() -> ([IncomeExpenseEntity], [IncomeExpenseEntity], [IncomeExpenseEntity]) {
     let fetchRequest = IncomeExpense.fetchRequest()
     let sortDescriptor = NSSortDescriptor(key: "objectID", ascending: false)
     fetchRequest.sortDescriptors = [sortDescriptor]
-    incomeExpense.removeAll()
-    income.removeAll()
-    expense.removeAll()
+    var income: [IncomeExpense] = []
+    var expense: [IncomeExpense] = []
+    var incomeExpense: [IncomeExpense] = []
     do {
       incomeExpense = try managedObjectContext.fetch(fetchRequest)
       for item in incomeExpense {
@@ -132,7 +133,22 @@ class DataBaseManager {
       let nserror = error as NSError
       fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
     }
-    return (incomeExpense, income, expense)
+    let incExp = incomeExpense.map { IncomeExpenseEntity(
+      amount: $0.amount,
+      category: $0.category,
+      date: $0.date,
+      isIncome: $0.isIncome) }
+    let inc = income.map { IncomeExpenseEntity(
+      amount: $0.amount,
+      category: $0.category,
+      date: $0.date,
+      isIncome: $0.isIncome) }
+    let exp = expense.map { IncomeExpenseEntity(
+      amount: $0.amount,
+      category: $0.category,
+      date: $0.date,
+      isIncome: $0.isIncome) }
+    return (incExp, inc, exp)
   }
   func addIncomeExpense(_ incomeExpense: IncomeExpenseEntity) {
     let incomeExpenseSQL = IncomeExpense(context: managedObjectContext)

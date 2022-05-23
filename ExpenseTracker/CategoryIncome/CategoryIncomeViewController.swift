@@ -55,7 +55,7 @@ extension CategoryIncomeViewController: UITableViewDelegate {
     commit editingStyle: UITableViewCell.EditingStyle,
     forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      dataBaseManager.deleteIncomeCategory(at: indexPath.row)
+      dataBaseManager.deleteIncomeCategory(dataBaseManager.getIncomeCategory()[indexPath.row])
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
   }
@@ -78,7 +78,7 @@ extension CategoryIncomeViewController: UITableViewDelegate {
 // MARK: - CategoryIncomeDetailTableViewControllerDelegate
 extension CategoryIncomeViewController: CategoryIncomeDetailTableViewControllerDelegate {
   func categoryIncomeDetail(_ controller: CategoryIncomeDetailTableViewController, didFinishAdding category: String) {
-    let incomeCategory = IncomeCategoryEntity(name: category)
+    let incomeCategory = IncomeCategoryEntity(id: UUID().uuidString, name: category)
     dataBaseManager.addIncomeCategory(incomeCategory)
     tableView.reloadData()
     dismiss(animated: true)
@@ -88,9 +88,8 @@ extension CategoryIncomeViewController: CategoryIncomeDetailTableViewControllerD
   }
   func categoryIncomeDetail(
     _ controller: CategoryIncomeDetailTableViewController,
-    didFinishEditing category: IncomeCategory,
-    for indexPath: IndexPath) {
-      dataBaseManager.updateIncomeCategory(category, at: indexPath)
+    didFinishEditing category: IncomeCategoryEntity) {
+    dataBaseManager.updateIncomeCategory(category)
       tableView.reloadData()
       dismiss(animated: true)
   }

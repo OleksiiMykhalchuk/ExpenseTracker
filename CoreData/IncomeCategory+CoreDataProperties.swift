@@ -9,17 +9,16 @@
 import Foundation
 import CoreData
 
-
 extension IncomeCategory {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<IncomeCategory> {
-        return NSFetchRequest<IncomeCategory>(entityName: "IncomeCategory")
-    }
-
-    @NSManaged public var name: String
+  @nonobjc public class func fetchRequest() -> NSFetchRequest<IncomeCategory> {
+    return NSFetchRequest<IncomeCategory>(entityName: "IncomeCategory")
+  }
+  @NSManaged public var id: String
+  @NSManaged public var name: String
 
 }
 
-extension IncomeCategory : Identifiable {
+extension IncomeCategory: Identifiable {
 
 }
