@@ -15,6 +15,7 @@
         <attribute name="name" attributeType="String"/>
     </entity>
     <entity name="IncomeCategory" representedClassName="IncomeCategory" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
     </entity>
     <entity name="IncomeExpense" representedClassName="IncomeExpense" syncable="YES">
@@ -24,10 +25,10 @@
         <attribute name="isIncome" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-63" positionY="-18" width="128" height="59"/>
-        <element name="Expense" positionX="-54" positionY="-9" width="128" height="74"/>
-        <element name="Income" positionX="-36" positionY="9" width="128" height="74"/>
-        <element name="IncomeCategory" positionX="-45" positionY="18" width="128" height="44"/>
-        <element name="IncomeExpense" positionX="-36" positionY="27" width="128" height="89"/>
+        <element name="Category" positionX="-199.7734375" positionY="-188.8046875" width="128" height="59"/>
+        <element name="Expense" positionX="-198.2890625" positionY="-121.5625" width="128" height="74"/>
+        <element name="Income" positionX="-196.51953125" positionY="-31.24609375" width="128" height="74"/>
+        <element name="IncomeCategory" positionX="-199.4453125" positionY="60.07421875" width="128" height="59"/>
+        <element name="IncomeExpense" positionX="-196.13671875" positionY="132.8203125" width="128" height="89"/>
     </elements>
 </model>

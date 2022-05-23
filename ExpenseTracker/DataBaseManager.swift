@@ -19,7 +19,6 @@ class DataBaseManager {
     })
     return container
   }()
-  private var category = [CategoryEntity]()
   private var incomeExpense = [IncomeExpense]()
   private var income = [IncomeExpense]()
   private var expense = [IncomeExpense]()
@@ -59,11 +58,7 @@ class DataBaseManager {
       AlertManager.alertOnError(message: "Fetch Error \(error)")
     }
     item.first?.name = newCategory.name
-    do {
-      try managedObjectContext.save()
-    } catch {
-      AlertManager.alertOnError(message: "Saving Error \(error)")
-    }
+    saveManagedObjectContext()
   }
   func getCategory() -> [CategoryEntity] {
     let fetchRequest = Category.fetchRequest()
@@ -80,18 +75,14 @@ class DataBaseManager {
   func addIncomeCategory(_ category: IncomeCategoryEntity) {
     let categorySQL = IncomeCategory(context: managedObjectContext)
     categorySQL.name = category.name
-    do {
-      try managedObjectContext.save()
-    } catch {
-      fatalError("Error \(error)")
-    }
+    saveManagedObjectContext()
   }
   func deleteIncomeCategory(at index: Int) {
     let object = incomeCategory[index]
     managedObjectContext.delete(object)
-    save()
+    saveManagedObjectContext()
   }
-  func updateIncomeCategory(_ newCategory: IncomeCategory, at indexPath: IndexPath) {
+  func updateIncomeCategory(_ newCategory: IncomeCategory) {
     let fetchRequest = IncomeCategory.fetchRequest()
     let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
     fetchRequest.sortDescriptors = [sortDescriptor]
@@ -107,7 +98,7 @@ class DataBaseManager {
     }
     var object = fetchResutsController.object(at: indexPath)
     object = newCategory
-    save()
+    saveManagedObjectContext()
   }
   func getIncomeCategory() -> [IncomeCategory] {
     let fetchRequest = IncomeCategory.fetchRequest()

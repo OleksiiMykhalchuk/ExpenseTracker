@@ -33,7 +33,6 @@ class AddExpenseContentViewController: UITableViewController {
   // MARK: - Variables
   var categoryName: String = "No Category"
   var dataBaseManager: DataBaseManager!
-  var expenses = [Expense]()
   // MARK: - viewDidLoad
   override func viewDidLoad() {
     super.viewDidLoad()

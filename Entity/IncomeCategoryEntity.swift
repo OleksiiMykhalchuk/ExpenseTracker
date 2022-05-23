@@ -8,5 +8,6 @@
 import Foundation
 
 struct IncomeCategoryEntity {
-    let name: String
+  let id: String
+  let name: String
 }
