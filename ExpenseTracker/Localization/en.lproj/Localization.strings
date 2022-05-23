@@ -18,3 +18,10 @@
 "editCategory" = "Edit Category";
 "wallet" = "Wallet"; // title
 "noRecords" = "No Records"; // cell.categoryLabel.text WalletVC
+"noCategory" = "No Category";
+
+// Sections for add income
+"amount" = "AMOUNT";
+"date" = "DATE";
+"name" = "NAME";
+
