@@ -139,7 +139,7 @@ extension StatisticViewController: UITableViewDataSource {
         cell?.categoryLabel.text = object.category
         cell?.dateLabel.text = DateFormatter.stringFrom(object.date, dateFormat: "d MMM, YYYY")
         cell?.amountLabel.text = "+ " +  NumberFormatter.configureNumberAsCurrancy(
-          object.amount as NSNumber, numberStyle: .currency, currencyCode: "USD")
+          object.amount as NSNumber, numberStyle: .currency, currencyCode: Currency.currency)
         cell?.amountLabel.textColor = R.color.green1()
         cell?.isUserInteractionEnabled = false
     } else {
@@ -147,7 +147,7 @@ extension StatisticViewController: UITableViewDataSource {
         cell?.categoryLabel.text = object.category
         cell?.dateLabel.text = DateFormatter.stringFrom(object.date, dateFormat: "d MMM, YYYY")
         cell?.amountLabel.text = "- " +  NumberFormatter.configureNumberAsCurrancy(
-          object.amount as NSNumber, numberStyle: .currency, currencyCode: "USD")
+          object.amount as NSNumber, numberStyle: .currency, currencyCode: Currency.currency)
         cell?.amountLabel.textColor = .red
         cell?.isUserInteractionEnabled = false
       }

@@ -31,7 +31,7 @@ class WalletViewController: UIViewController {
       tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
       tableView.delegate = self
       tableView.dataSource = self
-      totalLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
+      totalLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: Currency.currency)
     }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -111,7 +111,7 @@ extension WalletViewController: UITableViewDataSource {
         cell.amountLabel.text = NumberFormatter.configureNumberAsCurrancy(
           amount,
           numberStyle: .currency,
-          currencyCode: "USD")
+          currencyCode: Currency.currency)
     }
     cell.isUserInteractionEnabled = false
     return cell

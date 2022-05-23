@@ -89,9 +89,9 @@ class HomePageViewController: UIViewController {
       showBackgroundView()
       configureViewTotals()
       configureTitleTextAttributes()
-      totalLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
-      incomeLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
-      expenseLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: "USD")
+      totalLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: Currency.currency)
+      incomeLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: Currency.currency)
+      expenseLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: Currency.currency)
       constraintTop = tableView.topAnchor.constraint(equalTo: transactionLabel.bottomAnchor, constant: 5)
       constraintTop.isActive = true
     }
@@ -279,7 +279,7 @@ extension HomePageViewController: UITableViewDataSource {
         cell.amountLabel.text = prefix + configureNumberAsCurrancy(
           number,
           numberStyle: NumberFormatter.Style.currency,
-          currencyCode: "USD")
+          currencyCode: Currency.currency)
       cell.isUserInteractionEnabled = false
       return cell
     }

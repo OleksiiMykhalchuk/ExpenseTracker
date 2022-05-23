@@ -20,7 +20,7 @@ class NumberLabelAnimate {
         let balance = NumberFormatter.configureNumberAsCurrancy(
           number as NSNumber,
           numberStyle: .currency,
-          currencyCode: "USD")
+          currencyCode: Currency.currency)
         DispatchQueue.main.async {
           completion(balance)
         }
