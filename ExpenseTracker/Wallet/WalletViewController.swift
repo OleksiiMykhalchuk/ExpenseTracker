@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 class WalletViewController: UIViewController {
   @IBOutlet weak var viewContent: UIView!
@@ -25,10 +24,7 @@ class WalletViewController: UIViewController {
       showBackgroundView()
       configureTitleTextAttributes()
       configureViewContent()
-      let cellNib = UINib(
-        nibName: "WalletCell",
-        bundle: nil)
-      tableView.register(cellNib, forCellReuseIdentifier: "WalletCell")
+      tableView.register(R.nib.walletCell)
       tableView.delegate = self
       tableView.dataSource = self
       totalLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: Currency.currency)
@@ -91,9 +87,8 @@ extension WalletViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension WalletViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(
-      withIdentifier: "WalletCell",
-      for: indexPath) as? WalletCell else { return UITableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.walletCell,
+      for: indexPath) else { return UITableViewCell() }
     if dataBaseManager.getIncomeExpense().1.isEmpty {
       cell.amountLabel.text = ""
       cell.categoryLabel.text = R.string.localization.noRecords()
@@ -124,31 +119,11 @@ extension WalletViewController: UITableViewDataSource {
     }
   }
 }
-// MARK: - NSFetchedResultsControllerDelegate
-extension WalletViewController: NSFetchedResultsControllerDelegate {
-  func fetchedResultsControllerIsEmpty(_ controller: NSFetchedResultsController<IncomeExpense>) -> Bool {
-    if controller.sections?[0].numberOfObjects == 0 {
-      return true
-    } else {
-      return false
-    }
-  }
-  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-    tableView.endUpdates()
-  }
-  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-    tableView.beginUpdates()
-  }
-}
 // MARK: - AddIncomeViewControllerDelegate
 extension WalletViewController: AddIncomeViewControllerDelegate {
   func addIncomeViewControllerDidReloadOnDismiss() {
     tableView.reloadData()
-    viewWillAppear(true)
-    viewDidAppear(true)
   }
   func reloadOnDone() {
-    viewWillAppear(true)
-    viewDidAppear(true)
   }
 }
