@@ -8,8 +8,6 @@
 import Foundation
 
 class NumberLabelAnimate {
-  private static var workItem: DispatchWorkItem?
-  private static var thread: DispatchWorkItem?
   private static var isCancel = false
   static func startAnimate(_ number: Double, speed: Double, completion: @escaping (String) -> Void) {
     let total = abs(Int(number))
@@ -25,12 +23,8 @@ class NumberLabelAnimate {
           currencyCode: "USD")
         DispatchQueue.main.async {
           completion(balance)
-          if self.isCancel {
-            Thread.current.cancel() // not sure if it is good for something
-          }
         }
         if self.isCancel {
-          Thread.current.cancel() // not sure if it is good for something
           break
         }
       }
