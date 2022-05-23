@@ -27,10 +27,32 @@ class WalletViewController: UIViewController {
       tableView.register(R.nib.walletCell)
       tableView.delegate = self
       tableView.dataSource = self
-      totalLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: Currency.currency)
+      totalLabel.text = NumberFormatter.configureNumberAsCurrancy(
+        0.0,
+        numberStyle: .currency,
+        currencyCode: Currency.currency)
     }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    countBalance()
+  }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    animateNumbers()
+  }
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    NumberLabelAnimate.stopAnimation()
+  }
+  // MARK: - Private Methods
+  private func animateNumbers() {
+    if totalBalance != 0.0 {
+      NumberLabelAnimate.startAnimate(totalBalance, speed: 2.0) { balance in
+        self.totalLabel.text = self.negative + "\(balance)"
+      }
+    }
+  }
+  private func countBalance() {
     totalIncome = 0.0
     for object in dataBaseManager.getIncomeExpense().1 {
       totalIncome += object.amount
@@ -40,21 +62,9 @@ class WalletViewController: UIViewController {
       totalExpense += object.amount
     }
     totalBalance = totalIncome - totalExpense
-    if totalBalance < 0 { negative = "- "} else { negative = ""}
-  }
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    if totalBalance != 0.0 {
-      NumberLabelAnimate.startAnimate(totalBalance, speed: 2.0) { balance in
-        self.totalLabel.text = self.negative + "\(balance)"
-      }
+    if totalBalance < 0 { negative = "- "} else { negative = ""
     }
   }
-  override func viewDidDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
-    NumberLabelAnimate.stopAnimation()
-  }
-  // MARK: - Private Methods
   private func configureTitleTextAttributes() {
     let nav = self.navigationController?.navigationBar
     nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -75,6 +85,7 @@ class WalletViewController: UIViewController {
       guard let controller = segue.destination as? AddIncomeViewController else { return }
       controller.dataBaseManager = dataBaseManager
       controller.delegate = self
+      NumberLabelAnimate.stopAnimation()
     }
   }
 }
@@ -122,8 +133,9 @@ extension WalletViewController: UITableViewDataSource {
 // MARK: - AddIncomeViewControllerDelegate
 extension WalletViewController: AddIncomeViewControllerDelegate {
   func addIncomeViewControllerDidReloadOnDismiss() {
-    tableView.reloadData()
+    animateNumbers()
   }
   func reloadOnDone() {
+    countBalance()
   }
 }
