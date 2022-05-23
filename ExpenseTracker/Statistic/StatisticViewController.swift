@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 import iOSDropDown
 
 class StatisticViewController: UIViewController {
@@ -42,18 +41,18 @@ class StatisticViewController: UIViewController {
   private var segment: Segments = .day
   private var dateFilter: DateFilter = .day
   // MARK: - Enums
-  enum Segments: Int {
+  private enum Segments: Int {
     case day = 0, week, month, year
   }
-  enum DateFilter: Int {
+  private enum DateFilter: Int {
     case day = 0, week, month, year
   }
   // MARK: - Varibles
-  var dropDownisIncome = true
+  private var dropDownisIncome = true
   var dataBaseManager: DataBaseManager!
-  var dataIncome = [IncomeExpenseEntity]()
-  var dataExpense = [IncomeExpenseEntity]()
-  let now = Date()
+  private var dataIncome = [IncomeExpenseEntity]()
+  private var dataExpense = [IncomeExpenseEntity]()
+  private let now = Date()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -105,8 +104,6 @@ class StatisticViewController: UIViewController {
   }
   // MARK: - Private Methods
   private func filterByDate(now date: Date, dataDate: Date) -> DateFilter {
-//    let myDateNow = MyDate(date: date)
-//    let sqlDate = MyDate(date: dataDate)
     let minute = 60
     let hour = 60 * minute
     let day = 24 * hour

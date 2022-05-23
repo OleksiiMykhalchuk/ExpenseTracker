@@ -31,7 +31,11 @@ class CategoryDetailViewController: UITableViewController {
   @IBAction func doneButton() {
 
     if let temp = categoryToEdit {
-      delegate!.categoryDetailViewController(self, didFinishEditing: .init(id:temp.id, name: textField.text!))
+      delegate!.categoryDetailViewController(
+        self,
+        didFinishEditing: .init(
+          id: temp.id,
+          name: textField.text!))
     } else {
       let newCategory = textField.text!
       delegate?.categoryDetailViewController(self, didFinishAdding: newCategory)
@@ -51,7 +55,7 @@ class CategoryDetailViewController: UITableViewController {
   }
   override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
     guard let header = view as? UITableViewHeaderFooterView else { return }
-    header.textLabel!.font = UIFont(name: "Inter", size: 12)
+    header.textLabel!.font = R.font.interMedium(size: 12)
   }
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 20

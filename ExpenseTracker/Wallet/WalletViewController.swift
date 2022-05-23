@@ -13,11 +13,10 @@ class WalletViewController: UIViewController {
   @IBOutlet weak var totalLabel: UILabel!
   // MARK: - Variables
   var dataBaseManager: DataBaseManager!
-  var incomes = [IncomeExpense]()
-  var totalBalance: Double!
-  var totalIncome: Double!
-  var totalExpense: Double!
-  var negative = ""
+  private var totalBalance: Double!
+  private var totalIncome: Double!
+  private var totalExpense: Double!
+  private var negative = ""
     override func viewDidLoad() {
         super.viewDidLoad()
       title = R.string.localization.wallet()

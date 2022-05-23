@@ -178,6 +178,73 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		88053FF8283BECF2007D2762 /* AddIncome */ = {
+			isa = PBXGroup;
+			children = (
+				8856C8C8282D2190004A38F9 /* AddIncome.storyboard */,
+				8856C8CA282D21E5004A38F9 /* AddIncomeViewController.swift */,
+				8856C8CC282D5EB6004A38F9 /* AddIncomeTableViewController.swift */,
+			);
+			path = AddIncome;
+			sourceTree = "<group>";
+		};
+		88053FF9283BF0FD007D2762 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				88356AC0281C28B300C40F39 /* Main.storyboard */,
+				88356ABE281C28B300C40F39 /* TabViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		88053FFA283BF145007D2762 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				883D99882821308B0080DC7B /* BackgroundView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		88053FFB283BF152007D2762 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				883FCD5B2837D0F900EFEC79 /* NumberLabelAnimate.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		88053FFC283BF16A007D2762 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				88178EE0282E70BC00E84146 /* AlertManager.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		88053FFD283BF17F007D2762 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				08CEF9F128356A94006F57F2 /* DataBaseManager.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		88053FFE283BF194007D2762 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				88053FF6283BD167007D2762 /* Currency.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		88053FFF283BF1A6007D2762 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				08CEF9F0283563A4006F57F2 /* Localization.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		88178EE2282E969C00E84146 /* CategoryIncome */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,27 +281,27 @@
 		88356AB9281C28B300C40F39 /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
+				88053FFF283BF1A6007D2762 /* Localization */,
+				88053FFE283BF194007D2762 /* Data */,
+				88053FFD283BF17F007D2762 /* DataBase */,
+				88053FFC283BF16A007D2762 /* Alerts */,
+				88053FFB283BF152007D2762 /* Animations */,
+				88053FFA283BF145007D2762 /* View */,
+				88053FF9283BF0FD007D2762 /* Main */,
 				883D9994282906FB0080DC7B /* Home */,
 				883FCD4E2832826B00EFEC79 /* Statistic */,
 				8856C8BF282ABC4B004A38F9 /* Wallet */,
+				88053FF8283BECF2007D2762 /* AddIncome */,
 				88178EE2282E969C00E84146 /* CategoryIncome */,
 				883D9993282906CE0080DC7B /* Category */,
 				883D99922829067E0080DC7B /* AddExpense */,
 				88053FF5283BCC9D007D2762 /* Extensions */,
-				08CEF9F0283563A4006F57F2 /* Localization.strings */,
 				88356ABA281C28B300C40F39 /* AppDelegate.swift */,
 				88356ABC281C28B300C40F39 /* SceneDelegate.swift */,
-				88356ABE281C28B300C40F39 /* TabViewController.swift */,
-				88356AC0281C28B300C40F39 /* Main.storyboard */,
 				88356AC6281C28B600C40F39 /* Assets.xcassets */,
 				88356AC8281C28B600C40F39 /* LaunchScreen.storyboard */,
 				88356ACB281C28B600C40F39 /* Info.plist */,
 				88356AC3281C28B300C40F39 /* ExpenseTracker.xcdatamodeld */,
-				883D99882821308B0080DC7B /* BackgroundView.swift */,
-				88178EE0282E70BC00E84146 /* AlertManager.swift */,
-				08CEF9F128356A94006F57F2 /* DataBaseManager.swift */,
-				883FCD5B2837D0F900EFEC79 /* NumberLabelAnimate.swift */,
-				88053FF6283BD167007D2762 /* Currency.swift */,
 			);
 			path = ExpenseTracker;
 			sourceTree = "<group>";
@@ -315,9 +382,6 @@
 				8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */,
 				8856C8C4282D1A6A004A38F9 /* WalletCell.xib */,
 				8856C8C6282D1CCE004A38F9 /* WalletCell.swift */,
-				8856C8C8282D2190004A38F9 /* AddIncome.storyboard */,
-				8856C8CA282D21E5004A38F9 /* AddIncomeViewController.swift */,
-				8856C8CC282D5EB6004A38F9 /* AddIncomeTableViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";

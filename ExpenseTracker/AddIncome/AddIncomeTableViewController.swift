@@ -33,7 +33,7 @@ class AddIncomeTableViewController: UITableViewController {
     delegate?.reloadOnDone()
   }
   // MARK: - Variables
-  var categoryName = "No Category"
+  var categoryName = R.string.localization.noCategory()
   var dataBaseManager: DataBaseManager!
   var delegate: AddIncomeViewControllerDelegate?
   override func viewDidLoad() {
@@ -69,11 +69,11 @@ class AddIncomeTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch section {
     case 0:
-        return "NAME"
+        return R.string.localization.name()
     case 1:
-        return "AMOUNT"
+        return R.string.localization.amount()
     case 2:
-        return "DATE"
+        return R.string.localization.date()
     default:
         return ""
     }

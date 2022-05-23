@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class HomePageViewController: UIViewController {
   // MARK: - Outlets
   @IBOutlet weak var viewTotals: UIView!
@@ -89,9 +88,18 @@ class HomePageViewController: UIViewController {
       showBackgroundView()
       configureViewTotals()
       configureTitleTextAttributes()
-      totalLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: Currency.currency)
-      incomeLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: Currency.currency)
-      expenseLabel.text = NumberFormatter.configureNumberAsCurrancy(0.0, numberStyle: .currency, currencyCode: Currency.currency)
+      totalLabel.text = NumberFormatter.configureNumberAsCurrancy(
+        0.0,
+        numberStyle: .currency,
+        currencyCode: Currency.currency)
+      incomeLabel.text = NumberFormatter.configureNumberAsCurrancy(
+        0.0,
+        numberStyle: .currency,
+        currencyCode: Currency.currency)
+      expenseLabel.text = NumberFormatter.configureNumberAsCurrancy(
+        0.0,
+        numberStyle: .currency,
+        currencyCode: Currency.currency)
       constraintTop = tableView.topAnchor.constraint(equalTo: transactionLabel.bottomAnchor, constant: 5)
       constraintTop.isActive = true
     }

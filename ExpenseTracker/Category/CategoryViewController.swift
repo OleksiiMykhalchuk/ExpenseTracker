@@ -35,7 +35,7 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell")
-    cell!.textLabel?.font = UIFont(name: "Inter", size: 14)
+    cell!.textLabel?.font = R.font.interMedium(size: 14)
     cell!.textLabel!.text = dataBaseManager.getCategory()[indexPath.row].name
     cell?.accessoryType = .detailDisclosureButton
     return cell!

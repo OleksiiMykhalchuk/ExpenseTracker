@@ -31,7 +31,7 @@ class AddExpenseContentViewController: UITableViewController {
     textField.text = ""
   }
   // MARK: - Variables
-  var categoryName: String = "No Category"
+  private var categoryName: String = R.string.localization.noCategory()
   var dataBaseManager: DataBaseManager!
   // MARK: - viewDidLoad
   override func viewDidLoad() {
@@ -57,7 +57,7 @@ class AddExpenseContentViewController: UITableViewController {
       cell.layer.masksToBounds = false
       cell.layer.borderWidth = 1
       cell.layer.cornerRadius = 8
-      cell.layer.borderColor = UIColor(named: "Green2")?.cgColor
+      cell.layer.borderColor = R.color.green2()?.cgColor
     }
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)

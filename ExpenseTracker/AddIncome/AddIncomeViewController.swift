@@ -38,6 +38,7 @@ class AddIncomeViewController: UIViewController {
     contentView.layer.shadowOpacity = 1.0
     contentView.layer.cornerRadius = 20
   }
+  // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "EmbedTableView" {
       let controller = segue.destination as? AddIncomeTableViewController
