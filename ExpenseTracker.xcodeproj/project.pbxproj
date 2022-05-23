@@ -14,8 +14,9 @@
 		08CEF9FB28356E79006F57F2 /* IncomeExpenseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CEF9FA28356E79006F57F2 /* IncomeExpenseEntity.swift */; };
 		08DA5E0E282AE53C00C93A5F /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DA5E0D282AE53C00C93A5F /* R.generated.swift */; };
 		5129DDDEE9FE0E980B0E8C91 /* Pods_ExpenseTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6163E07788879769AF12DBE /* Pods_ExpenseTracker.framework */; };
-		88053FF2283BCBFC007D2762 /* DateFormatter Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88053FF1283BCBFC007D2762 /* DateFormatter Extension.swift */; };
-		88053FF4283BCC7D007D2762 /* NumberFormatter extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88053FF3283BCC7D007D2762 /* NumberFormatter extension.swift */; };
+		88053FF2283BCBFC007D2762 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88053FF1283BCBFC007D2762 /* DateFormatter.swift */; };
+		88053FF4283BCC7D007D2762 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88053FF3283BCC7D007D2762 /* NumberFormatter.swift */; };
+		88053FF7283BD167007D2762 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88053FF6283BD167007D2762 /* Currency.swift */; };
 		88178EE1282E70BC00E84146 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88178EE0282E70BC00E84146 /* AlertManager.swift */; };
 		88178EE4282E96B800E84146 /* CategoryIncome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88178EE3282E96B800E84146 /* CategoryIncome.storyboard */; };
 		88178EE6282E979900E84146 /* CategoryIncomeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88178EE5282E979900E84146 /* CategoryIncomeDetail.storyboard */; };
@@ -53,7 +54,7 @@
 		883D9998282907DF0080DC7B /* CategoryDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 883D9997282907DF0080DC7B /* CategoryDetail.storyboard */; };
 		883FCD50283282C500EFEC79 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883FCD4F283282C500EFEC79 /* StatisticViewController.swift */; };
 		883FCD5428329FD900EFEC79 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883FCD5328329FD900EFEC79 /* iOSDropDown.framework */; };
-		883FCD562833DC2900EFEC79 /* Date Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883FCD552833DC2900EFEC79 /* Date Extension.swift */; };
+		883FCD562833DC2900EFEC79 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883FCD552833DC2900EFEC79 /* Date.swift */; };
 		883FCD5C2837D0F900EFEC79 /* NumberLabelAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883FCD5B2837D0F900EFEC79 /* NumberLabelAnimate.swift */; };
 		8856C8BE282A93CB004A38F9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */; };
 		8856C8C1282ABCA6004A38F9 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */; };
@@ -77,8 +78,9 @@
 		08DA5E0D282AE53C00C93A5F /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		778D8A98CA6985A85E9997CA /* Pods-ExpenseTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseTracker.release.xcconfig"; path = "Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker.release.xcconfig"; sourceTree = "<group>"; };
 		7A7B5B7B2B18727A078C87F9 /* Pods-ExpenseTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseTracker.debug.xcconfig"; path = "Target Support Files/Pods-ExpenseTracker/Pods-ExpenseTracker.debug.xcconfig"; sourceTree = "<group>"; };
-		88053FF1283BCBFC007D2762 /* DateFormatter Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter Extension.swift"; sourceTree = "<group>"; };
-		88053FF3283BCC7D007D2762 /* NumberFormatter extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter extension.swift"; sourceTree = "<group>"; };
+		88053FF1283BCBFC007D2762 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		88053FF3283BCC7D007D2762 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
+		88053FF6283BD167007D2762 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		88178EE0282E70BC00E84146 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		88178EE3282E96B800E84146 /* CategoryIncome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryIncome.storyboard; sourceTree = "<group>"; };
 		88178EE5282E979900E84146 /* CategoryIncomeDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryIncomeDetail.storyboard; sourceTree = "<group>"; };
@@ -118,7 +120,7 @@
 		883D9997282907DF0080DC7B /* CategoryDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryDetail.storyboard; sourceTree = "<group>"; };
 		883FCD4F283282C500EFEC79 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		883FCD5328329FD900EFEC79 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		883FCD552833DC2900EFEC79 /* Date Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date Extension.swift"; sourceTree = "<group>"; };
+		883FCD552833DC2900EFEC79 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		883FCD5B2837D0F900EFEC79 /* NumberLabelAnimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberLabelAnimate.swift; sourceTree = "<group>"; };
 		8856C8BD282A93CB004A38F9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		8856C8C0282ABCA6004A38F9 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
@@ -169,9 +171,9 @@
 		88053FF5283BCC9D007D2762 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				883FCD552833DC2900EFEC79 /* Date Extension.swift */,
-				88053FF1283BCBFC007D2762 /* DateFormatter Extension.swift */,
-				88053FF3283BCC7D007D2762 /* NumberFormatter extension.swift */,
+				883FCD552833DC2900EFEC79 /* Date.swift */,
+				88053FF1283BCBFC007D2762 /* DateFormatter.swift */,
+				88053FF3283BCC7D007D2762 /* NumberFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -190,8 +192,8 @@
 		88356AAE281C28B300C40F39 = {
 			isa = PBXGroup;
 			children = (
-				08CEF9F328356E24006F57F2 /* Entity */,
 				08DA5E0D282AE53C00C93A5F /* R.generated.swift */,
+				08CEF9F328356E24006F57F2 /* Entity */,
 				883D9961281D8D9E0080DC7B /* CoreData */,
 				883D9944281D67280080DC7B /* Font */,
 				88356AB9281C28B300C40F39 /* ExpenseTracker */,
@@ -212,15 +214,15 @@
 		88356AB9281C28B300C40F39 /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
-				883FCD4E2832826B00EFEC79 /* Statistic */,
-				88178EE2282E969C00E84146 /* CategoryIncome */,
-				8856C8BF282ABC4B004A38F9 /* Wallet */,
 				883D9994282906FB0080DC7B /* Home */,
+				883FCD4E2832826B00EFEC79 /* Statistic */,
+				8856C8BF282ABC4B004A38F9 /* Wallet */,
+				88178EE2282E969C00E84146 /* CategoryIncome */,
 				883D9993282906CE0080DC7B /* Category */,
 				883D99922829067E0080DC7B /* AddExpense */,
-				88356ABA281C28B300C40F39 /* AppDelegate.swift */,
-				08CEF9F0283563A4006F57F2 /* Localization.strings */,
 				88053FF5283BCC9D007D2762 /* Extensions */,
+				08CEF9F0283563A4006F57F2 /* Localization.strings */,
+				88356ABA281C28B300C40F39 /* AppDelegate.swift */,
 				88356ABC281C28B300C40F39 /* SceneDelegate.swift */,
 				88356ABE281C28B300C40F39 /* TabViewController.swift */,
 				88356AC0281C28B300C40F39 /* Main.storyboard */,
@@ -232,6 +234,7 @@
 				88178EE0282E70BC00E84146 /* AlertManager.swift */,
 				08CEF9F128356A94006F57F2 /* DataBaseManager.swift */,
 				883FCD5B2837D0F900EFEC79 /* NumberLabelAnimate.swift */,
+				88053FF6283BD167007D2762 /* Currency.swift */,
 			);
 			path = ExpenseTracker;
 			sourceTree = "<group>";
@@ -509,27 +512,28 @@
 				883D99912827A72D0080DC7B /* CategoryDetailViewController.swift in Sources */,
 				88FB16B7282D6CF400A2A528 /* IncomeCategory+CoreDataClass.swift in Sources */,
 				883D998D2823E6800080DC7B /* CategoryViewController.swift in Sources */,
-				88053FF4283BCC7D007D2762 /* NumberFormatter extension.swift in Sources */,
+				88053FF4283BCC7D007D2762 /* NumberFormatter.swift in Sources */,
 				8856C8CD282D5EB6004A38F9 /* AddIncomeTableViewController.swift in Sources */,
 				883D998F28257E000080DC7B /* HomePageViewController.swift in Sources */,
 				883FCD5C2837D0F900EFEC79 /* NumberLabelAnimate.swift in Sources */,
 				08CEF9F928356E6E006F57F2 /* IncomeCategoryEntity.swift in Sources */,
 				08CEF9F228356A94006F57F2 /* DataBaseManager.swift in Sources */,
 				8856C8C1282ABCA6004A38F9 /* WalletViewController.swift in Sources */,
-				883FCD562833DC2900EFEC79 /* Date Extension.swift in Sources */,
+				883FCD562833DC2900EFEC79 /* Date.swift in Sources */,
 				88178EE1282E70BC00E84146 /* AlertManager.swift in Sources */,
 				88FB16B6282D6CF400A2A528 /* IncomeExpense+CoreDataProperties.swift in Sources */,
 				88356ABF281C28B300C40F39 /* TabViewController.swift in Sources */,
 				883D9981281D8E690080DC7B /* Category+CoreDataProperties.swift in Sources */,
 				88356ABB281C28B300C40F39 /* AppDelegate.swift in Sources */,
 				88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */,
-				88053FF2283BCBFC007D2762 /* DateFormatter Extension.swift in Sources */,
+				88053FF2283BCBFC007D2762 /* DateFormatter.swift in Sources */,
 				88FB16B5282D6CF400A2A528 /* IncomeExpense+CoreDataClass.swift in Sources */,
 				08CEF9F528356E30006F57F2 /* CategoryEntity.swift in Sources */,
 				883D99892821308B0080DC7B /* BackgroundView.swift in Sources */,
 				8856C8CB282D21E5004A38F9 /* AddIncomeViewController.swift in Sources */,
 				8856C8C7282D1CCE004A38F9 /* WalletCell.swift in Sources */,
 				88FB16B8282D6CF400A2A528 /* IncomeCategory+CoreDataProperties.swift in Sources */,
+				88053FF7283BD167007D2762 /* Currency.swift in Sources */,
 				08DA5E0E282AE53C00C93A5F /* R.generated.swift in Sources */,
 				883D9980281D8E690080DC7B /* Category+CoreDataClass.swift in Sources */,
 				08CEF9FB28356E79006F57F2 /* IncomeExpenseEntity.swift in Sources */,

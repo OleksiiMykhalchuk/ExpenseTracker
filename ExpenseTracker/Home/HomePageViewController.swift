@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CoreData
+
 
 class HomePageViewController: UIViewController {
   // MARK: - Outlets
