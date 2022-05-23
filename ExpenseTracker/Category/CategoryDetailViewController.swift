@@ -13,8 +13,7 @@ protocol CategoryDetailViewControllerDelegate: AnyObject {
   func categoryDetailViewController(_ controller: CategoryDetailViewController, didFinishAdding category: String)
   func categoryDetailViewController(
     _ controller: CategoryDetailViewController,
-    didFinishEditing category: Category,
-    for index: IndexPath)
+    didFinishEditing category: CategoryEntity)
 }
 
 class CategoryDetailViewController: UITableViewController {
@@ -24,7 +23,7 @@ class CategoryDetailViewController: UITableViewController {
   // MARK: - Variables
   var categoryName: String?
   var barButton = UIBarButtonItem()
-  var categoryToEdit: Category? 
+  var categoryToEdit: CategoryEntity?
   var indexToEdit: IndexPath?
   var dataBaseManager: DataBaseManager!
   weak var delegate: CategoryDetailViewControllerDelegate?
@@ -32,8 +31,7 @@ class CategoryDetailViewController: UITableViewController {
   @IBAction func doneButton() {
 
     if let temp = categoryToEdit {
-      temp.name = textField.text!
-      delegate?.categoryDetailViewController(self, didFinishEditing: temp, for: indexToEdit!)
+      delegate!.categoryDetailViewController(self, didFinishEditing: .init(id:temp.id, name: textField.text!))
     } else {
       let newCategory = textField.text!
       delegate?.categoryDetailViewController(self, didFinishAdding: newCategory)

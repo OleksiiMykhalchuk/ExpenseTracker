@@ -74,4 +74,15 @@ class AlertManager {
       return false
     }
   }
+  class func alertOnError(message: String) {
+    let alert = UIAlertController(
+      title: "Error",
+      message: message,
+      preferredStyle: .alert)
+    let action = UIAlertAction(
+      title: "OK",
+      style: .default,
+      handler: nil)
+    alert.addAction(action)
+  }
 }

@@ -8,5 +8,6 @@
 import Foundation
 
 struct CategoryEntity {
-    let name: String
+  let id: String
+  let name: String
 }

@@ -19,7 +19,7 @@ class DataBaseManager {
     })
     return container
   }()
-  private var category = [Category]()
+  private var category = [CategoryEntity]()
   private var incomeExpense = [IncomeExpense]()
   private var income = [IncomeExpense]()
   private var expense = [IncomeExpense]()
@@ -27,46 +27,54 @@ class DataBaseManager {
   // MARK: - Expense Category
   func addCategory(_ category: CategoryEntity) {
     let categorySQL = Category(context: managedObjectContext)
+    categorySQL.id = category.id
     categorySQL.name = category.name
     do {
       try managedObjectContext.save()
     } catch {
-      fatalError("Error \(error)")
+      AlertManager.alertOnError(message: "Save Error \(error)")
     }
   }
-  func deleteCategory(at index: Int) {
-    let object = category[index]
-    managedObjectContext.delete(object)
-    save()
-  }
-  func updateCategory(_ newCategory: Category, at indexPath: IndexPath) {
+  func deleteCategory(_ category: CategoryEntity) {
     let fetchRequest = Category.fetchRequest()
-    let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-    fetchRequest.sortDescriptors = [sortDescriptor]
-    let fetchResutsController = NSFetchedResultsController(
-      fetchRequest: fetchRequest,
-      managedObjectContext: managedObjectContext,
-      sectionNameKeyPath: nil,
-      cacheName: nil)
+    fetchRequest.fetchLimit = 1
+    fetchRequest.predicate = NSPredicate(format: "id == %@", category.id)
+    var items: [Category] = []
     do {
-      try fetchResutsController.performFetch()
+      items = try managedObjectContext.fetch(fetchRequest)
+      managedObjectContext.delete(items.first!)
     } catch {
-      fatalError()
+      AlertManager.alertOnError(message: "Fetch Error \(error)")
     }
-    var object = fetchResutsController.object(at: indexPath)
-    object = newCategory
-    save()
+    saveManagedObjectContext()
   }
-  func getCategory() -> [Category] {
+  func updateCategory(_ newCategory: CategoryEntity) {
     let fetchRequest = Category.fetchRequest()
-    category.removeAll()
+    fetchRequest.predicate = NSPredicate(format: "id == %@", newCategory.id)
+    fetchRequest.fetchLimit = 1
+    var item: [Category] = []
     do {
-      category = try managedObjectContext.fetch(fetchRequest)
+      item = try managedObjectContext.fetch(fetchRequest)
+    } catch {
+      AlertManager.alertOnError(message: "Fetch Error \(error)")
+    }
+    item.first?.name = newCategory.name
+    do {
+      try managedObjectContext.save()
+    } catch {
+      AlertManager.alertOnError(message: "Saving Error \(error)")
+    }
+  }
+  func getCategory() -> [CategoryEntity] {
+    let fetchRequest = Category.fetchRequest()
+    var items: [Category] = []
+    do {
+      items = try managedObjectContext.fetch(fetchRequest)
     } catch {
       let nserror = error as NSError
       fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
     }
-    return category
+    return items.map{ CategoryEntity(id: $0.id, name: $0.name) }
   }
   // MARK: - Income Category
   func addIncomeCategory(_ category: IncomeCategoryEntity) {
@@ -152,6 +160,13 @@ class DataBaseManager {
         let nserror = error as NSError
         fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
       }
+    }
+  }
+  func saveManagedObjectContext() {
+    do {
+      try managedObjectContext.save()
+    } catch {
+      AlertManager.alertOnError(message: "Save Error \(error)")
     }
   }
 }

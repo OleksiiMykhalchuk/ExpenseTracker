@@ -56,7 +56,7 @@ extension CategoryViewController: UITableViewDataSource {
                  commit editingStyle: UITableViewCell.EditingStyle,
                  forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      dataBaseManager.deleteCategory(at: indexPath.row)
+      dataBaseManager.deleteCategory(dataBaseManager.getCategory()[indexPath.row])
       tableView.deleteRows(at: [indexPath], with: .left)
     }
   }
@@ -90,14 +90,13 @@ extension CategoryViewController: CategoryDetailViewControllerDelegate {
     navigationController?.popViewController(animated: true)
   }
   func categoryDetailViewController(_ controller: CategoryDetailViewController, didFinishAdding category: String) {
-      dataBaseManager.addCategory(.init(name: category))
+    dataBaseManager.addCategory(.init(id: UUID().uuidString, name: category))
     tableView.reloadData()
     navigationController?.popViewController(animated: true)
   }
   func categoryDetailViewController(_ controller: CategoryDetailViewController,
-                                    didFinishEditing category: Category,
-                                    for index: IndexPath) {
-    dataBaseManager.updateCategory(category, at: index)
+                                    didFinishEditing category: CategoryEntity) {
+    dataBaseManager.updateCategory(category)
     tableView.reloadData()
     navigationController?.popViewController(animated: true)
   }

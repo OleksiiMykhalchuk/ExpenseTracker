@@ -11,8 +11,8 @@
 "expense" = "Expense";
 "transactionHistory" = "Transaction History";
 
-"Income" = "Income";
-"Expense" = "Expense";
+"income" = "Income";
+"expense" = "Expense";
 
 "addCategory" = "Add Category";
 "editCategory" = "Edit Category";
