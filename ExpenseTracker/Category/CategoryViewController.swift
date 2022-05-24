@@ -48,7 +48,6 @@ extension CategoryViewController: UITableViewDataSource {
             CategoryDetailViewController else { return }
     controller.delegate = self
     controller.categoryToEdit = dataBaseManager.getCategory()[indexPath.row]
-    controller.indexToEdit = indexPath
     controller.dataBaseManager = dataBaseManager
     navigationController?.pushViewController(controller, animated: true)
   }

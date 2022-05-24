@@ -10,7 +10,7 @@ import CoreData
 
 class AddExpenseViewController: UIViewController {
   @IBOutlet weak var contentView: UIView!
-  var contentTableView: AddExpenseContentViewController?
+  private var contentTableView: AddExpenseContentViewController?
   var dataBaseManager: DataBaseManager!
 
   override func viewDidLoad() {

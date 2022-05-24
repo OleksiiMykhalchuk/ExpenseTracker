@@ -33,7 +33,7 @@ class AddIncomeTableViewController: UITableViewController {
     delegate?.reloadOnDone()
   }
   // MARK: - Variables
-  var categoryName = R.string.localization.noCategory()
+  private var categoryName = R.string.localization.noCategory()
   var dataBaseManager: DataBaseManager!
   weak var delegate: AddIncomeViewControllerDelegate?
   override func viewDidLoad() {

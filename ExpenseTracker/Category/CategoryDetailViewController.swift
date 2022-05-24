@@ -21,10 +21,9 @@ class CategoryDetailViewController: UITableViewController {
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var doneButtonItem: UIBarButtonItem!
   // MARK: - Variables
-  var categoryName: String?
-  var barButton = UIBarButtonItem()
+  private var categoryName: String?
+  private var barButton = UIBarButtonItem()
   var categoryToEdit: CategoryEntity?
-  var indexToEdit: IndexPath?
   var dataBaseManager: DataBaseManager!
   weak var delegate: CategoryDetailViewControllerDelegate?
   // MARK: - Actions

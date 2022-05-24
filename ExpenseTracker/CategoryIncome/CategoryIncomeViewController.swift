@@ -71,7 +71,6 @@ extension CategoryIncomeViewController: UITableViewDelegate {
       withIdentifier: "Detail") as? CategoryIncomeDetailTableViewController
       controller?.delegate = self
     controller?.categoryToEdit = dataBaseManager.getIncomeCategory()[indexPath.row]
-    controller?.indexPath = indexPath
     present(controller!, animated: true)
   }
 }

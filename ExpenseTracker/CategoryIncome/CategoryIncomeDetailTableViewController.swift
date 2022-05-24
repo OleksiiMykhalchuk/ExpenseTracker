@@ -22,7 +22,6 @@ class CategoryIncomeDetailTableViewController: UITableViewController {
   @IBOutlet weak var navigationBar: UINavigationBar!
   weak var delegate: CategoryIncomeDetailTableViewControllerDelegate?
   var categoryToEdit: IncomeCategoryEntity?
-  var indexPath: IndexPath?
   @IBAction func cancel() {
     delegate?.categoryIncomeDidCancel(self)
   }

@@ -17,19 +17,19 @@ class HomePageViewController: UIViewController {
   @IBOutlet weak var seeAllBtn: UIButton!
   @IBOutlet weak var transactionLabel: UILabel!
   // MARK: - Variables
-    var dataBaseManager: DataBaseManager!
-  var totalBalance: Double!
-  var totalExpense: Double!
-  var totalIncome: Double!
-  var expense: Double?
-  var income: Double?
-  var negative = ""
-  let allView = UIView()
-  let closeButton = UIButton()
-  let label = UILabel()
-  let seeAllTableView = UITableView()
-  var constraintTop = NSLayoutConstraint()
-  var tableConstraints = NSLayoutConstraint()
+  var dataBaseManager: DataBaseManager!
+  private var totalBalance: Double!
+  private var totalExpense: Double!
+  private var totalIncome: Double!
+  private var expense: Double?
+  private var income: Double?
+  private var negative = ""
+  private let allView = UIView()
+  private let closeButton = UIButton()
+  private let label = UILabel()
+  private let seeAllTableView = UITableView()
+  private var constraintTop = NSLayoutConstraint()
+  private var tableConstraints = NSLayoutConstraint()
   private var valueAnimatorTotalBalance: ValueAnimator?
   private var valueAnimatorIncome: ValueAnimator?
   private var valueAnimatorExpense: ValueAnimator?
