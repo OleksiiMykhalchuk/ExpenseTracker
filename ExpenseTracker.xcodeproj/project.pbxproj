@@ -17,6 +17,7 @@
 		88053FF2283BCBFC007D2762 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88053FF1283BCBFC007D2762 /* DateFormatter.swift */; };
 		88053FF4283BCC7D007D2762 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88053FF3283BCC7D007D2762 /* NumberFormatter.swift */; };
 		88053FF7283BD167007D2762 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88053FF6283BD167007D2762 /* Currency.swift */; };
+		88054001283CE759007D2762 /* ValueAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88054000283CE759007D2762 /* ValueAnimator.swift */; };
 		88178EE1282E70BC00E84146 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88178EE0282E70BC00E84146 /* AlertManager.swift */; };
 		88178EE4282E96B800E84146 /* CategoryIncome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88178EE3282E96B800E84146 /* CategoryIncome.storyboard */; };
 		88178EE6282E979900E84146 /* CategoryIncomeDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88178EE5282E979900E84146 /* CategoryIncomeDetail.storyboard */; };
@@ -81,6 +82,7 @@
 		88053FF1283BCBFC007D2762 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		88053FF3283BCC7D007D2762 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		88053FF6283BD167007D2762 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		88054000283CE759007D2762 /* ValueAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueAnimator.swift; sourceTree = "<group>"; };
 		88178EE0282E70BC00E84146 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		88178EE3282E96B800E84146 /* CategoryIncome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryIncome.storyboard; sourceTree = "<group>"; };
 		88178EE5282E979900E84146 /* CategoryIncomeDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryIncomeDetail.storyboard; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				883FCD5B2837D0F900EFEC79 /* NumberLabelAnimate.swift */,
+				88054000283CE759007D2762 /* ValueAnimator.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				88356ABF281C28B300C40F39 /* TabViewController.swift in Sources */,
 				883D9981281D8E690080DC7B /* Category+CoreDataProperties.swift in Sources */,
 				88356ABB281C28B300C40F39 /* AppDelegate.swift in Sources */,
+				88054001283CE759007D2762 /* ValueAnimator.swift in Sources */,
 				88356ABD281C28B300C40F39 /* SceneDelegate.swift in Sources */,
 				88053FF2283BCBFC007D2762 /* DateFormatter.swift in Sources */,
 				88FB16B5282D6CF400A2A528 /* IncomeExpense+CoreDataClass.swift in Sources */,

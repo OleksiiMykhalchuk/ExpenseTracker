@@ -127,20 +127,36 @@ class HomePageViewController: UIViewController {
   }
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    if totalBalance != 0.0 {
-      NumberLabelAnimate.startAnimate(totalBalance, speed: 2.0) { balance in
-      self.totalLabel.text = self.negative + "\(balance)"
-      }
-    }
-    if let income = income {
-      NumberLabelAnimate.startAnimate(income, speed: 2.0) { balance in
-        self.incomeLabel.text = "\(balance)"
-      }
-    }
-    if let expense = expense {
-      NumberLabelAnimate.startAnimate(expense, speed: 2.0) { balance in
-        self.expenseLabel.text = "\(balance)"
-      }
+//    if totalBalance != 0.0 {
+//      NumberLabelAnimate.startAnimate(totalBalance, speed: 2.0) { balance in
+//      self.totalLabel.text = self.negative + "\(balance)"
+//      }
+//    }
+//    if let income = income {
+//      NumberLabelAnimate.startAnimate(income, speed: 2.0) { balance in
+//        self.incomeLabel.text = "\(balance)"
+//      }
+//    }
+//    if let expense = expense {
+//      NumberLabelAnimate.startAnimate(expense, speed: 2.0) { balance in
+//        self.expenseLabel.text = "\(balance)"
+//      }
+//    }
+    let displayLink = CADisplayLink(target: self, selector: #selector(handleUpdate))
+    displayLink.add(to: .main, forMode: .default)
+  }
+  var number = 0.00
+  var animationDuration = 10.5
+  var animationStartDate = Date()
+  @objc func handleUpdate() {
+    let now = Date()
+    let elapsedTime = now.timeIntervalSince(animationStartDate)
+    if elapsedTime > animationDuration {
+      self.totalLabel.text = "\(totalBalance ?? 0.00)"
+    } else {
+      let persantage = elapsedTime / animationDuration
+      let value = persantage * (totalBalance - number)
+      self.totalLabel.text = "\(value)"
     }
   }
   override func viewDidDisappear(_ animated: Bool) {
