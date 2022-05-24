@@ -17,6 +17,7 @@ class WalletViewController: UIViewController {
   private var totalIncome: Double!
   private var totalExpense: Double!
   private var negative = ""
+  private var valueAnimatorTotalBalance: ValueAnimator?
     override func viewDidLoad() {
         super.viewDidLoad()
       title = R.string.localization.wallet()
@@ -41,14 +42,19 @@ class WalletViewController: UIViewController {
   }
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    NumberLabelAnimate.stopAnimation()
+    valueAnimatorTotalBalance = nil
   }
   // MARK: - Private Methods
   private func animateNumbers() {
     if totalBalance != 0.0 {
-      NumberLabelAnimate.startAnimate(totalBalance, speed: 2.0) { balance in
-        self.totalLabel.text = self.negative + "\(balance)"
-      }
+       valueAnimatorTotalBalance = ValueAnimator(
+       startValue: 0.0,
+       endValue: totalBalance,
+       animationDuration: 1.0,
+       valueUpdater: { totalBalance in
+       self.totalLabel.text = "\(totalBalance)"
+       })
+     valueAnimatorTotalBalance?.start()
     }
   }
   private func countBalance() {
