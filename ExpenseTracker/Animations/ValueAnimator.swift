@@ -14,20 +14,17 @@ class ValueAnimator {
   private var animationDuration: TimeInterval
   private var animationStartDate: Date?
   private var displayLink: CADisplayLink?
-  private var valueUpdater: (String) -> Void
+  private var valueUpdater: ((String) -> Void)?
   init(
     startValue: Double,
     endValue: Double,
     animationDuration: TimeInterval,
-    valueUpdater: @escaping (String) -> Void) {
+    valueUpdater: ((String) -> Void)?) {
     self.startValue = startValue
     self.endValue = endValue
     self.animationDuration = animationDuration
     self.valueUpdater = valueUpdater
-    self.displayLink = nil
-  }
-  deinit {
-    cancel()
+    self.displayLink = CADisplayLink()
   }
   func start() {
     animationStartDate = Date()
@@ -38,20 +35,21 @@ class ValueAnimator {
     let now = Date()
     let elapsedTime = now.timeIntervalSince(animationStartDate!)
     if elapsedTime > animationDuration {
-      valueUpdater(NumberFormatter.configureNumberAsCurrancy(
+      valueUpdater!(      NumberFormatter.configureNumberAsCurrancy(
         endValue as NSNumber,
         numberStyle: .currency,
         currencyCode: Currency.currency))
+      cancel()
     } else {
       let persantage = elapsedTime / animationDuration
       let value = persantage * (endValue - startValue)
-      valueUpdater(NumberFormatter.configureNumberAsCurrancy(
+      valueUpdater!(      NumberFormatter.configureNumberAsCurrancy(
         value as NSNumber,
         numberStyle: .currency,
         currencyCode: Currency.currency))
     }
   }
-  private func cancel() {
+  func cancel() {
     displayLink?.remove(from: .current, forMode: .default)
     displayLink?.invalidate()
     displayLink = nil

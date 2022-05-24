@@ -131,22 +131,26 @@ class HomePageViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     if totalBalance != 0.0 {
-       valueAnimatorTotalBalance = ValueAnimator(
+      valueAnimatorTotalBalance = ValueAnimator(
         startValue: 0.0,
         endValue: totalBalance,
         animationDuration: 1.0,
-        valueUpdater: { totalBalance in
-        self.totalLabel.text = "\(totalBalance)"
+        valueUpdater: { [weak self] totalBalance in
+          if let selfWeak = self {
+            selfWeak.totalLabel.text = "\(totalBalance)"
+          }
         })
-      valueAnimatorTotalBalance?.start()
+      valueAnimatorTotalBalance!.start()
     }
     if let income = income {
        valueAnimatorIncome = ValueAnimator(
         startValue: 0.0,
         endValue: income,
         animationDuration: 1.0,
-        valueUpdater: { totalBalance in
-        self.incomeLabel.text = "\(totalBalance)"
+        valueUpdater: { [weak self] totalBalance in
+          if let selfWeak = self {
+            selfWeak.incomeLabel.text = "\(totalBalance)"
+          }
         })
       valueAnimatorIncome?.start()
     }
@@ -155,17 +159,20 @@ class HomePageViewController: UIViewController {
         startValue: 0.0,
         endValue: expense,
         animationDuration: 1.0,
-        valueUpdater: { totalBalance in
-        self.expenseLabel.text = "\(totalBalance)"
+        valueUpdater: { [weak self] totalBalance in
+          if let selfWeak = self {
+            selfWeak.expenseLabel.text = "\(totalBalance)"
+          }
         })
       valueAnimatorExpense?.start()
     }
   }
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    valueAnimatorTotalBalance = nil
-    valueAnimatorIncome = nil
-    valueAnimatorExpense = nil
+    valueAnimatorTotalBalance?.cancel()
+    valueAnimatorIncome?.cancel()
+    valueAnimatorExpense?.cancel()
+    print("viewDidDisappear")
   }
   // MARK: - Private Methods
   private func seeAllAnimation() {

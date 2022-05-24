@@ -18,7 +18,7 @@ class CategoryIncomeViewController: UIViewController {
   }
   @IBOutlet weak var tableView: UITableView!
   var dataBaseManager: DataBaseManager!
-  var delegate: CategoryIncomePickerDelegate?
+  weak var delegate: CategoryIncomePickerDelegate?
   override func viewDidLoad() {
         super.viewDidLoad()
     tableView.delegate = self

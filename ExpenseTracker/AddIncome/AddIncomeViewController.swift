@@ -22,7 +22,7 @@ class AddIncomeViewController: UIViewController {
   }
   // MARK: - Variables
   var dataBaseManager: DataBaseManager!
-  var delegate: AddIncomeViewControllerDelegate?
+  weak var delegate: AddIncomeViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
       configureContentView()

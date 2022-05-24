@@ -42,7 +42,7 @@ class WalletViewController: UIViewController {
   }
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    valueAnimatorTotalBalance = nil
+    valueAnimatorTotalBalance?.cancel()
   }
   // MARK: - Private Methods
   private func animateNumbers() {
@@ -139,6 +139,7 @@ extension WalletViewController: UITableViewDataSource {
 extension WalletViewController: AddIncomeViewControllerDelegate {
   func addIncomeViewControllerDidReloadOnDismiss() {
     animateNumbers()
+    tableView.reloadData()
   }
   func reloadOnDone() {
     countBalance()

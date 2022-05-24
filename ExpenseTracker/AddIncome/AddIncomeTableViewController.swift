@@ -35,7 +35,7 @@ class AddIncomeTableViewController: UITableViewController {
   // MARK: - Variables
   var categoryName = R.string.localization.noCategory()
   var dataBaseManager: DataBaseManager!
-  var delegate: AddIncomeViewControllerDelegate?
+  weak var delegate: AddIncomeViewControllerDelegate?
   override func viewDidLoad() {
         super.viewDidLoad()
       tableView.backgroundColor = R.color.whiteDarkBackground()
